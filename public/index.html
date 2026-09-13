@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1020">
 
-<title>PRINCE // SECURE TERMINAL</title>
+<title>Prince Lookup Portal</title>
 
 <style>
 *{
@@ -13,686 +14,956 @@
     box-sizing:border-box;
 }
 
-:root{
-    --green:#00ff88;
-    --green2:#00cc66;
-    --dark:#020604;
-    --panel:#06100b;
-    --line:rgba(0,255,136,.18);
-    --text:#b9ffd9;
-    --muted:#4f8065;
-}
-
-html,body{
-    min-height:100%;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    background:#010302;
-    color:var(--text);
-    font-family:"Courier New",monospace;
-    overflow-x:hidden;
+    min-height:100vh;
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    color:#f8fafc;
+    background:
+        radial-gradient(circle at 15% 10%,rgba(99,102,241,.20),transparent 30%),
+        radial-gradient(circle at 85% 90%,rgba(6,182,212,.14),transparent 30%),
+        #050816;
 }
 
-/* MATRIX BACKGROUND */
+/* ---------- NAVBAR ---------- */
 
-.matrix{
-    position:fixed;
-    inset:0;
-    z-index:0;
-    overflow:hidden;
-    pointer-events:none;
-    opacity:.12;
-}
-
-.matrix span{
-    position:absolute;
-    top:-100px;
-    color:var(--green);
-    font-size:14px;
-    writing-mode:vertical-rl;
-    animation:fall linear infinite;
-}
-
-.matrix span:nth-child(1){left:3%;animation-duration:8s}
-.matrix span:nth-child(2){left:9%;animation-duration:11s}
-.matrix span:nth-child(3){left:16%;animation-duration:7s}
-.matrix span:nth-child(4){left:23%;animation-duration:13s}
-.matrix span:nth-child(5){left:31%;animation-duration:9s}
-.matrix span:nth-child(6){left:39%;animation-duration:12s}
-.matrix span:nth-child(7){left:47%;animation-duration:8s}
-.matrix span:nth-child(8){left:55%;animation-duration:14s}
-.matrix span:nth-child(9){left:63%;animation-duration:10s}
-.matrix span:nth-child(10){left:71%;animation-duration:7s}
-.matrix span:nth-child(11){left:79%;animation-duration:12s}
-.matrix span:nth-child(12){left:87%;animation-duration:9s}
-.matrix span:nth-child(13){left:94%;animation-duration:13s}
-
-@keyframes fall{
-    from{transform:translateY(-150px)}
-    to{transform:translateY(110vh)}
-}
-
-/* SCANLINES */
-
-body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:20;
-    background:repeating-linear-gradient(
-        to bottom,
-        transparent 0px,
-        transparent 3px,
-        rgba(0,255,136,.018) 4px
-    );
-}
-
-/* MAIN */
-
-.wrapper{
-    position:relative;
-    z-index:5;
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:100;
     width:100%;
-    max-width:900px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    background:rgba(5,8,22,.82);
+    backdrop-filter:blur(18px);
+}
+
+.nav-inner{
+    max-width:1050px;
     margin:auto;
-    padding:25px 16px 50px;
-}
-
-/* TERMINAL */
-
-.terminal{
-    background:rgba(3,10,6,.94);
-    border:1px solid var(--line);
-    box-shadow:
-        0 0 35px rgba(0,255,136,.08),
-        inset 0 0 40px rgba(0,255,136,.025);
-}
-
-/* TOP BAR */
-
-.topbar{
-    height:42px;
+    min-height:70px;
+    padding:0 20px;
     display:flex;
     align-items:center;
-    padding:0 15px;
-    border-bottom:1px solid var(--line);
-    background:#030805;
-}
-
-.dots{
-    display:flex;
-    gap:7px;
-}
-
-.dot{
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    background:#163d29;
-}
-
-.dot.green{
-    background:var(--green);
-    box-shadow:0 0 8px var(--green);
-}
-
-.titlebar{
-    margin-left:auto;
-    margin-right:auto;
-    color:#54866a;
-    font-size:11px;
-    letter-spacing:2px;
-}
-
-/* CONTENT */
-
-.content{
-    padding:35px 28px;
-}
-
-@media(max-width:600px){
-    .content{
-        padding:25px 17px;
-    }
-}
-
-/* BOOT */
-
-.boot{
-    min-height:330px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
-.boot-line{
-    margin:5px 0;
-    color:#63a67d;
-    font-size:13px;
-}
-
-.boot-line::before{
-    content:"> ";
-    color:var(--green);
-}
-
-.boot-main{
-    margin-top:15px;
-    color:var(--green);
-    font-size:clamp(18px,4vw,28px);
-    font-weight:bold;
-    text-shadow:0 0 15px rgba(0,255,136,.45);
-}
-
-.cursor{
-    display:inline-block;
-    width:9px;
-    height:18px;
-    background:var(--green);
-    margin-left:5px;
-    animation:blink .7s infinite;
-    vertical-align:middle;
-}
-
-@keyframes blink{
-    50%{opacity:0}
-}
-
-/* PORTAL */
-
-.portal{
-    display:none;
-}
-
-.ascii{
-    color:var(--green);
-    font-size:clamp(9px,2vw,14px);
-    line-height:1.25;
-    text-align:center;
-    margin-bottom:25px;
-    text-shadow:0 0 12px rgba(0,255,136,.35);
-}
-
-.heading{
-    text-align:center;
-    color:var(--green);
-    font-size:clamp(20px,5vw,34px);
-    letter-spacing:4px;
-    text-shadow:0 0 18px rgba(0,255,136,.45);
-}
-
-.subheading{
-    text-align:center;
-    margin-top:9px;
-    color:#578a6b;
-    font-size:12px;
-}
-
-/* STATUS */
-
-.status{
-    display:flex;
     justify-content:space-between;
-    flex-wrap:wrap;
-    gap:10px;
-    margin:28px 0;
-    padding:13px;
-    border:1px solid var(--line);
-    background:rgba(0,255,136,.025);
-    font-size:11px;
 }
 
-.status-item{
-    color:#6ba980;
-}
-
-.status-item b{
-    color:var(--green);
-}
-
-/* INPUT */
-
-.command{
-    color:var(--green);
-    font-size:13px;
-    margin-bottom:9px;
-}
-
-.input-row{
+.brand{
     display:flex;
-    border:1px solid #145b39;
-    background:#020704;
-    transition:.25s;
+    align-items:center;
+    gap:11px;
+    font-weight:800;
+    letter-spacing:.3px;
 }
 
-.input-row:focus-within{
-    border-color:var(--green);
-    box-shadow:0 0 20px rgba(0,255,136,.1);
+.brand-logo{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+    background:linear-gradient(135deg,#6366f1,#06b6d4);
+    box-shadow:0 8px 25px rgba(99,102,241,.28);
 }
 
-.prefix{
-    padding:16px 10px 16px 15px;
-    color:var(--green);
-    user-select:none;
+.nav-links{
+    display:flex;
+    gap:22px;
 }
 
-input{
-    width:100%;
-    border:0;
-    outline:0;
-    background:transparent;
-    color:var(--green);
-    font-family:inherit;
-    font-size:16px;
-    padding:16px 10px;
-}
-
-input::placeholder{
-    color:#28563b;
-}
-
-/* BUTTON */
-
-button{
-    font-family:inherit;
-    cursor:pointer;
-}
-
-.search{
-    width:100%;
-    margin-top:12px;
-    padding:16px;
-    background:var(--green);
-    border:1px solid var(--green);
-    color:#001b0d;
-    font-weight:bold;
-    letter-spacing:2px;
+.nav-links a{
+    color:#aeb7ca;
+    text-decoration:none;
+    font-size:14px;
     transition:.2s;
 }
 
-.search:hover{
-    background:#7dffbd;
-    box-shadow:0 0 25px rgba(0,255,136,.3);
+.nav-links a:hover{
+    color:#fff;
 }
 
-.search:active{
+/* ---------- HERO ---------- */
+
+.hero{
+    max-width:1050px;
+    margin:auto;
+    padding:85px 20px 45px;
+    text-align:center;
+}
+
+.pill{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding:8px 13px;
+    border-radius:50px;
+    background:rgba(99,102,241,.10);
+    border:1px solid rgba(99,102,241,.25);
+    color:#bfc3ff;
+    font-size:12px;
+    font-weight:700;
+}
+
+.pill-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#22c55e;
+    box-shadow:0 0 10px #22c55e;
+}
+
+.hero h1{
+    margin-top:22px;
+    font-size:clamp(38px,7vw,70px);
+    line-height:1.03;
+    letter-spacing:-2.5px;
+}
+
+.gradient-text{
+    background:linear-gradient(90deg,#818cf8,#22d3ee);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:650px;
+    margin:20px auto 0;
+    color:#9ca8bd;
+    line-height:1.7;
+    font-size:15px;
+}
+
+/* ---------- MAIN CARD ---------- */
+
+.lookup-section{
+    max-width:700px;
+    margin:25px auto 0;
+    padding:0 20px;
+}
+
+.lookup-card{
+    padding:28px;
+    border-radius:24px;
+    background:rgba(12,18,38,.82);
+    border:1px solid rgba(255,255,255,.09);
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.35),
+        inset 0 1px rgba(255,255,255,.04);
+}
+
+.card-title{
+    font-size:18px;
+    font-weight:800;
+}
+
+.card-subtitle{
+    margin-top:6px;
+    color:#78859c;
+    font-size:13px;
+}
+
+.input-label{
+    display:block;
+    margin-top:25px;
+    margin-bottom:9px;
+    color:#cbd5e1;
+    font-size:13px;
+    font-weight:700;
+}
+
+.input-wrap{
+    position:relative;
+}
+
+.input-icon{
+    position:absolute;
+    left:15px;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:18px;
+}
+
+#number{
+    width:100%;
+    height:57px;
+    padding:0 16px 0 48px;
+    border-radius:15px;
+    outline:none;
+    border:1px solid rgba(255,255,255,.10);
+    background:#080d1d;
+    color:white;
+    font-size:16px;
+    letter-spacing:.5px;
+    transition:.2s;
+}
+
+#number::placeholder{
+    color:#526078;
+}
+
+#number:focus{
+    border-color:#6366f1;
+    box-shadow:0 0 0 4px rgba(99,102,241,.12);
+}
+
+.search-btn{
+    width:100%;
+    height:57px;
+    margin-top:13px;
+    border:0;
+    border-radius:15px;
+    cursor:pointer;
+    color:white;
+    font-size:15px;
+    font-weight:800;
+    background:linear-gradient(135deg,#6366f1,#06b6d4);
+    box-shadow:0 12px 30px rgba(99,102,241,.20);
+    transition:.2s;
+}
+
+.search-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 17px 35px rgba(99,102,241,.28);
+}
+
+.search-btn:active{
     transform:scale(.99);
 }
 
-/* LOG */
-
-.log{
-    display:none;
-    margin-top:25px;
-    border:1px solid var(--line);
-    background:#010503;
+.search-btn:disabled{
+    opacity:.55;
+    cursor:not-allowed;
+    transform:none;
 }
 
-.log-head{
-    padding:10px 13px;
-    border-bottom:1px solid var(--line);
-    color:#4e8967;
-    font-size:11px;
-}
+/* ---------- STATUS ---------- */
 
-.log-body{
-    padding:14px;
-    color:#69ad82;
-    font-size:12px;
-    line-height:1.8;
-}
-
-.log-body .ok{
-    color:var(--green);
-}
-
-/* RESULT */
-
-.result-box{
-    display:none;
-    margin-top:22px;
-}
-
-.result-head{
+.status-row{
     display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:12px 14px;
-    border:1px solid var(--line);
-    border-bottom:0;
-    color:var(--green);
-    font-size:12px;
-}
-
-pre{
-    margin:0;
-    padding:18px;
-    max-height:430px;
-    overflow:auto;
-    background:#010302;
-    border:1px solid var(--line);
-    color:#9effc2;
-    font-size:12px;
-    line-height:1.7;
-    white-space:pre-wrap;
-    word-break:break-word;
-}
-
-.actions{
-    display:flex;
-    gap:10px;
-    margin-top:10px;
-}
-
-.action{
-    flex:1;
-    padding:12px;
-    border:1px solid #164f34;
-    background:#06110a;
-    color:#73b88b;
-}
-
-.action:hover{
-    color:var(--green);
-    border-color:var(--green);
-}
-
-/* MESSAGE */
-
-.message{
-    display:none;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:9px;
     margin-top:18px;
-    padding:14px;
-    border:1px solid #4f1717;
-    background:rgba(120,0,0,.08);
-    color:#ff8585;
-    font-size:12px;
-    line-height:1.6;
 }
 
-.message.success{
-    border-color:#145b39;
-    background:rgba(0,255,136,.04);
-    color:var(--green);
+.status{
+    padding:7px 11px;
+    border-radius:50px;
+    font-size:11px;
+    color:#8fa0b8;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.07);
 }
 
-/* FOOTER */
-
-.footer{
-    text-align:center;
-    margin-top:28px;
-    color:#31583f;
-    font-size:10px;
-    letter-spacing:1px;
-}
-
-.footer b{
-    color:#57956e;
-}
-
-/* LOADING */
+/* ---------- LOADING ---------- */
 
 .loading{
     display:none;
     margin-top:18px;
-    color:var(--green);
+    padding:13px;
+    text-align:center;
+    border-radius:13px;
+    background:rgba(99,102,241,.08);
+    border:1px solid rgba(99,102,241,.15);
+    color:#aeb5ff;
+    font-size:13px;
+}
+
+.spinner{
+    display:inline-block;
+    width:16px;
+    height:16px;
+    margin-right:7px;
+    vertical-align:-3px;
+    border:2px solid rgba(255,255,255,.2);
+    border-top-color:#818cf8;
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg);}
+}
+
+/* ---------- MESSAGE ---------- */
+
+.message{
+    display:none;
+    margin-top:16px;
+    padding:13px 15px;
+    border-radius:13px;
+    font-size:13px;
+    line-height:1.5;
+}
+
+.message.error{
+    color:#fecaca;
+    background:rgba(239,68,68,.08);
+    border:1px solid rgba(239,68,68,.20);
+}
+
+.message.success{
+    color:#bbf7d0;
+    background:rgba(34,197,94,.08);
+    border:1px solid rgba(34,197,94,.20);
+}
+
+/* ---------- RESULT ---------- */
+
+.result-box{
+    display:none;
+    margin-top:18px;
+    border-radius:17px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.09);
+    background:#060a15;
+}
+
+.result-header{
+    padding:13px 15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.result-header strong{
+    font-size:13px;
+}
+
+.live{
+    color:#4ade80;
+    font-size:11px;
+}
+
+#result{
+    margin:0;
+    padding:18px;
+    max-height:420px;
+    overflow:auto;
+    white-space:pre-wrap;
+    word-break:break-word;
+    color:#d6def0;
     font-size:12px;
+    line-height:1.7;
 }
 
-.loading::before{
-    content:"[ ";
+.actions{
+    display:flex;
+    gap:9px;
+    padding:0 15px 15px;
 }
 
-.loading::after{
-    content:" ]";
+.action-btn{
+    flex:1;
+    height:43px;
+    border-radius:11px;
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,.09);
+    background:rgba(255,255,255,.045);
+    color:#cbd5e1;
+    font-weight:700;
+    transition:.2s;
 }
 
+.action-btn:hover{
+    background:rgba(255,255,255,.08);
+    color:white;
+}
+
+/* ---------- FEATURES ---------- */
+
+.features{
+    max-width:1050px;
+    margin:75px auto 0;
+    padding:0 20px;
+}
+
+.section-heading{
+    text-align:center;
+}
+
+.section-heading h2{
+    font-size:30px;
+}
+
+.section-heading p{
+    margin-top:8px;
+    color:#758198;
+    font-size:14px;
+}
+
+.feature-grid{
+    margin-top:28px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.feature{
+    padding:22px;
+    border-radius:19px;
+    background:rgba(12,18,38,.65);
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.feature-icon{
+    font-size:25px;
+}
+
+.feature h3{
+    margin-top:13px;
+    font-size:16px;
+}
+
+.feature p{
+    margin-top:7px;
+    color:#748198;
+    font-size:12px;
+    line-height:1.6;
+}
+
+/* ---------- ABOUT ---------- */
+
+.about{
+    max-width:700px;
+    margin:75px auto 0;
+    padding:0 20px;
+}
+
+.about-card{
+    padding:28px;
+    border-radius:22px;
+    background:rgba(12,18,38,.65);
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.about-card h2{
+    font-size:23px;
+}
+
+.about-card p{
+    margin-top:12px;
+    color:#8793a9;
+    font-size:14px;
+    line-height:1.8;
+}
+
+/* ---------- CONTACT ---------- */
+
+.contact{
+    max-width:700px;
+    margin:35px auto 0;
+    padding:0 20px;
+}
+
+.contact-card{
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    background:linear-gradient(
+        135deg,
+        rgba(99,102,241,.10),
+        rgba(6,182,212,.06)
+    );
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.contact-card p{
+    margin-top:8px;
+    color:#8793a9;
+    font-size:13px;
+}
+
+/* INSTAGRAM */
+
+.instagram{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:17px;
+    padding:11px 17px;
+    border-radius:13px;
+    text-decoration:none;
+    color:white;
+    font-weight:700;
+    font-size:13px;
+    background:linear-gradient(
+        135deg,
+        #833ab4,
+        #fd1d1d,
+        #fcb045
+    );
+    box-shadow:0 10px 25px rgba(253,29,29,.14);
+    transition:.2s;
+}
+
+.instagram:hover{
+    transform:translateY(-2px);
+}
+
+.instagram svg{
+    width:20px;
+    height:20px;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+    margin-top:70px;
+    padding:25px 20px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.06);
+    color:#536077;
+    font-size:11px;
+}
+
+footer strong{
+    color:#8793a9;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:760px){
+
+    .nav-links{
+        gap:12px;
+    }
+
+    .nav-links a{
+        font-size:12px;
+    }
+
+    .hero{
+        padding-top:65px;
+    }
+
+    .feature-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:500px){
+
+    .brand span{
+        display:none;
+    }
+
+    .nav-links{
+        gap:10px;
+    }
+
+    .nav-inner{
+        min-height:62px;
+    }
+
+    .hero h1{
+        letter-spacing:-1.5px;
+    }
+
+    .lookup-card{
+        padding:20px;
+    }
+
+    .actions{
+        flex-direction:column;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND -->
-<div class="matrix">
-    <span>010101001101010100</span>
-    <span>1010010110010101</span>
-    <span>110010101101001</span>
-    <span>010110101001011</span>
-    <span>101101001010110</span>
-    <span>001010110101001</span>
-    <span>110101001101010</span>
-    <span>010010101101001</span>
-    <span>101001101010101</span>
-    <span>011010100101101</span>
-    <span>110010101001011</span>
-    <span>001101010110100</span>
-    <span>101010010110101</span>
-</div>
+<!-- NAVBAR -->
 
-<div class="wrapper">
+<nav class="navbar">
+    <div class="nav-inner">
 
-<div class="terminal">
-
-    <div class="topbar">
-
-        <div class="dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot green"></div>
+        <div class="brand">
+            <div class="brand-logo">👑</div>
+            <span>WORLD OF PRINCE</span>
         </div>
 
-        <div class="titlebar">
-            PRINCE_SECURE_TERMINAL // ONLINE
+        <div class="nav-links">
+            <a href="#lookup">Lookup</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
         </div>
 
     </div>
+</nav>
 
-    <div class="content">
 
-        <!-- BOOT SCREEN -->
+<!-- HERO -->
 
-        <div class="boot" id="boot">
+<section class="hero">
 
-            <div class="boot-line">INITIALIZING SECURE TERMINAL...</div>
-            <div class="boot-line">LOADING CORE MODULES...</div>
-            <div class="boot-line">CHECKING ACCESS TOKEN...</div>
-            <div class="boot-line">ESTABLISHING SECURE CHANNEL...</div>
-            <div class="boot-line">SYSTEM STATUS: ONLINE</div>
+    <div class="pill">
+        <span class="pill-dot"></span>
+        PORTAL ONLINE
+    </div>
 
-            <div class="boot-main">
-                WELCOME TO WORLD OF PRINCE
-                <span class="cursor"></span>
-            </div>
+    <h1>
+        Smart.
+        <span class="gradient-text">Simple.</span>
+        Secure.
+    </h1>
 
+    <p>
+        Welcome to the World of Prince lookup portal.
+        Enter a number and view the information returned by
+        the connected service.
+    </p>
+
+</section>
+
+
+<!-- LOOKUP -->
+
+<section class="lookup-section" id="lookup">
+
+    <div class="lookup-card">
+
+        <div class="card-title">
+            🔎 Number Lookup
         </div>
 
+        <div class="card-subtitle">
+            Enter a valid 10-digit mobile number to continue.
+        </div>
 
-        <!-- PORTAL -->
+        <label class="input-label">
+            MOBILE NUMBER
+        </label>
 
-        <div class="portal" id="portal">
+        <div class="input-wrap">
 
-            <div class="ascii">
-<pre style="background:transparent;border:0;padding:0;max-height:none;color:inherit;text-align:center;">
-██████╗ ██████╗ ██╗███╗   ██╗ ██████╗███████╗
-██╔══██╗██╔══██╗██║████╗  ██║██╔════╝██╔════╝
-██████╔╝██████╔╝██║██╔██╗ ██║██║     █████╗
-██╔═══╝ ██╔══██╗██║██║╚██╗██║██║     ██╔══╝
-██║     ██║  ██║██║██║ ╚████║╚██████╗███████╗
-╚═╝     ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝╚══════╝
-</pre>
-            </div>
+            <span class="input-icon">📱</span>
 
-            <div class="heading">
-                PRINCE TERMINAL 👑
-            </div>
-
-            <div class="subheading">
-                // SECURE INFORMATION PORTAL //
-            </div>
-
-            <div class="status">
-
-                <div class="status-item">
-                    SYSTEM: <b>ONLINE</b>
-                </div>
-
-                <div class="status-item">
-                    CHANNEL: <b>SECURE</b>
-                </div>
-
-                <div class="status-item">
-                    ACCESS: <b>GRANTED</b>
-                </div>
-
-            </div>
-
-            <div class="command">
-                root@prince:~$ enter_number
-            </div>
-
-            <div class="input-row">
-
-                <div class="prefix">&gt;</div>
-
-                <input
-                    id="number"
-                    type="tel"
-                    inputmode="numeric"
-                    maxlength="10"
-                    autocomplete="off"
-                    placeholder="10 digit mobile number"
-                >
-
-            </div>
-
-            <button
-                class="search"
-                id="searchBtn"
-                onclick="lookup()"
+            <input
+                id="number"
+                type="tel"
+                inputmode="numeric"
+                maxlength="10"
+                autocomplete="off"
+                placeholder="Enter 10 digit number"
             >
-                [ EXECUTE LOOKUP ⚡ ]
-            </button>
 
-            <div class="loading" id="loading">
-                PROCESSING REQUEST...
-            </div>
+        </div>
 
-            <div class="log" id="log">
+        <button
+            class="search-btn"
+            id="searchBtn"
+            onclick="lookup()"
+        >
+            🔍 SEARCH NUMBER
+        </button>
 
-                <div class="log-head">
-                    TERMINAL OUTPUT
-                </div>
 
-                <div class="log-body" id="logBody"></div>
+        <div class="status-row">
 
-            </div>
+            <div class="status">⚡ Fast Response</div>
+            <div class="status">🔐 Token Protected</div>
+            <div class="status">☁️ Cloud Powered</div>
 
-            <div class="message" id="message"></div>
+        </div>
 
-            <div class="result-box" id="resultBox">
 
-                <div class="result-head">
-                    <span>📡 SERVER RESPONSE</span>
-                    <span>● LIVE</span>
-                </div>
+        <div class="loading" id="loading">
+            <span class="spinner"></span>
+            Processing your request...
+        </div>
 
-                <pre id="result"></pre>
 
-                <div class="actions">
+        <div class="message" id="message"></div>
 
-                    <button
-                        class="action"
-                        onclick="copyResult()"
-                    >
-                        [ COPY ]
-                    </button>
 
-                    <button
-                        class="action"
-                        onclick="clearResult()"
-                    >
-                        [ CLEAR ]
-                    </button>
+        <div class="result-box" id="resultBox">
 
-                </div>
+            <div class="result-header">
+
+                <strong>📡 LOOKUP RESULT</strong>
+
+                <span class="live">
+                    ● RESPONSE RECEIVED
+                </span>
 
             </div>
 
-            <div class="footer">
-                CONNECTION ESTABLISHED •
-                <b>WORLD OF PRINCE</b> •
-                2026
+            <pre id="result"></pre>
+
+            <div class="actions">
+
+                <button
+                    class="action-btn"
+                    onclick="copyResult()"
+                >
+                    📋 Copy Result
+                </button>
+
+                <button
+                    class="action-btn"
+                    onclick="clearResult()"
+                >
+                    🧹 Clear
+                </button>
+
             </div>
 
         </div>
 
     </div>
 
-</div>
+</section>
 
-</div>
+
+<!-- FEATURES -->
+
+<section class="features">
+
+    <div class="section-heading">
+
+        <h2>Built for a Better Experience ✨</h2>
+
+        <p>
+            Clean interface, simple workflow and secure access.
+        </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <div class="feature">
+
+            <div class="feature-icon">⚡</div>
+
+            <h3>Fast</h3>
+
+            <p>
+                A lightweight interface designed for quick
+                requests and smooth navigation.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">🔐</div>
+
+            <h3>Protected Access</h3>
+
+            <p>
+                Portal access uses the token-based system
+                configured on the server.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">📱</div>
+
+            <h3>Mobile Friendly</h3>
+
+            <p>
+                Responsive design that works comfortably
+                on phones, tablets and desktops.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+    <div class="about-card">
+
+        <h2>👋 About This Portal</h2>
+
+        <p>
+            Welcome to <strong>World of Prince</strong>.
+            This portal is designed as a simple interface
+            for accessing the connected lookup service.
+            Please use it responsibly and only with information
+            you are authorized to access.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <div class="contact-card">
+
+        <h2>💬 Let's Connect</h2>
+
+        <p>
+            Have feedback, suggestions or found something
+            that needs improvement?
+        </p>
+
+        <a
+            class="instagram"
+            href="https://www.instagram.com/princeraj0205/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            <!-- Instagram SVG -->
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+            >
+                <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="5"
+                ></rect>
+
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="4"
+                ></circle>
+
+                <circle
+                    cx="17.5"
+                    cy="6.5"
+                    r="1"
+                    fill="currentColor"
+                    stroke="none"
+                ></circle>
+
+            </svg>
+
+            Follow on Instagram
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 <strong>World of Prince</strong>
+    • Built with ❤️ & Code
+
+</footer>
 
 
 <script>
 
-const boot = document.getElementById("boot");
-const portal = document.getElementById("portal");
+/* =========================
+   TOKEN
+========================= */
 
-const numberInput = document.getElementById("number");
-const searchBtn = document.getElementById("searchBtn");
+function getAccessToken(){
 
-const loading = document.getElementById("loading");
-const log = document.getElementById("log");
-const logBody = document.getElementById("logBody");
+    return new URLSearchParams(
+        window.location.search
+    ).get("token");
 
-const message = document.getElementById("message");
-
-const resultBox = document.getElementById("resultBox");
-const result = document.getElementById("result");
+}
 
 
-/* STARTUP */
+/* =========================
+   ELEMENTS
+========================= */
 
-setTimeout(() => {
+const numberInput =
+    document.getElementById("number");
 
-    boot.style.display = "none";
-    portal.style.display = "block";
+const searchBtn =
+    document.getElementById("searchBtn");
 
-}, 3200);
+const loading =
+    document.getElementById("loading");
+
+const message =
+    document.getElementById("message");
+
+const resultBox =
+    document.getElementById("resultBox");
+
+const result =
+    document.getElementById("result");
 
 
-/* MESSAGE */
+/* =========================
+   MESSAGE
+========================= */
 
-function showMessage(text, type="error"){
+function showMessage(text,type){
 
     message.className = "message";
 
     if(type === "success"){
         message.classList.add("success");
+    }else{
+        message.classList.add("error");
     }
 
     message.textContent = text;
     message.style.display = "block";
+
 }
 
 
-/* REMOVE PRIVATE RESPONSE FIELDS */
+/* =========================
+   REMOVE UNWANTED FIELDS
+========================= */
 
 function cleanPrivateFields(value){
 
     if(Array.isArray(value)){
-        return value.map(cleanPrivateFields);
+
+        return value.map(
+            cleanPrivateFields
+        );
+
     }
 
-    if(value && typeof value === "object"){
+
+    if(
+        value &&
+        typeof value === "object"
+    ){
 
         const cleaned = {};
 
-        for(const [key,val] of Object.entries(value)){
+        for(
+            const [key,val]
+            of Object.entries(value)
+        ){
 
-            const lowerKey = key.toLowerCase();
+            const lowerKey =
+                key.toLowerCase();
 
             if(
                 lowerKey === "username" ||
@@ -701,96 +972,103 @@ function cleanPrivateFields(value){
                 continue;
             }
 
-            cleaned[key] = cleanPrivateFields(val);
+            cleaned[key] =
+                cleanPrivateFields(val);
+
         }
 
         return cleaned;
+
     }
 
+
     return value;
+
 }
 
 
-/* LOOKUP */
+/* =========================
+   LOOKUP
+========================= */
 
 async function lookup(){
 
-    const number = numberInput.value.trim();
+    const number =
+        numberInput.value.trim();
 
-    const accessToken =
-        new URLSearchParams(
-            window.location.search
-        ).get("token");
+    const token =
+        getAccessToken();
 
 
     message.style.display = "none";
     resultBox.style.display = "none";
-    log.style.display = "none";
 
 
-    if(!accessToken){
+    /* TOKEN CHECK */
+
+    if(!token){
 
         showMessage(
-            "🔐 ACCESS DENIED — Please open this terminal using a valid access link."
+            "🔐 Access link missing. Please open the portal using a valid link."
         );
 
         return;
+
     }
 
+
+    /* NUMBER CHECK */
 
     if(!/^[0-9]{10}$/.test(number)){
 
         showMessage(
-            "⚠️ INVALID INPUT — Enter exactly 10 digits."
+            "📱 Please enter a valid 10-digit mobile number."
         );
 
+        numberInput.focus();
+
         return;
+
     }
 
 
     searchBtn.disabled = true;
-    searchBtn.style.opacity = ".5";
-
     loading.style.display = "block";
-
-
-    log.style.display = "block";
-
-    logBody.innerHTML = `
-        <div>&gt; Initializing request... 🔄</div>
-        <div>&gt; Validating access token... 🔐</div>
-        <div>&gt; Connecting to secure endpoint... 🌐</div>
-        <div class="ok">&gt; Request accepted ✓</div>
-    `;
 
 
     try{
 
-        const response = await fetch(
-            "/api/lookup?number=" +
-            encodeURIComponent(number) +
-            "&token=" +
-            encodeURIComponent(accessToken)
-        );
+        const response =
+            await fetch(
+                "/api/lookup?number=" +
+                encodeURIComponent(number) +
+                "&token=" +
+                encodeURIComponent(token)
+            );
 
 
-        const text = await response.text();
+        const text =
+            await response.text();
+
 
         let data;
 
 
         try{
 
-            data = JSON.parse(text);
+            data =
+                JSON.parse(text);
 
         }catch{
 
             throw new Error(
-                "Server returned an invalid response."
+                "Invalid server response"
             );
 
         }
 
+
+        /* SERVER ERROR */
 
         if(!response.ok){
 
@@ -798,41 +1076,35 @@ async function lookup(){
                 "❌ " +
                 (
                     data.message ||
-                    "Request rejected by server."
+                    "Request could not be completed."
                 )
             );
 
             return;
+
         }
 
 
-        const cleanedData =
+        /* CLEAN RESPONSE */
+
+        const cleaned =
             cleanPrivateFields(data);
 
 
         result.textContent =
             JSON.stringify(
-                cleanedData,
+                cleaned,
                 null,
                 2
             );
 
 
-        resultBox.style.display = "block";
-
-
-        logBody.innerHTML += `
-            <div class="ok">
-                &gt; Data received successfully ✓
-            </div>
-            <div>
-                &gt; Terminal operation completed.
-            </div>
-        `;
+        resultBox.style.display =
+            "block";
 
 
         showMessage(
-            "✅ LOOKUP COMPLETE — Response received.",
+            "✅ Lookup completed successfully.",
             "success"
         );
 
@@ -842,7 +1114,7 @@ async function lookup(){
         console.error(error);
 
         showMessage(
-            "⚠️ CONNECTION ERROR — Server response unavailable."
+            "⚠️ Something went wrong while connecting to the server."
         );
 
     }finally{
@@ -850,19 +1122,28 @@ async function lookup(){
         loading.style.display = "none";
 
         searchBtn.disabled = false;
-        searchBtn.style.opacity = "1";
+
     }
 
 }
 
 
-/* COPY */
+/* =========================
+   COPY
+========================= */
 
 async function copyResult(){
 
     if(!result.textContent){
+
+        showMessage(
+            "Nothing to copy yet."
+        );
+
         return;
+
     }
+
 
     try{
 
@@ -871,14 +1152,14 @@ async function copyResult(){
         );
 
         showMessage(
-            "📋 RESPONSE COPIED — Ready to paste.",
+            "📋 Result copied successfully!",
             "success"
         );
 
     }catch{
 
         showMessage(
-            "❌ Copy failed."
+            "❌ Unable to copy the result."
         );
 
     }
@@ -886,7 +1167,9 @@ async function copyResult(){
 }
 
 
-/* CLEAR */
+/* =========================
+   CLEAR
+========================= */
 
 function clearResult(){
 
@@ -894,24 +1177,29 @@ function clearResult(){
 
     result.textContent = "";
 
-    resultBox.style.display = "none";
+    resultBox.style.display =
+        "none";
 
-    log.style.display = "none";
-
-    message.style.display = "none";
+    message.style.display =
+        "none";
 
     numberInput.focus();
+
 }
 
 
-/* ENTER KEY */
+/* =========================
+   ENTER KEY
+========================= */
 
 numberInput.addEventListener(
     "keydown",
     function(event){
 
         if(event.key === "Enter"){
+
             lookup();
+
         }
 
     }
