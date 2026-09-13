@@ -4,512 +4,836 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Prince Mahto | Digital Experience</title>
+    <title>Citizen Information Portal</title>
+    <meta
+        name="description"
+        content="Citizen Information and Verification Portal"
+    >
 
-    <link rel="stylesheet" href="style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
 
-<!-- =====================================================
-     CINEMATIC INTRO
-===================================================== -->
+    <!-- TOP GOVERNMENT STYLE BAR -->
+    <div class="top-strip">
+        <div class="container top-content">
+            <span>Citizen Information Portal</span>
 
-<section id="intro">
-
-    <div class="space"></div>
-
-    <div class="stars stars-a"></div>
-    <div class="stars stars-b"></div>
-
-    <div class="planet planet-a"></div>
-    <div class="planet planet-b"></div>
-
-    <div class="ring ring-a"></div>
-    <div class="ring ring-b"></div>
-
-    <div class="intro-center">
-
-        <div class="intro-label">
-            SYSTEM INITIALIZING
-        </div>
-
-        <div class="welcome-text">
-            WELCOME TO
-        </div>
-
-        <h1>
-            WORLD
-            <span>OF PRINCE</span>
-        </h1>
-
-        <div class="intro-line">
-            <i></i>
-            <i></i>
-            <i></i>
-        </div>
-
-        <div class="creator">
-            CREATED BY
-            <strong>PRINCE MAHTO</strong>
-        </div>
-
-        <div class="mail">
-            princeraj74682@gmail.com
-        </div>
-
-        <div class="loading">
-
-            <div class="loading-track">
-                <div></div>
+            <div class="top-links">
+                <a href="#main">Skip to Main Content</a>
+                <span>|</span>
+                <span>English</span>
             </div>
-
-            <span>
-                ENTERING DIGITAL EXPERIENCE
-            </span>
-
         </div>
-
     </div>
 
-</section>
 
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-inner">
 
-<!-- =====================================================
-     MAIN APP
-===================================================== -->
+            <div class="brand">
 
-<main id="app">
-
-    <div class="aurora aurora-1"></div>
-    <div class="aurora aurora-2"></div>
-
-    <div class="perspective-grid"></div>
-
-    <div class="dashboard">
-
-        <!-- TOP BAR -->
-
-        <header class="topbar">
-
-            <div class="identity">
-
-                <div class="prince-logo">
-                    P
+                <div class="emblem">
+                    <div class="emblem-inner">★</div>
                 </div>
 
-                <div>
-                    <div class="logo-name">
-                        PRINCE
+                <div class="brand-text">
+                    <div class="brand-title">
+                        CITIZEN INFORMATION PORTAL
                     </div>
 
-                    <div class="logo-sub">
-                        DIGITAL LAB
+                    <div class="brand-subtitle">
+                        Digital Public Service Interface
                     </div>
                 </div>
 
             </div>
 
-            <div class="system-status">
-
-                <span class="pulse"></span>
-
-                SYSTEM ONLINE
-
-            </div>
-
-        </header>
-
-
-        <!-- MAIN HERO -->
-
-        <section class="hero">
-
-            <div class="hero-badge">
-                <span></span>
-                SECURE DIGITAL INTERFACE
-            </div>
-
-            <h2>
-                NUMBER
-                <strong>LOOKUP</strong>
-            </h2>
-
-            <p>
-                A modern interface for submitting a number
-                to your connected lookup service.
-            </p>
-
-        </section>
-
-
-        <!-- LOOKUP PANEL -->
-
-        <section class="lookup-panel">
-
-            <div class="panel-heading">
-
-                <div>
-                    <small>INPUT TERMINAL</small>
-                    <h3>Enter Number</h3>
+            <div class="header-right">
+                <div class="portal-status">
+                    <span class="status-dot"></span>
+                    System Online
                 </div>
-
-                <div class="terminal-icon">
-                    ◈
-                </div>
-
             </div>
 
-
-            <div class="input-container">
-
-                <div class="country">
-                    +91
-                </div>
-
-                <input
-                    id="number"
-                    type="text"
-                    inputmode="numeric"
-                    autocomplete="off"
-                    placeholder="Enter mobile number"
-                >
-
-                <div class="input-indicator">
-                    <span></span>
-                </div>
-
-            </div>
+        </div>
+    </header>
 
 
-            <div class="button-row">
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="container nav-inner">
 
-                <button
-                    class="action primary"
-                    onclick="lookup()"
-                >
-                    <b>⌕</b>
-                    LOOKUP
-                </button>
-
-                <button
-                    class="action"
-                    onclick="copyJSON()"
-                >
-                    <b>⧉</b>
-                    COPY
-                </button>
-
-                <button
-                    class="action"
-                    onclick="clearAll()"
-                >
-                    <b>×</b>
-                    CLEAR
-                </button>
-
-                <button
-                    class="action"
-                    onclick="example()"
-                >
-                    <b>✦</b>
-                    EXAMPLE
-                </button>
-
-            </div>
-
-
-            <a
-                class="instagram"
-                href="https://instagram.com/princeraj0205"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <span>◎</span>
-                CONTACT PRINCE
-                <b>↗</b>
+            <a href="#main" class="nav-link active">
+                Home
             </a>
 
+            <a href="#lookup" class="nav-link">
+                Information Lookup
+            </a>
+
+            <a href="#about" class="nav-link">
+                About Portal
+            </a>
+
+            <a href="#contact" class="nav-link">
+                Contact
+            </a>
+
+        </div>
+    </nav>
+
+
+    <!-- MAIN -->
+    <main id="main">
+
+        <!-- PAGE INTRO -->
+        <section class="hero">
+            <div class="container">
+
+                <div class="breadcrumb">
+                    Home <span>›</span> Information Lookup
+                </div>
+
+                <div class="hero-content">
+
+                    <div class="hero-text">
+
+                        <span class="department-label">
+                            DIGITAL PUBLIC SERVICE
+                        </span>
+
+                        <h1>
+                            Information<br>
+                            Lookup Portal
+                        </h1>
+
+                        <p>
+                            Enter the required mobile number below to
+                            retrieve available information through the
+                            connected service.
+                        </p>
+
+                        <div class="notice">
+                            <span class="notice-icon">i</span>
+                            <span>
+                                Please enter a valid 10-digit mobile number.
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="hero-card">
+
+                        <div class="card-heading">
+                            <span class="card-icon">⌕</span>
+
+                            <div>
+                                <strong>Quick Lookup</strong>
+                                <small>Secure service request</small>
+                            </div>
+                        </div>
+
+                        <div class="card-line"></div>
+
+                        <div class="security-info">
+                            <span>🔒</span>
+                            Request processed through secure server
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
         </section>
 
 
-        <!-- STATUS -->
+        <!-- LOOKUP SECTION -->
+        <section class="lookup-section" id="lookup">
 
-        <div class="status-panel">
+            <div class="container">
 
-            <div class="status-left">
+                <div class="section-heading">
 
-                <span class="status-pulse"></span>
+                    <div>
+                        <span class="section-kicker">
+                            ONLINE SERVICE
+                        </span>
 
-                <span id="status">
-                    Ready — awaiting input
+                        <h2>Mobile Information Lookup</h2>
+
+                        <p>
+                            Enter a mobile number to continue.
+                        </p>
+                    </div>
+
+                    <div class="service-code">
+                        SERVICE
+                        <strong>01</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="lookup-panel">
+
+                    <div class="input-area">
+
+                        <label for="number">
+                            Mobile Number
+                            <span class="required">*</span>
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="country-code">
+                                +91
+                            </span>
+
+                            <input
+                                type="tel"
+                                id="number"
+                                maxlength="10"
+                                inputmode="numeric"
+                                autocomplete="off"
+                                placeholder="Enter 10-digit mobile number"
+                                aria-label="Mobile Number"
+                            />
+
+                        </div>
+
+                        <div class="input-help">
+                            Enter numbers only. Example:
+                            <button id="exampleBtn" type="button">
+                                9876543210
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                    <div class="action-area">
+
+                        <button
+                            type="button"
+                            id="lookupBtn"
+                            class="primary-btn"
+                        >
+                            <span class="btn-text">
+                                Search Information
+                            </span>
+
+                            <span class="loader" id="loader"></span>
+
+                            <span class="arrow">→</span>
+                        </button>
+
+                        <button
+                            type="button"
+                            id="clearBtn"
+                            class="secondary-btn"
+                        >
+                            Clear
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+                <div
+                    id="message"
+                    class="message hidden"
+                    role="alert"
+                ></div>
+
+
+                <!-- RESULT -->
+                <div
+                    id="resultSection"
+                    class="result-section hidden"
+                >
+
+                    <div class="result-header">
+
+                        <div>
+                            <span class="section-kicker">
+                                SERVICE RESPONSE
+                            </span>
+
+                            <h2>Information Result</h2>
+                        </div>
+
+                        <button
+                            type="button"
+                            id="copyBtn"
+                            class="copy-btn"
+                        >
+                            Copy Result
+                        </button>
+
+                    </div>
+
+
+                    <div class="result-meta">
+
+                        <div>
+                            <span>REQUEST STATUS</span>
+                            <strong id="requestStatus">
+                                COMPLETED
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>REQUESTED NUMBER</span>
+                            <strong id="requestedNumber">
+                                —
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <pre id="output"></pre>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+        <section class="about-section" id="about">
+
+            <div class="container">
+
+                <div class="about-grid">
+
+                    <div>
+                        <span class="section-kicker">
+                            ABOUT THE SERVICE
+                        </span>
+
+                        <h2>
+                            Simple. Secure. Digital.
+                        </h2>
+                    </div>
+
+                    <div>
+                        <p>
+                            This portal provides a simple interface for
+                            accessing information returned by the connected
+                            service.
+                        </p>
+
+                        <p>
+                            Requests are processed through a server-side
+                            API endpoint so sensitive configuration details
+                            are not exposed in the browser.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+        <section class="contact-section" id="contact">
+
+            <div class="container">
+
+                <div class="contact-box">
+
+                    <div class="contact-text">
+
+                        <span class="section-kicker">
+                            SUPPORT & CONTACT
+                        </span>
+
+                        <h2>
+                            Need assistance?
+                        </h2>
+
+                        <p>
+                            For technical queries or portal-related
+                            assistance, contact the administrator.
+                        </p>
+
+                    </div>
+
+
+                    <div class="contact-actions">
+
+                        <!-- MAIL -->
+                        <a
+                            class="contact-btn mail-btn"
+                            href="mailto:princeraj74682@gmail.com?subject=Citizen%20Information%20Portal%20Query"
+                        >
+                            <span class="contact-icon">✉</span>
+
+                            <span>
+                                <small>Email</small>
+                                princeraj74682@gmail.com
+                            </span>
+                        </a>
+
+
+                        <!-- INSTAGRAM -->
+                        <a
+                            class="contact-btn"
+                            href="https://instagram.com/princeraj0205"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <span class="contact-icon">◎</span>
+
+                            <span>
+                                <small>Social</small>
+                                @princeraj0205
+                            </span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-top">
+
+                <div>
+                    <strong>
+                        CITIZEN INFORMATION PORTAL
+                    </strong>
+
+                    <p>
+                        Digital Public Service Interface
+                    </p>
+                </div>
+
+                <div class="footer-links">
+
+                    <a href="#main">Home</a>
+                    <a href="#lookup">Lookup</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 Citizen Information Portal
+                </span>
+
+                <span>
+                    Designed & Developed by Prince Mahto
                 </span>
 
             </div>
 
-            <div class="status-code">
-                PRC-01
-            </div>
-
         </div>
 
+    </footer>
 
-        <!-- RESPONSE -->
 
-        <section class="response-panel">
+    <!-- JAVASCRIPT -->
+    <script>
 
-            <div class="response-header">
+        const numberInput =
+            document.getElementById("number");
 
-                <div class="terminal-title">
+        const lookupBtn =
+            document.getElementById("lookupBtn");
 
-                    <span class="terminal-dot"></span>
+        const clearBtn =
+            document.getElementById("clearBtn");
 
-                    RESPONSE TERMINAL
+        const exampleBtn =
+            document.getElementById("exampleBtn");
 
-                </div>
+        const output =
+            document.getElementById("output");
 
-                <div class="live-tag">
-                    LIVE
-                </div>
+        const resultSection =
+            document.getElementById("resultSection");
 
-            </div>
+        const message =
+            document.getElementById("message");
 
-            <pre id="output">{
-  "status": "ready",
-  "message": "Enter a number and click LOOKUP"
-}</pre>
+        const loader =
+            document.getElementById("loader");
 
-        </section>
+        const btnText =
+            document.querySelector(".btn-text");
 
+        const copyBtn =
+            document.getElementById("copyBtn");
 
-        <!-- FOOTER -->
+        const requestedNumber =
+            document.getElementById("requestedNumber");
 
-        <footer>
+        const requestStatus =
+            document.getElementById("requestStatus");
 
-            <div class="footer-line"></div>
 
-            <div class="footer-main">
-                <span>✦</span>
-                DESIGNED & DEVELOPED BY
-                <strong>PRINCE MAHTO</strong>
-                <span>✦</span>
-            </div>
+        /* ONLY DIGITS */
+        numberInput.addEventListener("input", () => {
 
-            <div class="footer-mail">
-                princeraj74682@gmail.com
-            </div>
+            numberInput.value =
+                numberInput.value.replace(/\D/g, "");
 
-            <a
-                href="https://instagram.com/princeraj0205"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                INSTAGRAM · @princeraj0205
-            </a>
-
-        </footer>
-
-    </div>
-
-</main>
-
-
-<script>
-
-/* =====================================================
-   INTRO
-===================================================== */
-
-window.addEventListener("load", () => {
-
-    setTimeout(() => {
-
-        document.body.classList.add("intro-finished");
-
-    }, 5200);
-
-});
-
-
-/* =====================================================
-   LOOKUP
-===================================================== */
-
-async function lookup() {
-
-    const input =
-        document.getElementById("number");
-
-    const output =
-        document.getElementById("output");
-
-    const status =
-        document.getElementById("status");
-
-    const number =
-        input.value.trim();
-
-
-    if (!number) {
-
-        status.textContent =
-            "Please enter a number.";
-
-        output.textContent =
-            JSON.stringify({
-                success: false,
-                error: "Number is required"
-            }, null, 2);
-
-        return;
-
-    }
-
-
-    status.textContent =
-        "Connecting to lookup service...";
-
-    output.textContent =
-        "Processing request...";
-
-
-    try {
-
-        const response =
-            await fetch(
-                `/api/lookup?number=${encodeURIComponent(number)}`
-            );
-
-
-        const data =
-            await response.json();
-
-
-        output.textContent =
-            JSON.stringify(
-                data,
-                null,
-                2
-            );
-
-
-        if (response.ok) {
-
-            status.textContent =
-                "Lookup completed successfully.";
-
-        } else {
-
-            status.textContent =
-                "Lookup returned an error.";
-
-        }
-
-    }
-
-    catch (error) {
-
-        const cleanData = { ...data };
-
-delete cleanData.username;
-delete cleanData.credit;
-
-output.textContent = JSON.stringify(
-    cleanData,
-    null,
-    2
-);
-
-        status.textContent =
-            "Connection error.";
-
-    }
-
-}
-
-
-/* =====================================================
-   COPY
-===================================================== */
-
-function copyJSON() {
-
-    const text =
-        document.getElementById("output")
-        .textContent;
-
-    navigator.clipboard
-        .writeText(text)
-        .then(() => {
-
-            document.getElementById("status")
-                .textContent =
-                "Response copied to clipboard.";
+            hideMessage();
 
         });
 
-}
+
+        /* EXAMPLE */
+        exampleBtn.addEventListener("click", () => {
+
+            numberInput.value = "9876543210";
+
+            numberInput.focus();
+
+            hideMessage();
+
+        });
 
 
-/* =====================================================
-   CLEAR
-===================================================== */
+        /* ENTER KEY */
+        numberInput.addEventListener("keydown", (event) => {
 
-function clearAll() {
+            if (event.key === "Enter") {
 
-    document.getElementById("number")
-        .value = "";
+                event.preventDefault();
 
-    document.getElementById("output")
-        .textContent =
-`{
-  "status": "ready",
-  "message": "Enter a number and click LOOKUP"
-}`;
+                lookup();
 
-    document.getElementById("status")
-        .textContent =
-        "Ready — awaiting input";
+            }
 
-}
+        });
 
 
-/* =====================================================
-   EXAMPLE
-===================================================== */
+        /* CLEAR */
+        clearBtn.addEventListener("click", () => {
 
-function example() {
+            numberInput.value = "";
 
-    document.getElementById("number")
-        .value = "9876543210";
+            output.textContent = "";
 
-    document.getElementById("status")
-        .textContent =
-        "Example number loaded.";
+            resultSection.classList.add("hidden");
 
-}
+            hideMessage();
+
+            numberInput.focus();
+
+        });
 
 
-/* =====================================================
-   ENTER KEY
-===================================================== */
+        /* REMOVE PRIVATE FIELDS AGAIN ON FRONTEND */
+        function cleanResponse(value) {
 
-document
-    .getElementById("number")
-    .addEventListener("keydown", (event) => {
+            if (Array.isArray(value)) {
 
-        if (event.key === "Enter") {
-            lookup();
+                return value.map(cleanResponse);
+
+            }
+
+
+            if (
+                value &&
+                typeof value === "object"
+            ) {
+
+                const result = {};
+
+                for (
+                    const [key, val]
+                    of Object.entries(value)
+                ) {
+
+                    const name =
+                        key.toLowerCase();
+
+                    if (
+                        name === "username" ||
+                        name === "credit"
+                    ) {
+                        continue;
+                    }
+
+                    result[key] =
+                        cleanResponse(val);
+                }
+
+                return result;
+
+            }
+
+            return value;
         }
 
-    });
 
-</script>
+        /* SHOW MESSAGE */
+        function showMessage(text, type) {
+
+            message.textContent = text;
+
+            message.className =
+                "message " + type;
+
+        }
+
+
+        /* HIDE MESSAGE */
+        function hideMessage() {
+
+            message.className =
+                "message hidden";
+
+            message.textContent = "";
+
+        }
+
+
+        /* LOOKUP */
+        async function lookup() {
+
+            const number =
+                numberInput.value.trim();
+
+
+            if (number.length !== 10) {
+
+                showMessage(
+                    "Please enter a valid 10-digit mobile number.",
+                    "error"
+                );
+
+                numberInput.focus();
+
+                return;
+            }
+
+
+            /* LOADING */
+            lookupBtn.disabled = true;
+
+            loader.classList.add("show");
+
+            btnText.textContent =
+                "Processing Request";
+
+            resultSection.classList.add("hidden");
+
+            hideMessage();
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/lookup?number=" +
+                        encodeURIComponent(number)
+                    );
+
+
+                let data;
+
+                try {
+
+                    data =
+                        await response.json();
+
+                } catch {
+
+                    throw new Error(
+                        "Invalid response received from server."
+                    );
+
+                }
+
+
+                if (!response.ok) {
+
+                    const errorText =
+                        data?.message ||
+                        data?.error ||
+                        "Request could not be completed.";
+
+                    throw new Error(errorText);
+
+                }
+
+
+                const cleanedData =
+                    cleanResponse(data);
+
+
+                output.textContent =
+                    JSON.stringify(
+                        cleanedData,
+                        null,
+                        2
+                    );
+
+
+                requestedNumber.textContent =
+                    "+91 " +
+                    number;
+
+
+                requestStatus.textContent =
+                    "COMPLETED";
+
+
+                resultSection.classList.remove(
+                    "hidden"
+                );
+
+
+                showMessage(
+                    "Request completed successfully.",
+                    "success"
+                );
+
+
+                resultSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+
+            } catch (error) {
+
+                showMessage(
+                    error.message ||
+                    "Something went wrong. Please try again.",
+                    "error"
+                );
+
+            } finally {
+
+                lookupBtn.disabled = false;
+
+                loader.classList.remove("show");
+
+                btnText.textContent =
+                    "Search Information";
+
+            }
+
+        }
+
+
+        /* SEARCH BUTTON */
+        lookupBtn.addEventListener(
+            "click",
+            lookup
+        );
+
+
+        /* COPY RESULT */
+        copyBtn.addEventListener("click", async () => {
+
+            const text =
+                output.textContent.trim();
+
+
+            if (!text) {
+
+                showMessage(
+                    "There is no result to copy.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            try {
+
+                await navigator.clipboard.writeText(text);
+
+                const oldText =
+                    copyBtn.textContent;
+
+                copyBtn.textContent =
+                    "Copied ✓";
+
+
+                setTimeout(() => {
+
+                    copyBtn.textContent =
+                        oldText;
+
+                }, 1800);
+
+
+            } catch {
+
+                showMessage(
+                    "Unable to copy result.",
+                    "error"
+                );
+
+            }
+
+        });
+
+
+        /* SMOOTH NAVIGATION */
+        document.querySelectorAll(
+            'a[href^="#"]'
+        ).forEach(link => {
+
+            link.addEventListener(
+                "click",
+                function(event) {
+
+                    const target =
+                        document.querySelector(
+                            this.getAttribute("href")
+                        );
+
+                    if (target) {
+
+                        event.preventDefault();
+
+                        target.scrollIntoView({
+                            behavior: "smooth"
+                        });
+
+                    }
+
+                }
+            );
+
+        });
+
+    </script>
 
 </body>
 </html>
