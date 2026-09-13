@@ -4,64 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Prince Digital Services | Lookup Portal</title>
+    <title>Prince Digital | Lookup Portal</title>
 
     <meta
         name="description"
-        content="Prince Digital Services - Number Lookup Portal"
+        content="Prince Digital secure lookup portal"
     >
-
-    <link rel="stylesheet" href="/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
         rel="stylesheet"
     >
+
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
 
 <!-- =====================================================
-     NAVBAR
+     TOP BAR
 ===================================================== -->
 
-<header class="navbar">
+<header class="topbar">
 
-    <a href="#home" class="nav-brand">
+    <div class="container topbar-inner">
 
-        <div class="nav-mark">
-            P
+        <a href="#home" class="logo">
+
+            <div class="logo-box">
+                P
+            </div>
+
+            <div class="logo-content">
+
+                <strong>
+                    PRINCE
+                </strong>
+
+                <span>
+                    DIGITAL
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <nav class="navigation">
+
+            <a href="#home">
+                Overview
+            </a>
+
+            <a href="#features">
+                Services
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <div class="secure-indicator">
+
+            <span class="secure-dot"></span>
+
+            Secure Access
+
         </div>
 
-        <div class="nav-brand-text">
-
-            <strong>
-                PRINCE
-            </strong>
-
-            <span>
-                DIGITAL SERVICES
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <nav>
-
-        <a href="#home">Home</a>
-
-        <a href="#features">Features</a>
-
-        <a href="#about">About</a>
-
-        <a href="#contact">Contact</a>
-
-    </nav>
+    </div>
 
 </header>
 
@@ -71,60 +92,121 @@
      MAIN
 ===================================================== -->
 
-<main>
+<main id="home">
 
 
 <!-- =====================================================
      HERO
 ===================================================== -->
 
-<section id="home" class="hero">
+<section class="hero">
 
-    <div class="hero-inner">
-
-        <div class="eyebrow">
-            SECURE DIGITAL SERVICES
-        </div>
+    <div class="container hero-container">
 
 
-        <h1>
-            Number Lookup
-            <span>Portal</span>
-        </h1>
+        <div class="hero-copy">
+
+            <div class="section-kicker">
+                DIGITAL SERVICES
+            </div>
 
 
-        <p class="hero-description">
-            A secure and streamlined interface for authorised
-            access to the connected lookup service.
-        </p>
+            <h1>
+                Number lookup,
+                <span>made simple.</span>
+            </h1>
 
 
-        <!-- =================================================
-             LOOKUP CARD
-        ================================================= -->
+            <p>
+                A streamlined portal for authorised users
+                to access information returned by the
+                connected lookup service.
+            </p>
 
-        <div class="lookup-card">
 
+            <div class="hero-meta">
 
-            <div class="card-top">
-
-                <div class="card-symbol">
-                    SEARCH
+                <div>
+                    <span class="meta-check">✓</span>
+                    Controlled access
                 </div>
 
                 <div>
+                    <span class="meta-check">✓</span>
+                    Secure connection
+                </div>
 
-                    <h2>
-                        Number Lookup
-                    </h2>
+                <div>
+                    <span class="meta-check">✓</span>
+                    PDF reporting
+                </div>
 
-                    <p>
-                        Enter a 10-digit mobile number
-                    </p>
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             LOOKUP PANEL
+        ================================================= -->
+
+        <div class="lookup-panel">
+
+
+            <div class="panel-header">
+
+                <div class="panel-title-area">
+
+                    <div class="search-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <circle
+                                cx="11"
+                                cy="11"
+                                r="6.5"
+                            ></circle>
+
+                            <path
+                                d="M16 16L21 21"
+                            ></path>
+                        </svg>
+
+                    </div>
+
+
+                    <div>
+
+                        <h2>
+                            Number Lookup
+                        </h2>
+
+                        <p>
+                            Enter the number below to continue
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel-status">
+
+                    <span></span>
+
+                    Ready
 
                 </div>
 
             </div>
+
+
+
+            <div class="panel-divider"></div>
+
 
 
             <form id="lookupForm">
@@ -135,19 +217,23 @@
                 </label>
 
 
-                <div class="number-input">
+                <div class="input-wrapper">
 
-                    <span>
+                    <div class="country-prefix">
                         +91
-                    </span>
+                    </div>
+
+
+                    <div class="input-divider"></div>
+
 
                     <input
                         type="text"
                         id="number"
-                        placeholder="Enter mobile number"
+                        placeholder="10-digit mobile number"
                         maxlength="10"
-                        autocomplete="off"
                         inputmode="numeric"
+                        autocomplete="off"
                         required
                     >
 
@@ -160,15 +246,23 @@
                 >
 
                     <span id="btnText">
-                        SEARCH NUMBER
+                        Continue
                     </span>
 
                     <span
                         id="loadingText"
                         class="hidden"
                     >
-                        PROCESSING...
+                        Processing request...
                     </span>
+
+                    <svg
+                        class="button-arrow"
+                        viewBox="0 0 24 24"
+                    >
+                        <path d="M5 12h13"></path>
+                        <path d="M13 6l6 6-6 6"></path>
+                    </svg>
 
                 </button>
 
@@ -176,12 +270,12 @@
             </form>
 
 
-            <!-- MESSAGE -->
 
             <div
                 id="message"
                 class="message hidden"
             ></div>
+
 
 
             <!-- =================================================
@@ -193,25 +287,24 @@
                 class="result-box hidden"
             >
 
-
-                <div class="result-top">
+                <div class="result-header">
 
                     <div>
 
-                        <span class="result-eyebrow">
-                            SEARCH RESULT
+                        <span>
+                            RESULT
                         </span>
 
                         <h3>
-                            Retrieved Information
+                            Retrieved information
                         </h3>
 
                     </div>
 
 
-                    <span class="status">
-                        COMPLETED
-                    </span>
+                    <div class="result-status">
+                        Completed
+                    </div>
 
                 </div>
 
@@ -222,24 +315,36 @@
                 <div class="result-actions">
 
                     <button id="copyBtn">
-                        COPY RESULT
+                        Copy
                     </button>
 
 
                     <button
                         id="pdfBtn"
-                        class="primary-action"
+                        class="pdf-button"
                     >
-                        DOWNLOAD PDF
+                        Download PDF
                     </button>
 
 
                     <button id="clearBtn">
-                        CLEAR
+                        Clear
                     </button>
 
                 </div>
 
+            </div>
+
+
+            <div class="panel-footer">
+
+                <span>
+                    Authorised access only
+                </span>
+
+                <span>
+                    Data is processed through the connected service
+                </span>
 
             </div>
 
@@ -252,106 +357,210 @@
 
 
 <!-- =====================================================
-     FEATURES
+     SERVICES
 ===================================================== -->
 
 <section
     id="features"
-    class="section"
+    class="services section-light"
 >
 
-    <div class="section-heading">
-
-        <span>
-            PLATFORM
-        </span>
-
-        <h2>
-            Designed for simplicity.
-        </h2>
-
-        <p>
-            A focused interface with controlled access
-            and professional reporting.
-        </p>
-
-    </div>
+    <div class="container">
 
 
-    <div class="features-grid">
+        <div class="section-heading">
 
+            <div class="section-kicker dark">
+                PLATFORM
+            </div>
 
-        <article class="feature-card">
-
-            <span class="feature-number">
-                01
-            </span>
-
-            <h3>
-                Fast Processing
-            </h3>
+            <h2>
+                Built around a better workflow.
+            </h2>
 
             <p>
-                Requests are sent directly to the
-                connected lookup service.
+                Everything you need to perform a lookup
+                and organise the returned information.
             </p>
 
-        </article>
+        </div>
 
 
-        <article class="feature-card">
-
-            <span class="feature-number">
-                02
-            </span>
-
-            <h3>
-                Controlled Access
-            </h3>
-
-            <p>
-                Access is controlled through
-                authorised token-based links.
-            </p>
-
-        </article>
+        <div class="service-grid">
 
 
-        <article class="feature-card">
+            <article class="service-card">
 
-            <span class="feature-number">
-                03
-            </span>
+                <div class="service-top">
 
-            <h3>
-                PDF Reporting
-            </h3>
+                    <span class="service-index">
+                        01
+                    </span>
 
-            <p>
-                Generate a clean, structured report
-                from the displayed result.
-            </p>
+                    <div class="service-icon">
 
-        </article>
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M13 2L3 14h8l-1 8 10-12h-8z"
+                            ></path>
+
+                        </svg>
+
+                    </div>
+
+                </div>
 
 
-        <article class="feature-card">
+                <h3>
+                    Efficient processing
+                </h3>
 
-            <span class="feature-number">
-                04
-            </span>
 
-            <h3>
-                Responsive Design
-            </h3>
+                <p>
+                    A focused interface keeps the lookup
+                    process quick and straightforward.
+                </p>
 
-            <p>
-                Optimised for desktop, tablet and
-                mobile devices.
-            </p>
+            </article>
 
-        </article>
 
+
+            <article class="service-card">
+
+                <div class="service-top">
+
+                    <span class="service-index">
+                        02
+                    </span>
+
+                    <div class="service-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <rect
+                                x="5"
+                                y="10"
+                                width="14"
+                                height="10"
+                                rx="2"
+                            ></rect>
+
+                            <path
+                                d="M8 10V7a4 4 0 018 0v3"
+                            ></path>
+
+                        </svg>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    Controlled access
+                </h3>
+
+
+                <p>
+                    Token-based access keeps the portal
+                    restricted to authorised links.
+                </p>
+
+            </article>
+
+
+
+            <article class="service-card">
+
+                <div class="service-top">
+
+                    <span class="service-index">
+                        03
+                    </span>
+
+                    <div class="service-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M6 2h9l4 4v16H6z"
+                            ></path>
+
+                            <path
+                                d="M14 2v5h5"
+                            ></path>
+
+                            <path
+                                d="M9 13h6M9 17h6"
+                            ></path>
+
+                        </svg>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    Professional reports
+                </h3>
+
+
+                <p>
+                    Convert completed results into a
+                    structured, printable PDF report.
+                </p>
+
+            </article>
+
+
+
+            <article class="service-card">
+
+                <div class="service-top">
+
+                    <span class="service-index">
+                        04
+                    </span>
+
+                    <div class="service-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <rect
+                                x="7"
+                                y="2"
+                                width="10"
+                                height="20"
+                                rx="2"
+                            ></rect>
+
+                            <path
+                                d="M10 18h4"
+                            ></path>
+
+                        </svg>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    Responsive experience
+                </h3>
+
+
+                <p>
+                    Designed to remain clean and usable
+                    across desktop and mobile devices.
+                </p>
+
+            </article>
+
+
+        </div>
 
     </div>
 
@@ -365,40 +574,41 @@
 
 <section
     id="about"
-    class="section about-section"
+    class="about section-dark"
 >
 
-    <div class="about-card">
+    <div class="container about-container">
 
 
-        <div class="about-mark">
-            P
-        </div>
+        <div class="about-label">
 
-
-        <div>
-
-            <span class="section-label">
+            <span>
                 ABOUT
             </span>
 
+        </div>
+
+
+        <div class="about-content">
 
             <h2>
-                Prince Digital Services
+                Prince Digital
             </h2>
 
 
-            <p>
-                A personal digital project focused on
-                developing practical, modern and
-                easy-to-use web services.
+            <p class="about-lead">
+                A personal digital services project
+                focused on practical web tools and
+                clean user experiences.
             </p>
 
 
             <p>
-                The portal uses controlled access and
-                a straightforward interface to provide
-                an efficient user experience.
+                The portal provides an interface for
+                authorised users to interact with the
+                connected lookup service. Results are
+                displayed in a structured format and can
+                be converted into a professional report.
             </p>
 
         </div>
@@ -416,46 +626,60 @@
 
 <section
     id="contact"
-    class="section contact-section"
+    class="contact section-light"
 >
 
-    <div class="section-heading">
-
-        <span>
-            CONTACT
-        </span>
-
-        <h2>
-            Get in touch.
-        </h2>
-
-        <p>
-            For questions, feedback or suggestions.
-        </p>
-
-    </div>
+    <div class="container">
 
 
-    <div class="contact-buttons">
+        <div class="contact-box">
 
 
-        <a
-            href="mailto:yourmail@example.com"
-            class="contact-button"
-        >
-            Email
-        </a>
+            <div>
+
+                <div class="section-kicker dark">
+                    CONTACT
+                </div>
 
 
-        <a
-            href="https://www.instagram.com/princeraj0205/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="contact-button"
-        >
-            Instagram
-        </a>
+                <h2>
+                    Have a question?
+                </h2>
 
+
+                <p>
+                    Reach out for feedback, suggestions
+                    or general enquiries.
+                </p>
+
+            </div>
+
+
+            <div class="contact-links">
+
+
+                <a
+                    href="mailto:yourmail@example.com"
+                >
+                    Email
+                    <span>→</span>
+                </a>
+
+
+                <a
+                    href="https://www.instagram.com/princeraj0205/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Instagram
+                    <span>→</span>
+                </a>
+
+
+            </div>
+
+
+        </div>
 
     </div>
 
@@ -470,36 +694,49 @@
      FOOTER
 ===================================================== -->
 
-<footer>
+<footer class="footer">
 
-    <div class="footer-brand">
+    <div class="container footer-inner">
 
-        <div class="footer-mark">
-            P
+
+        <div class="footer-logo">
+
+            <div class="footer-mark">
+                P
+            </div>
+
+
+            <div>
+
+                <strong>
+                    PRINCE DIGITAL
+                </strong>
+
+                <span>
+                    DIGITAL SERVICES
+                </span>
+
+            </div>
+
         </div>
 
-        <div>
 
-            <strong>
-                PRINCE DIGITAL SERVICES
-            </strong>
+        <div class="footer-center">
 
-            <span>
-                NUMBER LOOKUP PORTAL
-            </span>
+            © 2026 Prince Digital.
+            All rights reserved.
 
         </div>
+
+
+        <div class="footer-right">
+
+            Secure Digital Portal
+
+        </div>
+
 
     </div>
-
-
-    <div class="footer-line"></div>
-
-
-    <p>
-        © 2026 Prince Digital Services.
-        All rights reserved.
-    </p>
 
 </footer>
 
@@ -585,12 +822,14 @@ function showMessage(
 ===================================================== */
 
 function setLoading(
-    status
+    state
 ) {
 
-    if (status) {
+    lookupBtn.disabled =
+        state;
 
-        lookupBtn.disabled = true;
+
+    if (state) {
 
         btnText.classList.add(
             "hidden"
@@ -601,8 +840,6 @@ function setLoading(
         );
 
     } else {
-
-        lookupBtn.disabled = false;
 
         btnText.classList.remove(
             "hidden"
@@ -781,7 +1018,7 @@ form.addEventListener(
             }
 
 
-            const cleanedData =
+            const cleaned =
                 removePrivateFields(
                     data
                 );
@@ -789,7 +1026,7 @@ form.addEventListener(
 
             result.textContent =
                 JSON.stringify(
-                    cleanedData,
+                    cleaned,
                     null,
                     2
                 );
@@ -806,17 +1043,10 @@ form.addEventListener(
             );
 
 
-            setTimeout(
-                function() {
-
-                    resultBox.scrollIntoView({
-                        behavior: "smooth",
-                        block: "nearest"
-                    });
-
-                },
-                100
-            );
+            resultBox.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
 
 
         } catch (error) {
@@ -854,11 +1084,6 @@ copyBtn.addEventListener(
 
         if (!text) {
 
-            showMessage(
-                "No result available.",
-                "error"
-            );
-
             return;
 
         }
@@ -872,19 +1097,18 @@ copyBtn.addEventListener(
 
 
             copyBtn.textContent =
-                "COPIED";
+                "Copied";
 
 
             setTimeout(
                 function() {
 
                     copyBtn.textContent =
-                        "COPY RESULT";
+                        "Copy";
 
                 },
                 1500
             );
-
 
         } catch {
 
@@ -900,7 +1124,7 @@ copyBtn.addEventListener(
 
 
 /* =====================================================
-   PROFESSIONAL PDF
+   PDF
 ===================================================== */
 
 pdfBtn.addEventListener(
@@ -914,7 +1138,7 @@ pdfBtn.addEventListener(
         if (!resultText) {
 
             showMessage(
-                "Generate a lookup result first.",
+                "Generate a result first.",
                 "error"
             );
 
@@ -929,7 +1153,7 @@ pdfBtn.addEventListener(
 
 
         const reportId =
-            "PRC-" +
+            "PRD-" +
             Date.now()
                 .toString(36)
                 .toUpperCase();
@@ -939,7 +1163,7 @@ pdfBtn.addEventListener(
             new Date();
 
 
-        const generatedDate =
+        const date =
             now.toLocaleDateString(
                 "en-IN",
                 {
@@ -950,7 +1174,7 @@ pdfBtn.addEventListener(
             );
 
 
-        const generatedTime =
+        const time =
             now.toLocaleTimeString(
                 "en-IN",
                 {
@@ -972,7 +1196,7 @@ pdfBtn.addEventListener(
         if (!printWindow) {
 
             showMessage(
-                "Please allow popups for this site.",
+                "Please allow popups for this website.",
                 "error"
             );
 
@@ -982,7 +1206,7 @@ pdfBtn.addEventListener(
 
 
         /* =================================================
-           HTML ESCAPE
+           ESCAPE
         ================================================= */
 
         function escapeHTML(
@@ -1020,7 +1244,7 @@ pdfBtn.addEventListener(
 
 
         /* =================================================
-           LABEL FORMAT
+           LABEL
         ================================================= */
 
         function formatLabel(
@@ -1044,7 +1268,9 @@ pdfBtn.addEventListener(
                 .replace(
                     /\b\w/g,
                     function(char) {
+
                         return char.toUpperCase();
+
                     }
                 );
 
@@ -1052,7 +1278,7 @@ pdfBtn.addEventListener(
 
 
         /* =================================================
-           RENDER VALUE
+           RENDER DATA
         ================================================= */
 
         function renderValue(
@@ -1066,7 +1292,7 @@ pdfBtn.addEventListener(
             ) {
 
                 return `
-                    <span class="not-available">
+                    <span class="na">
                         Not available
                     </span>
                 `;
@@ -1094,7 +1320,7 @@ pdfBtn.addEventListener(
                 ) {
 
                     return `
-                        <span class="not-available">
+                        <span class="na">
                             No information available
                         </span>
                     `;
@@ -1104,16 +1330,13 @@ pdfBtn.addEventListener(
 
                 return value
                     .map(
-                        function(
-                            item,
-                            index
-                        ) {
+                        function(item, index) {
 
                             return `
 
                                 <div class="array-record">
 
-                                    <div class="array-title">
+                                    <div class="record-label">
                                         RECORD ${index + 1}
                                     </div>
 
@@ -1178,7 +1401,7 @@ pdfBtn.addEventListener(
         }
 
 
-        let formattedResult;
+        let formatted;
 
 
         try {
@@ -1189,15 +1412,14 @@ pdfBtn.addEventListener(
                 );
 
 
-            formattedResult =
+            formatted =
                 renderValue(
                     parsed
                 );
 
-
         } catch {
 
-            formattedResult = `
+            formatted = `
 
                 <div class="raw-result">
 
@@ -1213,21 +1435,21 @@ pdfBtn.addEventListener(
 
 
         /* =================================================
-           PDF DOCUMENT
+           PDF HTML
         ================================================= */
 
         printWindow.document.write(`
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
 
 <head>
 
 <meta charset="UTF-8">
 
 <title>
-Prince Digital Services - Report
+Prince Digital - Lookup Report
 </title>
 
 
@@ -1237,13 +1459,15 @@ Prince Digital Services - Report
 
     size: A4;
 
-    margin: 12mm;
+    margin: 13mm;
 
 }
 
 
 * {
+
     box-sizing: border-box;
+
 }
 
 
@@ -1251,7 +1475,7 @@ body {
 
     margin: 0;
 
-    background: #ffffff;
+    background: #fff;
 
     color: #172033;
 
@@ -1260,7 +1484,7 @@ body {
         Helvetica,
         sans-serif;
 
-    font-size: 10.5px;
+    font-size: 10px;
 
     line-height: 1.5;
 
@@ -1276,9 +1500,7 @@ body {
 }
 
 
-/* =====================================================
-   HEADER
-===================================================== */
+/* HEADER */
 
 .header {
 
@@ -1288,30 +1510,30 @@ body {
 
     align-items: flex-start;
 
-    padding-bottom: 16px;
+    padding-bottom: 15px;
 
     border-bottom:
-        2px solid #172033;
+        2px solid #182337;
 
 }
 
 
-.company {
+.brand {
 
     display: flex;
 
     align-items: center;
 
-    gap: 12px;
+    gap: 11px;
 
 }
 
 
-.company-mark {
+.logo {
 
-    width: 50px;
+    width: 48px;
 
-    height: 50px;
+    height: 48px;
 
     display: flex;
 
@@ -1321,41 +1543,39 @@ body {
 
     border-radius: 5px;
 
-    background: #172033;
+    background: #182337;
 
-    color: white;
+    color: #fff;
 
-    font-size: 19px;
+    font-size: 18px;
 
     font-weight: 800;
 
 }
 
 
-.company-name {
+.brand-name {
 
-    color: #172033;
-
-    font-size: 20px;
+    font-size: 18px;
 
     font-weight: 800;
 
-    letter-spacing: .3px;
+    letter-spacing: .2px;
 
 }
 
 
-.company-sub {
+.brand-sub {
 
     margin-top: 2px;
 
-    color: #697687;
+    color: #728092;
 
-    font-size: 8.5px;
+    font-size: 7.5px;
 
-    font-weight: 600;
+    font-weight: 700;
 
-    letter-spacing: 1.8px;
+    letter-spacing: 1.7px;
 
 }
 
@@ -1367,11 +1587,11 @@ body {
 }
 
 
-.document-label {
+.document-small {
 
-    color: #7a8795;
+    color: #7b8795;
 
-    font-size: 8px;
+    font-size: 7px;
 
     text-transform: uppercase;
 
@@ -1384,9 +1604,9 @@ body {
 
     margin-top: 3px;
 
-    color: #172033;
+    color: #182337;
 
-    font-size: 15px;
+    font-size: 14px;
 
     font-weight: 800;
 
@@ -1397,16 +1617,14 @@ body {
 
     margin-top: 2px;
 
-    color: #7a8795;
+    color: #7b8795;
 
-    font-size: 8px;
+    font-size: 7.5px;
 
 }
 
 
-/* =====================================================
-   TITLE
-===================================================== */
+/* TITLE */
 
 .title-row {
 
@@ -1416,24 +1634,20 @@ body {
 
     align-items: center;
 
-    gap: 20px;
-
-    margin-top: 18px;
+    margin-top: 19px;
 
 }
 
 
-.title-row h1 {
+h1 {
 
     margin: 0;
 
-    color: #111a27;
-
-    font-size: 24px;
+    font-size: 23px;
 
     font-weight: 800;
 
-    letter-spacing: .2px;
+    color: #111a29;
 
 }
 
@@ -1442,44 +1656,39 @@ body {
 
     margin-top: 3px;
 
-    color: #6b7888;
+    color: #738092;
 
-    font-size: 9px;
+    font-size: 8px;
 
     text-transform: uppercase;
 
-    letter-spacing: 1.4px;
+    letter-spacing: 1.3px;
 
 }
 
 
-.completed {
+.status {
 
-    padding: 7px 11px;
+    padding: 7px 10px;
 
-    border:
-        1px solid #cbded2;
+    border: 1px solid #c9ded0;
 
     border-radius: 4px;
 
     background: #f0f6f2;
 
-    color: #286541;
+    color: #286440;
 
-    font-size: 8px;
+    font-size: 7.5px;
 
     font-weight: 800;
-
-    white-space: nowrap;
 
 }
 
 
-/* =====================================================
-   META
-===================================================== */
+/* META */
 
-.meta {
+.meta-grid {
 
     display: grid;
 
@@ -1489,7 +1698,7 @@ body {
     margin-top: 15px;
 
     border:
-        1px solid #d8dee5;
+        1px solid #d7dde4;
 
     border-radius: 4px;
 
@@ -1498,17 +1707,17 @@ body {
 }
 
 
-.meta-item {
+.meta {
 
     padding: 9px 11px;
 
     border-right:
-        1px solid #d8dee5;
+        1px solid #d7dde4;
 
 }
 
 
-.meta-item:last-child {
+.meta:last-child {
 
     border-right: none;
 
@@ -1519,9 +1728,9 @@ body {
 
     display: block;
 
-    color: #788594;
+    color: #7a8796;
 
-    font-size: 7.5px;
+    font-size: 7px;
 
     text-transform: uppercase;
 
@@ -1536,27 +1745,25 @@ body {
 
     margin-top: 3px;
 
-    color: #1b2939;
+    color: #1c2a3b;
 
-    font-size: 9.5px;
+    font-size: 9px;
 
     font-weight: 700;
 
 }
 
 
-/* =====================================================
-   SECTIONS
-===================================================== */
+/* SECTION */
 
-.report-section {
+.section {
 
     margin-top: 19px;
 
 }
 
 
-.section-bar {
+.section-head {
 
     display: flex;
 
@@ -1569,7 +1776,7 @@ body {
     padding-bottom: 6px;
 
     border-bottom:
-        1px solid #ccd4dc;
+        1px solid #cfd6de;
 
 }
 
@@ -1588,22 +1795,22 @@ body {
 
     border-radius: 3px;
 
-    background: #172033;
+    background: #182337;
 
     color: white;
 
-    font-size: 8px;
+    font-size: 7.5px;
 
     font-weight: 800;
 
 }
 
 
-.section-name {
+.section-title {
 
-    color: #172033;
+    color: #182337;
 
-    font-size: 10px;
+    font-size: 9.5px;
 
     font-weight: 800;
 
@@ -1614,22 +1821,20 @@ body {
 }
 
 
-/* =====================================================
-   SEARCH DETAILS
-===================================================== */
+/* SEARCH */
 
 .search-box {
 
     display: flex;
 
-    justify-content: space-between;
-
     align-items: center;
 
-    padding: 12px;
+    justify-content: space-between;
+
+    padding: 11px;
 
     border:
-        1px solid #d9dfe5;
+        1px solid #d8dee5;
 
     border-radius: 4px;
 
@@ -1640,9 +1845,9 @@ body {
 
 .search-label {
 
-    color: #778494;
+    color: #788696;
 
-    font-size: 7.5px;
+    font-size: 7px;
 
     text-transform: uppercase;
 
@@ -1657,16 +1862,16 @@ body {
 
     color: #172033;
 
-    font-size: 16px;
+    font-size: 15px;
 
     font-weight: 800;
 
-    letter-spacing: .7px;
+    letter-spacing: .6px;
 
 }
 
 
-.search-status {
+.search-complete {
 
     padding: 5px 8px;
 
@@ -1674,18 +1879,16 @@ body {
 
     background: #edf5ef;
 
-    color: #286541;
+    color: #286440;
 
-    font-size: 7.5px;
+    font-size: 7px;
 
     font-weight: 800;
 
 }
 
 
-/* =====================================================
-   RESULT TABLE
-===================================================== */
+/* TABLE */
 
 .data-table {
 
@@ -1696,7 +1899,7 @@ body {
     table-layout: fixed;
 
     border:
-        1px solid #d3dae2;
+        1px solid #d2d9e1;
 
 }
 
@@ -1740,7 +1943,7 @@ body {
 
     background: #f1f4f7;
 
-    color: #304154;
+    color: #304155;
 
     font-weight: 700;
 
@@ -1751,16 +1954,16 @@ body {
 
     width: 66%;
 
-    color: #1e2a38;
+    color: #202d3d;
 
     word-break: break-word;
 
 }
 
 
-.not-available {
+.na {
 
-    color: #8b96a2;
+    color: #8a95a1;
 
     font-style: italic;
 
@@ -1774,42 +1977,31 @@ body {
 }
 
 
-.array-record:last-child {
-
-    margin-bottom: 0;
-
-}
-
-
-.array-title {
+.record-label {
 
     margin-bottom: 3px;
 
-    color: #697889;
+    color: #6d7b8c;
 
-    font-size: 7.5px;
+    font-size: 7px;
 
     font-weight: 800;
 
-    letter-spacing: .8px;
+    letter-spacing: .7px;
 
 }
 
 
-/* =====================================================
-   RAW
-===================================================== */
-
 .raw-result {
 
-    padding: 12px;
+    padding: 11px;
 
     border:
         1px solid #d5dce3;
 
-    border-radius: 4px;
-
     background: #f7f9fb;
+
+    border-radius: 4px;
 
     white-space: pre-wrap;
 
@@ -1819,45 +2011,39 @@ body {
         "Courier New",
         monospace;
 
-    font-size: 9px;
+    font-size: 8.5px;
 
 }
 
 
-/* =====================================================
-   NOTICE
-===================================================== */
+/* NOTICE */
 
 .notice {
 
-    margin-top: 18px;
+    margin-top: 17px;
 
-    padding: 10px 12px;
+    padding: 10px 11px;
 
     border-left:
-        3px solid #172033;
+        3px solid #182337;
 
     background: #f3f5f7;
 
     color: #596878;
 
-    font-size: 8px;
-
-    line-height: 1.55;
+    font-size: 7.7px;
 
 }
 
 
 .notice strong {
 
-    color: #253649;
+    color: #25364a;
 
 }
 
 
-/* =====================================================
-   FOOTER
-===================================================== */
+/* FOOTER */
 
 .footer {
 
@@ -1870,18 +2056,11 @@ body {
     padding-top: 10px;
 
     border-top:
-        1px solid #cdd5dd;
+        1px solid #ccd4dc;
 
-    color: #738090;
+    color: #748190;
 
-    font-size: 7.5px;
-
-}
-
-
-.footer strong {
-
-    color: #26384b;
+    font-size: 7px;
 
 }
 
@@ -1893,11 +2072,9 @@ body {
 }
 
 
-/* =====================================================
-   PRINT BUTTON
-===================================================== */
+/* PRINT */
 
-.print-area {
+.print {
 
     margin-top: 18px;
 
@@ -1906,19 +2083,19 @@ body {
 }
 
 
-.print-button {
+.print button {
 
-    padding: 10px 22px;
+    padding: 9px 20px;
 
     border: none;
 
     border-radius: 4px;
 
-    background: #172033;
+    background: #182337;
 
     color: white;
 
-    font-size: 10px;
+    font-size: 9px;
 
     font-weight: 700;
 
@@ -1929,9 +2106,9 @@ body {
 
 @media print {
 
-    .print-area {
+    .print {
 
-        display: none !important;
+        display: none;
 
     }
 
@@ -1948,274 +2125,252 @@ body {
 <div class="report">
 
 
-    <!-- HEADER -->
-
-    <header class="header">
+<header class="header">
 
 
-        <div class="company">
+    <div class="brand">
 
-            <div class="company-mark">
-                P
-            </div>
-
-
-            <div>
-
-                <div class="company-name">
-                    PRINCE DIGITAL SERVICES
-                </div>
-
-                <div class="company-sub">
-                    NUMBER LOOKUP PORTAL
-                </div>
-
-            </div>
-
+        <div class="logo">
+            P
         </div>
-
-
-        <div class="document">
-
-            <div class="document-label">
-                Document Type
-            </div>
-
-            <div class="document-title">
-                LOOKUP REPORT
-            </div>
-
-            <div class="document-sub">
-                Electronically Generated
-            </div>
-
-        </div>
-
-
-    </header>
-
-
-
-    <!-- TITLE -->
-
-    <div class="title-row">
-
 
         <div>
 
-            <h1>
-                Number Lookup Report
-            </h1>
+            <div class="brand-name">
+                PRINCE DIGITAL
+            </div>
 
-            <div class="subtitle">
-                Reference Information
+            <div class="brand-sub">
+                DIGITAL SERVICES
             </div>
 
         </div>
-
-
-        <div class="completed">
-            LOOKUP COMPLETED
-        </div>
-
 
     </div>
 
 
+    <div class="document">
 
-    <!-- META -->
+        <div class="document-small">
+            Document Type
+        </div>
+
+        <div class="document-title">
+            LOOKUP REPORT
+        </div>
+
+        <div class="document-sub">
+            Electronically Generated
+        </div>
+
+    </div>
+
+
+</header>
+
+
+
+<div class="title-row">
+
+
+    <div>
+
+        <h1>
+            Number Lookup Report
+        </h1>
+
+        <div class="subtitle">
+            Reference Information
+        </div>
+
+    </div>
+
+
+    <div class="status">
+        LOOKUP COMPLETED
+    </div>
+
+
+</div>
+
+
+
+<div class="meta-grid">
+
 
     <div class="meta">
 
+        <span class="meta-label">
+            Report ID
+        </span>
 
-        <div class="meta-item">
-
-            <span class="meta-label">
-                Report ID
-            </span>
-
-            <span class="meta-value">
-                ${escapeHTML(reportId)}
-            </span>
-
-        </div>
-
-
-        <div class="meta-item">
-
-            <span class="meta-label">
-                Generated On
-            </span>
-
-            <span class="meta-value">
-                ${escapeHTML(date)}
-            </span>
-
-        </div>
-
-
-        <div class="meta-item">
-
-            <span class="meta-label">
-                Generated At
-            </span>
-
-            <span class="meta-value">
-                ${escapeHTML(time)} IST
-            </span>
-
-        </div>
-
+        <span class="meta-value">
+            ${escapeHTML(reportId)}
+        </span>
 
     </div>
 
 
+    <div class="meta">
 
-    <!-- SEARCH DETAILS -->
+        <span class="meta-label">
+            Generated On
+        </span>
 
-    <section class="report-section">
-
-
-        <div class="section-bar">
-
-            <div class="section-number">
-                01
-            </div>
-
-            <div class="section-name">
-                Search Details
-            </div>
-
-        </div>
-
-
-        <div class="search-box">
-
-
-            <div>
-
-                <div class="search-label">
-                    Mobile Number
-                </div>
-
-                <div class="search-number">
-                    +91 ${escapeHTML(number)}
-                </div>
-
-            </div>
-
-
-            <div class="search-status">
-                COMPLETED
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- RETRIEVED INFORMATION -->
-
-    <section class="report-section">
-
-
-        <div class="section-bar">
-
-            <div class="section-number">
-                02
-            </div>
-
-            <div class="section-name">
-                Retrieved Information
-            </div>
-
-        </div>
-
-
-        ${formattedResult}
-
-
-    </section>
-
-
-
-    <!-- NOTICE -->
-
-    <div class="notice">
-
-        <strong>
-            Important Notice:
-        </strong>
-
-        This report is generated automatically from
-        information returned by the connected lookup
-        service. Prince Digital Services does not
-        independently verify the accuracy or completeness
-        of the returned information. Use this information
-        only for lawful and authorised purposes.
+        <span class="meta-value">
+            ${escapeHTML(date)}
+        </span>
 
     </div>
 
 
+    <div class="meta">
 
-    <!-- FOOTER -->
+        <span class="meta-label">
+            Generated At
+        </span>
 
-    <footer class="footer">
+        <span class="meta-value">
+            ${escapeHTML(time)} IST
+        </span>
+
+    </div>
+
+
+</div>
+
+
+
+<section class="section">
+
+
+    <div class="section-head">
+
+        <div class="section-number">
+            01
+        </div>
+
+        <div class="section-title">
+            Search Details
+        </div>
+
+    </div>
+
+
+    <div class="search-box">
 
 
         <div>
 
-            <strong>
-                PRINCE DIGITAL SERVICES
-            </strong>
+            <div class="search-label">
+                Mobile Number
+            </div>
 
-            <br>
-
-            Number Lookup Portal
-
-            <br>
-
-            Electronically generated document
+            <div class="search-number">
+                +91 ${escapeHTML(number)}
+            </div>
 
         </div>
 
 
-        <div class="footer-right">
-
-            Report ID:
-            ${escapeHTML(reportId)}
-
-            <br>
-
-            Generated:
-            ${escapeHTML(time)} IST
-
-            <br>
-
-            Page 1
-
+        <div class="search-complete">
+            COMPLETED
         </div>
 
-
-    </footer>
-
-
-
-    <!-- PRINT -->
-
-    <div class="print-area">
-
-        <button
-            class="print-button"
-            onclick="window.print()"
-        >
-            SAVE AS PDF
-        </button>
 
     </div>
+
+
+</section>
+
+
+
+<section class="section">
+
+
+    <div class="section-head">
+
+        <div class="section-number">
+            02
+        </div>
+
+        <div class="section-title">
+            Retrieved Information
+        </div>
+
+    </div>
+
+
+    ${formatted}
+
+
+</section>
+
+
+
+<div class="notice">
+
+    <strong>
+        Important Notice:
+    </strong>
+
+    This report is automatically generated from
+    information returned by the connected lookup
+    service. The information has not been independently
+    verified by Prince Digital. Use this information
+    only for lawful and authorised purposes.
+
+</div>
+
+
+
+<footer class="footer">
+
+
+    <div>
+
+        <strong>
+            PRINCE DIGITAL
+        </strong>
+
+        <br>
+
+        Digital Services
+
+        <br>
+
+        Electronically generated document
+
+    </div>
+
+
+    <div class="footer-right">
+
+        Report ID:
+        ${escapeHTML(reportId)}
+
+        <br>
+
+        ${escapeHTML(date)} · ${escapeHTML(time)} IST
+
+        <br>
+
+        Page 1
+
+    </div>
+
+
+</footer>
+
+
+
+<div class="print">
+
+    <button onclick="window.print()">
+        Save as PDF
+    </button>
+
+</div>
 
 
 </div>
@@ -2239,7 +2394,7 @@ body {
                 printWindow.print();
 
             },
-            700
+            600
         );
 
     }
@@ -2270,7 +2425,7 @@ clearBtn.addEventListener(
 
 
 /* =====================================================
-   NUMBERS ONLY
+   NUMBER INPUT
 ===================================================== */
 
 numberInput.addEventListener(
