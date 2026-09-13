@@ -109,7 +109,7 @@ body {
 
     font-weight: 600;
 
-    transition: 0.25s;
+    transition: .25s;
 
 }
 
@@ -399,7 +399,7 @@ body {
 
     cursor: pointer;
 
-    transition: 0.25s;
+    transition: .25s;
 
 }
 
@@ -418,7 +418,7 @@ body {
 
 #lookupBtn:disabled {
 
-    opacity: 0.6;
+    opacity: .6;
 
     cursor: not-allowed;
 
@@ -539,7 +539,7 @@ body {
 }
 
 
-/* ================= RESULT ACTIONS ================= */
+/* ================= RESULT BUTTONS ================= */
 
 .result-actions {
 
@@ -573,7 +573,7 @@ body {
 
     font-weight: 700;
 
-    transition: 0.2s;
+    transition: .2s;
 
 }
 
@@ -680,7 +680,7 @@ body {
         1px solid
         rgba(255,255,255,0.08);
 
-    transition: 0.3s;
+    transition: .3s;
 
 }
 
@@ -824,7 +824,7 @@ body {
 
     font-weight: 700;
 
-    transition: 0.25s;
+    transition: .25s;
 
 }
 
@@ -880,7 +880,7 @@ footer p {
 
     margin-top: 8px;
 
-    opacity: 0.5;
+    opacity: .5;
 
 }
 
