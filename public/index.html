@@ -1,1421 +1,611 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>World of Prince | Citizen Information Portal</title>
+<title>World of Prince 👑</title>
 
-    <link rel="stylesheet" href="/style.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Inter,Arial,sans-serif;
+    background:
+        radial-gradient(circle at top,#24104f 0%,#0b0715 40%,#030305 100%);
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:300px;
+    height:300px;
+    background:#7c3aed;
+    filter:blur(130px);
+    opacity:.25;
+    top:-100px;
+    left:-100px;
+    pointer-events:none;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:300px;
+    height:300px;
+    background:#06b6d4;
+    filter:blur(130px);
+    opacity:.18;
+    bottom:-100px;
+    right:-100px;
+    pointer-events:none;
+}
+
+.container{
+    width:100%;
+    max-width:560px;
+    position:relative;
+    z-index:2;
+}
+
+.card{
+    background:rgba(15,15,25,.78);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:28px;
+    padding:30px;
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.55),
+        inset 0 1px 0 rgba(255,255,255,.06);
+    backdrop-filter:blur(18px);
+}
+
+.logo{
+    width:82px;
+    height:82px;
+    margin:auto;
+    border-radius:24px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:42px;
+    background:linear-gradient(135deg,#7c3aed,#06b6d4);
+    box-shadow:0 12px 35px rgba(124,58,237,.35);
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-8px) rotate(3deg);}
+}
+
+h1{
+    text-align:center;
+    margin-top:20px;
+    font-size:30px;
+    letter-spacing:-1px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#aaa;
+    margin-top:8px;
+    font-size:14px;
+}
+
+.badges{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:20px 0;
+}
+
+.badge{
+    padding:7px 12px;
+    border-radius:50px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.1);
+    color:#ddd;
+    font-size:12px;
+}
+
+.section{
+    margin-top:25px;
+}
+
+.label{
+    display:block;
+    margin-bottom:9px;
+    color:#ccc;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.input-wrap{
+    position:relative;
+}
+
+input{
+    width:100%;
+    height:56px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.12);
+    outline:none;
+    padding:0 18px;
+    background:rgba(255,255,255,.06);
+    color:white;
+    font-size:16px;
+    transition:.25s;
+}
+
+input:focus{
+    border-color:#8b5cf6;
+    box-shadow:0 0 0 4px rgba(139,92,246,.12);
+}
+
+input::placeholder{
+    color:#777;
+}
+
+button{
+    width:100%;
+    height:56px;
+    margin-top:13px;
+    border:0;
+    border-radius:16px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:800;
+    transition:.2s;
+}
+
+.search-btn{
+    background:linear-gradient(135deg,#8b5cf6,#06b6d4);
+    color:white;
+    box-shadow:0 12px 30px rgba(124,58,237,.25);
+}
+
+.search-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 16px 35px rgba(124,58,237,.35);
+}
+
+.search-btn:active{
+    transform:scale(.98);
+}
+
+.actions{
+    display:flex;
+    gap:10px;
+}
+
+.actions button{
+    flex:1;
+}
+
+.copy-btn{
+    background:#fff;
+    color:#111;
+}
+
+.clear-btn{
+    background:rgba(255,255,255,.07);
+    color:white;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.message{
+    display:none;
+    margin-top:18px;
+    padding:15px;
+    border-radius:15px;
+    text-align:center;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.result{
+    display:none;
+    margin-top:20px;
+}
+
+.result-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+}
+
+.result-title span{
+    font-size:14px;
+    color:#aaa;
+}
+
+pre{
+    background:#050509;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:17px;
+    padding:18px;
+    white-space:pre-wrap;
+    word-break:break-word;
+    color:#d7d7d7;
+    font-size:13px;
+    line-height:1.6;
+    max-height:400px;
+    overflow:auto;
+}
+
+.loading{
+    display:none;
+    text-align:center;
+    margin-top:20px;
+    color:#bbb;
+}
+
+.spinner{
+    display:inline-block;
+    width:20px;
+    height:20px;
+    border:3px solid rgba(255,255,255,.2);
+    border-top-color:#8b5cf6;
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+    vertical-align:middle;
+    margin-right:8px;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg);}
+}
+
+.footer{
+    text-align:center;
+    margin-top:25px;
+    color:#666;
+    font-size:11px;
+}
+
+.fun{
+    margin-top:15px;
+    text-align:center;
+    color:#777;
+    font-size:12px;
+}
+
+@media(max-width:500px){
+    .card{
+        padding:22px;
+        border-radius:23px;
+    }
+
+    h1{
+        font-size:25px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<!-- =====================================================
-     1. CONNECTION SCREEN
-     ===================================================== -->
+<div class="container">
 
-<div id="connectionScreen" class="screen connection-screen">
+    <div class="card">
 
-    <div class="connection-bg"></div>
+        <div class="logo">👑</div>
 
-    <div class="connection-content">
+        <h1>WORLD OF PRINCE 🚀</h1>
 
-        <div class="system-label">
-            SYSTEM INITIALIZING
-        </div>
-
-        <div class="connecting">
-            CONNECTING TO
-        </div>
-
-        <h1>
-            PRINCE MAHTO
-        </h1>
-
-        <div class="connection-status">
-            <span class="pulse"></span>
-            <span id="connectionText">
-                Establishing connection...
-            </span>
-        </div>
-
-        <div class="progress-box">
-            <div id="progressBar"></div>
-        </div>
-
-        <div class="progress-info">
-            <span>SECURE CONNECTION</span>
-            <span id="progressPercent">0%</span>
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     2. WELCOME SCREEN
-     ===================================================== -->
-
-<div
-    id="welcomeScreen"
-    class="screen welcome-screen hidden-screen"
->
-
-    <div class="welcome-bg"></div>
-
-    <div class="welcome-content">
-
-        <div class="welcome-tag">
-            PERSONAL DIGITAL INTERFACE
-        </div>
-
-        <div class="welcome-title">
-            WELCOME TO
-        </div>
-
-        <h1>
-            WORLD OF
-            <span>PRINCE</span>
-        </h1>
-
-        <div class="welcome-line"></div>
-
-        <p class="welcome-description">
-            A modern digital information interface
-            designed and developed by
-            <strong>Prince Mahto</strong>.
+        <p class="subtitle">
+            Welcome to the little corner of the internet 😎
         </p>
 
-        <div class="developer-card">
-
-            <div class="developer-icon">
-                PM
-            </div>
-
-            <div class="developer-info">
-
-                <strong>
-                    PRINCE MAHTO
-                </strong>
-
-                <span>
-                    Digital Interface Developer
-                </span>
-
-                <a
-                    href="mailto:princeraj74682@gmail.com?subject=World%20of%20Prince%20Query"
-                >
-                    princeraj74682@gmail.com
-                </a>
-
-            </div>
-
+        <div class="badges">
+            <div class="badge">⚡ Fast</div>
+            <div class="badge">🔐 Secure Access</div>
+            <div class="badge">🤖 Smart Portal</div>
+            <div class="badge">😂 No Bakchodi</div>
         </div>
 
-        <div class="welcome-actions">
+        <div class="section">
+
+            <label class="label">
+                📱 Enter Mobile Number
+            </label>
+
+            <div class="input-wrap">
+                <input
+                    id="number"
+                    type="tel"
+                    inputmode="numeric"
+                    maxlength="10"
+                    placeholder="10 digit number..."
+                    autocomplete="off"
+                >
+            </div>
 
             <button
-                id="enterPortalBtn"
-                class="enter-btn"
+                class="search-btn"
+                id="searchBtn"
+                onclick="lookup()"
             >
-                <span>ENTER PORTAL</span>
-                <b>→</b>
+                🔎 SEARCH NOW 🚀
             </button>
 
-            <a
-                class="instagram-link"
-                href="https://instagram.com/princeraj0205"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Instagram · @princeraj0205
-            </a>
-
         </div>
 
-    </div>
+        <div class="loading" id="loading">
+            <span class="spinner"></span>
+            <span id="loadingText">Checking... 🤔</span>
+        </div>
 
-</div>
+        <div class="message" id="message"></div>
 
+        <div class="result" id="resultBox">
 
-<!-- =====================================================
-     3. MAIN PORTAL
-     ===================================================== -->
-
-<div
-    id="portal"
-    class="portal hidden-portal"
->
-
-    <!-- TOP BAR -->
-
-    <div class="top-strip">
-
-        <div class="container top-content">
-
-            <span>
-                Citizen Information Portal
-            </span>
-
-            <div class="top-links">
-
-                <a href="#home">
-                    Home
-                </a>
-
-                <span>|</span>
-
-                <span>
-                    Digital Service
-                </span>
-
+            <div class="result-title">
+                <strong>📦 RESULT</strong>
+                <span>Done 😎</span>
             </div>
 
-        </div>
-
-    </div>
-
-
-    <!-- HEADER -->
-
-    <header class="site-header">
-
-        <div class="container header-inner">
-
-            <a
-                href="#home"
-                class="brand"
-            >
-
-                <div class="emblem">
-                    PM
-                </div>
-
-                <div>
-
-                    <div class="brand-title">
-                        CITIZEN INFORMATION PORTAL
-                    </div>
-
-                    <div class="brand-subtitle">
-                        Digital Public Service Interface
-                    </div>
-
-                </div>
-
-            </a>
-
-
-            <div class="system-online">
-
-                <span></span>
-
-                SYSTEM ONLINE
-
-            </div>
-
-        </div>
-
-    </header>
-
-
-    <!-- NAVIGATION -->
-
-    <nav class="navbar">
-
-        <div class="container nav-inner">
-
-            <a
-                href="#home"
-                class="nav-link active"
-            >
-                Home
-            </a>
-
-            <a
-                href="#lookup"
-                class="nav-link"
-            >
-                Information Lookup
-            </a>
-
-            <a
-                href="#about"
-                class="nav-link"
-            >
-                About
-            </a>
-
-            <a
-                href="#contact"
-                class="nav-link"
-            >
-                Contact
-            </a>
-
-        </div>
-
-    </nav>
-
-
-    <main id="home">
-
-
-        <!-- HERO -->
-
-        <section class="hero">
-
-            <div class="container">
-
-                <div class="breadcrumb">
-                    Home
-                    <span>›</span>
-                    Digital Services
-                </div>
-
-
-                <div class="hero-grid">
-
-                    <div>
-
-                        <span class="hero-kicker">
-                            WORLD OF PRINCE
-                        </span>
-
-                        <h2>
-                            Digital Information
-                            <br>
-                            <span>Portal</span>
-                        </h2>
-
-                        <p>
-                            Welcome to the digital service
-                            interface. Select the information
-                            lookup service below to continue.
-                        </p>
-
-
-                        <button
-                            class="hero-button"
-                            onclick="openLookup()"
-                        >
-                            Open Information Lookup
-                            <span>→</span>
-                        </button>
-
-                    </div>
-
-
-                    <div class="hero-panel">
-
-                        <div class="panel-top">
-                            <span>PORTAL STATUS</span>
-
-                            <strong>
-                                ACTIVE
-                            </strong>
-                        </div>
-
-                        <div class="panel-divider"></div>
-
-                        <div class="panel-item">
-                            <span>INTERFACE</span>
-                            <b>ONLINE</b>
-                        </div>
-
-                        <div class="panel-item">
-                            <span>SECURE SERVER</span>
-                            <b>CONNECTED</b>
-                        </div>
-
-                        <div class="panel-item">
-                            <span>SERVICE</span>
-                            <b>AVAILABLE</b>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- LOOKUP -->
-
-        <section
-            id="lookup"
-            class="lookup-section"
-        >
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <div>
-
-                        <span>
-                            ONLINE SERVICE
-                        </span>
-
-                        <h2>
-                            Mobile Information Lookup
-                        </h2>
-
-                        <p>
-                            Enter a valid 10-digit mobile
-                            number to continue.
-                        </p>
-
-                    </div>
-
-                    <div class="service-number">
-                        SERVICE
-                        <b>01</b>
-                    </div>
-
-                </div>
-
-
-                <div class="lookup-card">
-
-                    <div class="input-section">
-
-                        <label for="number">
-                            Mobile Number
-                            <i>*</i>
-                        </label>
-
-                        <div class="phone-input">
-
-                            <span>
-                                +91
-                            </span>
-
-                            <input
-                                type="tel"
-                                id="number"
-                                maxlength="10"
-                                inputmode="numeric"
-                                autocomplete="off"
-                                placeholder="Enter 10-digit mobile number"
-                            >
-
-                        </div>
-
-                        <small>
-                            Enter numbers only.
-                            Example:
-
-                            <button
-                                id="exampleBtn"
-                                type="button"
-                            >
-                                9876543210
-                            </button>
-                        </small>
-
-                    </div>
-
-
-                    <div class="buttons">
-
-                        <button
-                            id="lookupBtn"
-                            class="search-btn"
-                            type="button"
-                        >
-
-                            <span class="btn-text">
-                                Search Information
-                            </span>
-
-                            <span
-                                id="loader"
-                                class="loader"
-                            ></span>
-
-                            <b>→</b>
-
-                        </button>
-
-
-                        <button
-                            id="clearBtn"
-                            class="clear-btn"
-                            type="button"
-                        >
-                            Clear
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- MESSAGE -->
-
-                <div
-                    id="message"
-                    class="message hidden"
-                ></div>
-
-
-                <!-- RESULT -->
-
-                <div
-                    id="resultSection"
-                    class="result hidden"
+            <pre id="result"></pre>
+
+            <div class="actions">
+                <button
+                    class="copy-btn"
+                    onclick="copyResult()"
                 >
-
-                    <div class="result-header">
-
-                        <div>
-
-                            <span>
-                                SERVICE RESPONSE
-                            </span>
-
-                            <h2>
-                                Information Result
-                            </h2>
-
-                        </div>
-
-                        <button
-                            id="copyBtn"
-                            class="copy-btn"
-                            type="button"
-                        >
-                            Copy Result
-                        </button>
-
-                    </div>
-
-
-                    <div class="result-details">
-
-                        <div>
-
-                            <small>
-                                REQUEST STATUS
-                            </small>
-
-                            <strong
-                                id="requestStatus"
-                            >
-                                COMPLETED
-                            </strong>
-
-                        </div>
-
-                        <div>
-
-                            <small>
-                                REQUESTED NUMBER
-                            </small>
-
-                            <strong
-                                id="requestedNumber"
-                            >
-                                —
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                    <pre id="output"></pre>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ABOUT -->
-
-        <section
-            id="about"
-            class="about-section"
-        >
-
-            <div class="container about-grid">
-
-                <div>
-
-                    <span>
-                        ABOUT
-                    </span>
-
-                    <h2>
-                        World of Prince
-                    </h2>
-
-                </div>
-
-                <div>
-
-                    <p>
-                        This digital interface has been
-                        designed to provide a clean and
-                        simple experience for accessing
-                        available information through the
-                        connected service.
-                    </p>
-
-                    <p>
-                        The portal communicates with the
-                        server through a protected API
-                        endpoint.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- CONTACT -->
-
-        <section
-            id="contact"
-            class="contact-section"
-        >
-
-            <div class="container contact-box">
-
-                <div>
-
-                    <span>
-                        SUPPORT & CONTACT
-                    </span>
-
-                    <h2>
-                        Get in touch
-                    </h2>
-
-                    <p>
-                        For technical queries or
-                        portal-related assistance,
-                        contact Prince Mahto.
-                    </p>
-
-                </div>
-
-
-                <div class="contact-buttons">
-
-                    <a
-                        href="mailto:princeraj74682@gmail.com?subject=World%20of%20Prince%20Query"
-                        class="contact-btn"
-                    >
-
-                        <b>✉</b>
-
-                        <span>
-                            <small>EMAIL</small>
-                            princeraj74682@gmail.com
-                        </span>
-
-                    </a>
-
-
-                    <a
-                        href="https://instagram.com/princeraj0205"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="contact-btn"
-                    >
-
-                        <b>◎</b>
-
-                        <span>
-                            <small>INSTAGRAM</small>
-                            @princeraj0205
-                        </span>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- FOOTER -->
-
-    <footer class="footer">
-
-        <div class="container">
-
-            <div class="footer-main">
-
-                <div>
-
-                    <strong>
-                        WORLD OF PRINCE
-                    </strong>
-
-                    <p>
-                        Digital Information Interface
-                    </p>
-
-                </div>
-
-                <div class="footer-links">
-
-                    <a href="#home">
-                        Home
-                    </a>
-
-                    <a href="#lookup">
-                        Lookup
-                    </a>
-
-                    <a href="#about">
-                        About
-                    </a>
-
-                    <a href="#contact">
-                        Contact
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="footer-bottom">
-
-                <span>
-                    © 2026 World of Prince
-                </span>
-
-                <span>
-                    Designed & Developed by Prince Mahto
-                </span>
-
+                    📋 COPY
+                </button>
+
+                <button
+                    class="clear-btn"
+                    onclick="clearResult()"
+                >
+                    🧹 CLEAR
+                </button>
             </div>
 
         </div>
 
-    </footer>
+        <div class="fun">
+            ☕ Made with code, coffee & a little bit of madness 😂
+        </div>
+
+        <div class="footer">
+            © 2026 World of Prince 👑
+        </div>
+
+    </div>
 
 </div>
-
-
-<!-- =====================================================
-     JAVASCRIPT
-     ===================================================== -->
 
 <script>
 
-/* =====================================================
-   ELEMENTS
-   ===================================================== */
-
-const connectionScreen =
-    document.getElementById(
-        "connectionScreen"
-    );
-
-const welcomeScreen =
-    document.getElementById(
-        "welcomeScreen"
-    );
-
-const portal =
-    document.getElementById(
-        "portal"
-    );
-
-const progressBar =
-    document.getElementById(
-        "progressBar"
-    );
-
-const progressPercent =
-    document.getElementById(
-        "progressPercent"
-    );
-
-const connectionText =
-    document.getElementById(
-        "connectionText"
-    );
-
-const enterPortalBtn =
-    document.getElementById(
-        "enterPortalBtn"
-    );
-
-const numberInput =
-    document.getElementById(
-        "number"
-    );
-
-const lookupBtn =
-    document.getElementById(
-        "lookupBtn"
-    );
-
-const clearBtn =
-    document.getElementById(
-        "clearBtn"
-    );
-
-const exampleBtn =
-    document.getElementById(
-        "exampleBtn"
-    );
-
-const output =
-    document.getElementById(
-        "output"
-    );
-
-const resultSection =
-    document.getElementById(
-        "resultSection"
-    );
-
-const message =
-    document.getElementById(
-        "message"
-    );
-
-const loader =
-    document.getElementById(
-        "loader"
-    );
-
-const btnText =
-    document.querySelector(
-        ".btn-text"
-    );
-
-const copyBtn =
-    document.getElementById(
-        "copyBtn"
-    );
-
-const requestedNumber =
-    document.getElementById(
-        "requestedNumber"
-    );
-
-const requestStatus =
-    document.getElementById(
-        "requestStatus"
-    );
-
-
-/* =====================================================
-   CONNECTION ANIMATION
-   ===================================================== */
-
-let progress = 0;
-
-const connectionTimer =
-    setInterval(() => {
-
-        progress +=
-            Math.floor(
-                Math.random() * 8
-            ) + 4;
-
-        if (progress >= 100) {
-
-            progress = 100;
-
-            clearInterval(
-                connectionTimer
-            );
-
-        }
-
-
-        progressBar.style.width =
-            progress + "%";
-
-        progressPercent.textContent =
-            progress + "%";
-
-
-        if (progress < 30) {
-
-            connectionText.textContent =
-                "Establishing connection...";
-
-        }
-
-        else if (progress < 60) {
-
-            connectionText.textContent =
-                "Verifying secure channel...";
-
-        }
-
-        else if (progress < 85) {
-
-            connectionText.textContent =
-                "Loading digital interface...";
-
-        }
-
-        else if (progress < 100) {
-
-            connectionText.textContent =
-                "Preparing welcome screen...";
-
-        }
-
-        else {
-
-            connectionText.textContent =
-                "Connection established ✓";
-
-
-            setTimeout(() => {
-
-                connectionScreen.classList.add(
-                    "hide-screen"
-                );
-
-
-                setTimeout(() => {
-
-                    welcomeScreen.classList.remove(
-                        "hidden-screen"
-                    );
-
-                }, 500);
-
-
-            }, 900);
-
-        }
-
-    }, 180);
-
-
-/* =====================================================
-   ENTER PORTAL
-   ===================================================== */
-
-enterPortalBtn.addEventListener(
-    "click",
-    () => {
-
-        welcomeScreen.classList.add(
-            "hide-screen"
-        );
-
-
-        setTimeout(() => {
-
-            welcomeScreen.classList.add(
-                "hidden-screen"
-            );
-
-            portal.classList.remove(
-                "hidden-portal"
-            );
-
-            portal.classList.add(
-                "show-portal"
-            );
-
-            setTimeout(() => {
-
-                document
-                    .getElementById("lookup")
-                    .scrollIntoView({
-                        behavior: "smooth"
-                    });
-
-            }, 200);
-
-        }, 700);
-
+const numberInput = document.getElementById("number");
+const searchBtn = document.getElementById("searchBtn");
+const loading = document.getElementById("loading");
+const loadingText = document.getElementById("loadingText");
+const message = document.getElementById("message");
+const resultBox = document.getElementById("resultBox");
+const result = document.getElementById("result");
+
+const loadingMessages = [
+    "Checking the matrix... 🕵️",
+    "Talking to the server... 🤖",
+    "Searching the digital universe... 🌌",
+    "Almost there... 😂",
+    "Fetching result... ⚡"
+];
+
+function showMessage(text,type="error"){
+
+    message.style.display="block";
+    message.textContent=text;
+
+    if(type==="success"){
+        message.style.background="rgba(34,197,94,.12)";
+        message.style.border="1px solid rgba(34,197,94,.25)";
+        message.style.color="#86efac";
+    }else{
+        message.style.background="rgba(239,68,68,.12)";
+        message.style.border="1px solid rgba(239,68,68,.25)";
+        message.style.color="#fca5a5";
     }
-);
-
-
-/* =====================================================
-   OPEN LOOKUP
-   ===================================================== */
-
-function openLookup() {
-
-    document
-        .getElementById("lookup")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
-
 }
 
+function cleanPrivateFields(value){
 
-/* =====================================================
-   INPUT
-   ===================================================== */
-
-numberInput.addEventListener(
-    "input",
-    () => {
-
-        numberInput.value =
-            numberInput.value.replace(
-                /\D/g,
-                ""
-            );
-
-        hideMessage();
-
-    }
-);
-
-
-/* =====================================================
-   EXAMPLE
-   ===================================================== */
-
-exampleBtn.addEventListener(
-    "click",
-    () => {
-
-        numberInput.value =
-            "9876543210";
-
-        numberInput.focus();
-
-        hideMessage();
-
-    }
-);
-
-
-/* =====================================================
-   ENTER KEY
-   ===================================================== */
-
-numberInput.addEventListener(
-    "keydown",
-    (event) => {
-
-        if (
-            event.key === "Enter"
-        ) {
-
-            event.preventDefault();
-
-            lookup();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   CLEAR
-   ===================================================== */
-
-clearBtn.addEventListener(
-    "click",
-    () => {
-
-        numberInput.value = "";
-
-        output.textContent = "";
-
-        resultSection.classList.add(
-            "hidden"
-        );
-
-        hideMessage();
-
-        numberInput.focus();
-
-    }
-);
-
-
-/* =====================================================
-   CLEAN RESPONSE
-   ===================================================== */
-
-function cleanResponse(value) {
-
-    if (
-        Array.isArray(value)
-    ) {
-
-        return value.map(
-            cleanResponse
-        );
-
+    if(Array.isArray(value)){
+        return value.map(cleanPrivateFields);
     }
 
+    if(value && typeof value==="object"){
 
-    if (
-        value &&
-        typeof value === "object"
-    ) {
+        const cleaned={};
 
-        const result = {};
+        for(const [key,val] of Object.entries(value)){
 
+            const lowerKey=key.toLowerCase();
 
-        for (
-            const [key, val]
-            of Object.entries(value)
-        ) {
-
-            const name =
-                key.toLowerCase();
-
-
-            if (
-                name === "username" ||
-                name === "credit"
-            ) {
-
+            if(
+                lowerKey==="username" ||
+                lowerKey==="credit"
+            ){
                 continue;
-
             }
 
-
-            result[key] =
-                cleanResponse(val);
-
+            cleaned[key]=cleanPrivateFields(val);
         }
 
-
-        return result;
-
+        return cleaned;
     }
-
 
     return value;
-
 }
 
+async function lookup(){
 
-/* =====================================================
-   MESSAGE
-   ===================================================== */
+    const number=numberInput.value.trim();
 
-function showMessage(
-    text,
-    type
-) {
-
-    message.textContent =
-        text;
-
-    message.className =
-        "message " + type;
-
-}
-
-
-function hideMessage() {
-
-    message.textContent =
-        "";
-
-    message.className =
-        "message hidden";
-
-}
-
-
-/* =====================================================
-   LOOKUP
-   ===================================================== */
-
-async function lookup() {
-
-
-    const number =
-        numberInput.value.trim();
     const accessToken =
-    new URLSearchParams(window.location.search).get("token");
+        new URLSearchParams(window.location.search).get("token");
 
-if (!accessToken) {
-    showMessage(
-        "Please open the portal using a valid access link.",
-        "error"
-    );
-    return;
-}
+    message.style.display="none";
+    resultBox.style.display="none";
 
-
-    if (
-        number.length !== 10
-    ) {
+    if(!accessToken){
 
         showMessage(
-            "Please enter a valid 10-digit mobile number.",
-            "error"
+            "🔐 Please open this portal using a valid access link."
         );
 
-        numberInput.focus();
-
         return;
-
     }
 
+    if(!/^[0-9]{10}$/.test(number)){
 
-    lookupBtn.disabled =
-        true;
+        showMessage(
+            "📱 Bhai 10 digit mobile number daalo 😭"
+        );
 
-    loader.classList.add(
-        "show"
-    );
+        return;
+    }
 
-    btnText.textContent =
-        "Processing Request";
+    searchBtn.disabled=true;
+    searchBtn.style.opacity=".6";
 
-    resultSection.classList.add(
-        "hidden"
-    );
+    loading.style.display="block";
 
-    hideMessage();
+    let i=0;
 
+    loadingText.textContent=loadingMessages[0];
 
-    try {
+    const interval=setInterval(()=>{
 
+        i=(i+1)%loadingMessages.length;
 
-        const response = await fetch(
-    "/api/lookup?number=" +
-    encodeURIComponent(number) +
-    "&token=" +
-    encodeURIComponent(accessToken)
-);
+        loadingText.textContent=loadingMessages[i];
 
+    },700);
+
+    try{
+
+        const response=await fetch(
+            "/api/lookup?number="+
+            encodeURIComponent(number)+
+            "&token="+
+            encodeURIComponent(accessToken)
+        );
+
+        const text=await response.text();
 
         let data;
 
-
-        try {
-
-            data =
-                await response.json();
-
+        try{
+            data=JSON.parse(text);
+        }catch{
+            throw new Error("Server returned an invalid response.");
         }
 
-        catch {
-
-            throw new Error(
-                "Invalid response received from server."
-            );
-
-        }
-
-
-        if (
-            !response.ok
-        ) {
-
-            throw new Error(
-                data?.message ||
-                data?.error ||
-                "Request could not be completed."
-            );
-
-        }
-
-
-        const cleanedData =
-            cleanResponse(
-                data
-            );
-
-
-        output.textContent =
-            JSON.stringify(
-                cleanedData,
-                null,
-                2
-            );
-
-
-        requestedNumber.textContent =
-            "+91 " + number;
-
-
-        requestStatus.textContent =
-            "COMPLETED";
-
-
-        resultSection.classList.remove(
-            "hidden"
-        );
-
-
-        showMessage(
-            "Request completed successfully.",
-            "success"
-        );
-
-
-        resultSection.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-
-    }
-
-
-    catch (error) {
-
-        showMessage(
-            error.message ||
-            "Something went wrong. Please try again.",
-            "error"
-        );
-
-    }
-
-
-    finally {
-
-        lookupBtn.disabled =
-            false;
-
-        loader.classList.remove(
-            "show"
-        );
-
-        btnText.textContent =
-            "Search Information";
-
-    }
-
-}
-
-
-/* =====================================================
-   SEARCH
-   ===================================================== */
-
-lookupBtn.addEventListener(
-    "click",
-    lookup
-);
-
-
-/* =====================================================
-   COPY
-   ===================================================== */
-
-copyBtn.addEventListener(
-    "click",
-    async () => {
-
-        const text =
-            output.textContent.trim();
-
-
-        if (!text) {
+        if(!response.ok){
 
             showMessage(
-                "There is no result to copy.",
-                "error"
+                "❌ "+(
+                    data.message ||
+                    "Something went wrong."
+                )
             );
 
             return;
-
         }
 
+        const cleanedData=cleanPrivateFields(data);
 
-        try {
+        result.textContent=
+            JSON.stringify(cleanedData,null,2);
 
-            await navigator.clipboard.writeText(
-                text
-            );
+        resultBox.style.display="block";
 
+        showMessage(
+            "✅ Result mil gaya! 😎🔥",
+            "success"
+        );
 
-            const oldText =
-                copyBtn.textContent;
+    }catch(error){
 
+        console.error(error);
 
-            copyBtn.textContent =
-                "Copied ✓";
+        showMessage(
+            "⚠️ Server se response nahi aa raha. Thodi der baad try karo."
+        );
 
+    }finally{
 
-            setTimeout(() => {
+        clearInterval(interval);
 
-                copyBtn.textContent =
-                    oldText;
+        loading.style.display="none";
 
-            }, 1800);
+        searchBtn.disabled=false;
+        searchBtn.style.opacity="1";
+    }
+}
 
+async function copyResult(){
 
-        }
+    if(!result.textContent){
+        return;
+    }
 
-        catch {
+    try{
 
-            showMessage(
-                "Unable to copy result.",
-                "error"
-            );
+        await navigator.clipboard.writeText(
+            result.textContent
+        );
 
+        showMessage(
+            "📋 Result copied! Ab jaake paste karo 😂",
+            "success"
+        );
+
+    }catch{
+
+        showMessage(
+            "❌ Copy nahi ho paya."
+        );
+    }
+}
+
+function clearResult(){
+
+    numberInput.value="";
+    result.textContent="";
+    resultBox.style.display="none";
+    message.style.display="none";
+
+    numberInput.focus();
+}
+
+numberInput.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key==="Enter"){
+            lookup();
         }
 
     }
 );
-
-
-/* =====================================================
-   SMOOTH LINKS
-   ===================================================== */
-
-document
-    .querySelectorAll(
-        'a[href^="#"]'
-    )
-    .forEach(link => {
-
-        link.addEventListener(
-            "click",
-            function(event) {
-
-                const target =
-                    document.querySelector(
-                        this.getAttribute(
-                            "href"
-                        )
-                    );
-
-
-                if (target) {
-
-                    event.preventDefault();
-
-                    target.scrollIntoView({
-                        behavior: "smooth"
-                    });
-
-                }
-
-            }
-        );
-
-    });
 
 </script>
 
