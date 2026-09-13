@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b1020">
+<meta name="theme-color" content="#050816">
 
-<title>Prince Lookup Portal</title>
+<title>World of Prince 👑</title>
 
 <style>
 *{
@@ -23,18 +23,17 @@ body{
     font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     color:#f8fafc;
     background:
-        radial-gradient(circle at 15% 10%,rgba(99,102,241,.20),transparent 30%),
-        radial-gradient(circle at 85% 90%,rgba(6,182,212,.14),transparent 30%),
+        radial-gradient(circle at 10% 10%,rgba(99,102,241,.20),transparent 30%),
+        radial-gradient(circle at 90% 90%,rgba(6,182,212,.15),transparent 30%),
         #050816;
 }
 
-/* ---------- NAVBAR ---------- */
+/* NAVBAR */
 
 .navbar{
     position:sticky;
     top:0;
     z-index:100;
-    width:100%;
     border-bottom:1px solid rgba(255,255,255,.08);
     background:rgba(5,8,22,.82);
     backdrop-filter:blur(18px);
@@ -42,8 +41,8 @@ body{
 
 .nav-inner{
     max-width:1050px;
-    margin:auto;
     min-height:70px;
+    margin:auto;
     padding:0 20px;
     display:flex;
     align-items:center;
@@ -55,19 +54,18 @@ body{
     align-items:center;
     gap:11px;
     font-weight:800;
-    letter-spacing:.3px;
 }
 
 .brand-logo{
-    width:40px;
-    height:40px;
-    border-radius:12px;
+    width:42px;
+    height:42px;
     display:flex;
     align-items:center;
     justify-content:center;
+    border-radius:13px;
     font-size:21px;
     background:linear-gradient(135deg,#6366f1,#06b6d4);
-    box-shadow:0 8px 25px rgba(99,102,241,.28);
+    box-shadow:0 8px 25px rgba(99,102,241,.3);
 }
 
 .nav-links{
@@ -78,34 +76,34 @@ body{
 .nav-links a{
     color:#aeb7ca;
     text-decoration:none;
-    font-size:14px;
+    font-size:13px;
     transition:.2s;
 }
 
 .nav-links a:hover{
-    color:#fff;
+    color:white;
 }
 
-/* ---------- HERO ---------- */
+/* HERO */
 
 .hero{
     max-width:1050px;
     margin:auto;
-    padding:85px 20px 45px;
+    padding:80px 20px 45px;
     text-align:center;
 }
 
 .pill{
     display:inline-flex;
     align-items:center;
-    gap:7px;
-    padding:8px 13px;
+    gap:8px;
+    padding:8px 14px;
     border-radius:50px;
-    background:rgba(99,102,241,.10);
-    border:1px solid rgba(99,102,241,.25);
-    color:#bfc3ff;
+    color:#c7c9ff;
     font-size:12px;
     font-weight:700;
+    background:rgba(99,102,241,.10);
+    border:1px solid rgba(99,102,241,.25);
 }
 
 .pill-dot{
@@ -118,12 +116,12 @@ body{
 
 .hero h1{
     margin-top:22px;
-    font-size:clamp(38px,7vw,70px);
-    line-height:1.03;
-    letter-spacing:-2.5px;
+    font-size:clamp(40px,7vw,70px);
+    line-height:1.05;
+    letter-spacing:-3px;
 }
 
-.gradient-text{
+.gradient{
     background:linear-gradient(90deg,#818cf8,#22d3ee);
     -webkit-background-clip:text;
     background-clip:text;
@@ -134,30 +132,28 @@ body{
     max-width:650px;
     margin:20px auto 0;
     color:#9ca8bd;
-    line-height:1.7;
     font-size:15px;
+    line-height:1.7;
 }
 
-/* ---------- MAIN CARD ---------- */
+/* LOOKUP */
 
 .lookup-section{
     max-width:700px;
-    margin:25px auto 0;
+    margin:20px auto 0;
     padding:0 20px;
 }
 
 .lookup-card{
     padding:28px;
     border-radius:24px;
-    background:rgba(12,18,38,.82);
+    background:rgba(12,18,38,.84);
     border:1px solid rgba(255,255,255,.09);
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.35),
-        inset 0 1px rgba(255,255,255,.04);
+    box-shadow:0 25px 80px rgba(0,0,0,.35);
 }
 
 .card-title{
-    font-size:18px;
+    font-size:19px;
     font-weight:800;
 }
 
@@ -167,13 +163,14 @@ body{
     font-size:13px;
 }
 
-.input-label{
+.label{
     display:block;
     margin-top:25px;
     margin-bottom:9px;
     color:#cbd5e1;
-    font-size:13px;
-    font-weight:700;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.5px;
 }
 
 .input-wrap{
@@ -198,7 +195,6 @@ body{
     background:#080d1d;
     color:white;
     font-size:16px;
-    letter-spacing:.5px;
     transition:.2s;
 }
 
@@ -222,55 +218,49 @@ body{
     font-size:15px;
     font-weight:800;
     background:linear-gradient(135deg,#6366f1,#06b6d4);
-    box-shadow:0 12px 30px rgba(99,102,241,.20);
+    box-shadow:0 12px 30px rgba(99,102,241,.2);
     transition:.2s;
 }
 
 .search-btn:hover{
     transform:translateY(-2px);
-    box-shadow:0 17px 35px rgba(99,102,241,.28);
-}
-
-.search-btn:active{
-    transform:scale(.99);
 }
 
 .search-btn:disabled{
     opacity:.55;
     cursor:not-allowed;
-    transform:none;
 }
 
-/* ---------- STATUS ---------- */
+/* STATUS */
 
 .status-row{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:9px;
-    margin-top:18px;
+    gap:8px;
+    margin-top:17px;
 }
 
 .status{
     padding:7px 11px;
     border-radius:50px;
-    font-size:11px;
     color:#8fa0b8;
     background:rgba(255,255,255,.045);
     border:1px solid rgba(255,255,255,.07);
+    font-size:11px;
 }
 
-/* ---------- LOADING ---------- */
+/* LOADING */
 
 .loading{
     display:none;
-    margin-top:18px;
+    margin-top:17px;
     padding:13px;
-    text-align:center;
     border-radius:13px;
+    text-align:center;
+    color:#b7bcff;
     background:rgba(99,102,241,.08);
     border:1px solid rgba(99,102,241,.15);
-    color:#aeb5ff;
     font-size:13px;
 }
 
@@ -287,10 +277,12 @@ body{
 }
 
 @keyframes spin{
-    to{transform:rotate(360deg);}
+    to{
+        transform:rotate(360deg);
+    }
 }
 
-/* ---------- MESSAGE ---------- */
+/* MESSAGE */
 
 .message{
     display:none;
@@ -313,22 +305,22 @@ body{
     border:1px solid rgba(34,197,94,.20);
 }
 
-/* ---------- RESULT ---------- */
+/* RESULT */
 
 .result-box{
     display:none;
     margin-top:18px;
-    border-radius:17px;
     overflow:hidden;
-    border:1px solid rgba(255,255,255,.09);
+    border-radius:17px;
     background:#060a15;
+    border:1px solid rgba(255,255,255,.09);
 }
 
 .result-header{
-    padding:13px 15px;
     display:flex;
     align-items:center;
     justify-content:space-between;
+    padding:13px 15px;
     border-bottom:1px solid rgba(255,255,255,.07);
 }
 
@@ -338,7 +330,7 @@ body{
 
 .live{
     color:#4ade80;
-    font-size:11px;
+    font-size:10px;
 }
 
 #result{
@@ -368,7 +360,6 @@ body{
     background:rgba(255,255,255,.045);
     color:#cbd5e1;
     font-weight:700;
-    transition:.2s;
 }
 
 .action-btn:hover{
@@ -376,7 +367,7 @@ body{
     color:white;
 }
 
-/* ---------- FEATURES ---------- */
+/* FEATURES */
 
 .features{
     max-width:1050px;
@@ -399,10 +390,10 @@ body{
 }
 
 .feature-grid{
-    margin-top:28px;
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:15px;
+    margin-top:28px;
 }
 
 .feature{
@@ -428,11 +419,76 @@ body{
     line-height:1.6;
 }
 
-/* ---------- ABOUT ---------- */
+/* PDF */
+
+.pdf-section{
+    max-width:700px;
+    margin:60px auto 0;
+    padding:0 20px;
+}
+
+.pdf-card{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:20px;
+    border-radius:20px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(99,102,241,.11),
+            rgba(6,182,212,.06)
+        );
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.pdf-icon{
+    width:52px;
+    height:52px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+    background:rgba(239,68,68,.10);
+    font-size:27px;
+}
+
+.pdf-info{
+    flex:1;
+}
+
+.pdf-info h3{
+    font-size:16px;
+}
+
+.pdf-info p{
+    margin-top:5px;
+    color:#7c889e;
+    font-size:11px;
+    line-height:1.5;
+}
+
+.pdf-btn{
+    padding:12px 15px;
+    border-radius:12px;
+    text-decoration:none;
+    color:white;
+    background:linear-gradient(135deg,#6366f1,#06b6d4);
+    font-size:11px;
+    font-weight:800;
+    transition:.2s;
+}
+
+.pdf-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* ABOUT */
 
 .about{
     max-width:700px;
-    margin:75px auto 0;
+    margin:70px auto 0;
     padding:0 20px;
 }
 
@@ -454,7 +510,7 @@ body{
     line-height:1.8;
 }
 
-/* ---------- CONTACT ---------- */
+/* CONTACT */
 
 .contact{
     max-width:700px;
@@ -463,15 +519,11 @@ body{
 }
 
 .contact-card{
-    padding:25px;
-    border-radius:20px;
+    padding:28px;
+    border-radius:22px;
     text-align:center;
-    background:linear-gradient(
-        135deg,
-        rgba(99,102,241,.10),
-        rgba(6,182,212,.06)
-    );
-    border:1px solid rgba(255,255,255,.08);
+    background:rgba(12,18,38,.65);
+    border:1px solid rgba(255,255,255,.07);
 }
 
 .contact-card p{
@@ -491,15 +543,14 @@ body{
     border-radius:13px;
     text-decoration:none;
     color:white;
-    font-weight:700;
     font-size:13px;
+    font-weight:800;
     background:linear-gradient(
         135deg,
         #833ab4,
         #fd1d1d,
         #fcb045
     );
-    box-shadow:0 10px 25px rgba(253,29,29,.14);
     transition:.2s;
 }
 
@@ -512,14 +563,14 @@ body{
     height:20px;
 }
 
-/* ---------- FOOTER ---------- */
+/* FOOTER */
 
 footer{
     margin-top:70px;
     padding:25px 20px;
     text-align:center;
-    border-top:1px solid rgba(255,255,255,.06);
     color:#536077;
+    border-top:1px solid rgba(255,255,255,.06);
     font-size:11px;
 }
 
@@ -527,7 +578,7 @@ footer strong{
     color:#8793a9;
 }
 
-/* ---------- RESPONSIVE ---------- */
+/* MOBILE */
 
 @media(max-width:760px){
 
@@ -536,11 +587,11 @@ footer strong{
     }
 
     .nav-links a{
-        font-size:12px;
+        font-size:11px;
     }
 
     .hero{
-        padding-top:65px;
+        padding-top:60px;
     }
 
     .feature-grid{
@@ -548,18 +599,10 @@ footer strong{
     }
 }
 
-@media(max-width:500px){
+@media(max-width:520px){
 
     .brand span{
         display:none;
-    }
-
-    .nav-links{
-        gap:10px;
-    }
-
-    .nav-inner{
-        min-height:62px;
     }
 
     .hero h1{
@@ -568,6 +611,15 @@ footer strong{
 
     .lookup-card{
         padding:20px;
+    }
+
+    .pdf-card{
+        flex-wrap:wrap;
+    }
+
+    .pdf-btn{
+        width:100%;
+        text-align:center;
     }
 
     .actions{
@@ -582,20 +634,40 @@ footer strong{
 <!-- NAVBAR -->
 
 <nav class="navbar">
+
     <div class="nav-inner">
 
         <div class="brand">
-            <div class="brand-logo">👑</div>
-            <span>WORLD OF PRINCE</span>
+
+            <div class="brand-logo">
+                👑
+            </div>
+
+            <span>
+                WORLD OF PRINCE
+            </span>
+
         </div>
 
+
         <div class="nav-links">
-            <a href="#lookup">Lookup</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+
+            <a href="#lookup">
+                Lookup
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
         </div>
 
     </div>
+
 </nav>
 
 
@@ -604,20 +676,31 @@ footer strong{
 <section class="hero">
 
     <div class="pill">
+
         <span class="pill-dot"></span>
+
         PORTAL ONLINE
+
     </div>
 
+
     <h1>
+
         Smart.
-        <span class="gradient-text">Simple.</span>
+        <span class="gradient">
+            Simple.
+        </span>
         Secure.
+
     </h1>
 
+
     <p>
+
         Welcome to the World of Prince lookup portal.
-        Enter a number and view the information returned by
-        the connected service.
+        Enter a number and view the information returned
+        by the connected service.
+
     </p>
 
 </section>
@@ -625,7 +708,10 @@ footer strong{
 
 <!-- LOOKUP -->
 
-<section class="lookup-section" id="lookup">
+<section
+    class="lookup-section"
+    id="lookup"
+>
 
     <div class="lookup-card">
 
@@ -637,13 +723,17 @@ footer strong{
             Enter a valid 10-digit mobile number to continue.
         </div>
 
-        <label class="input-label">
+
+        <label class="label">
             MOBILE NUMBER
         </label>
 
+
         <div class="input-wrap">
 
-            <span class="input-icon">📱</span>
+            <span class="input-icon">
+                📱
+            </span>
 
             <input
                 id="number"
@@ -656,6 +746,7 @@ footer strong{
 
         </div>
 
+
         <button
             class="search-btn"
             id="searchBtn"
@@ -667,27 +758,49 @@ footer strong{
 
         <div class="status-row">
 
-            <div class="status">⚡ Fast Response</div>
-            <div class="status">🔐 Token Protected</div>
-            <div class="status">☁️ Cloud Powered</div>
+            <div class="status">
+                ⚡ Fast Response
+            </div>
+
+            <div class="status">
+                🔐 Token Protected
+            </div>
+
+            <div class="status">
+                ☁️ Cloud Powered
+            </div>
 
         </div>
 
 
-        <div class="loading" id="loading">
+        <div
+            class="loading"
+            id="loading"
+        >
+
             <span class="spinner"></span>
+
             Processing your request...
+
         </div>
 
 
-        <div class="message" id="message"></div>
+        <div
+            class="message"
+            id="message"
+        ></div>
 
 
-        <div class="result-box" id="resultBox">
+        <div
+            class="result-box"
+            id="resultBox"
+        >
 
             <div class="result-header">
 
-                <strong>📡 LOOKUP RESULT</strong>
+                <strong>
+                    📡 LOOKUP RESULT
+                </strong>
 
                 <span class="live">
                     ● RESPONSE RECEIVED
@@ -695,7 +808,9 @@ footer strong{
 
             </div>
 
+
             <pre id="result"></pre>
+
 
             <div class="actions">
 
@@ -728,7 +843,9 @@ footer strong{
 
     <div class="section-heading">
 
-        <h2>Built for a Better Experience ✨</h2>
+        <h2>
+            Built for a Better Experience ✨
+        </h2>
 
         <p>
             Clean interface, simple workflow and secure access.
@@ -741,13 +858,17 @@ footer strong{
 
         <div class="feature">
 
-            <div class="feature-icon">⚡</div>
+            <div class="feature-icon">
+                ⚡
+            </div>
 
-            <h3>Fast</h3>
+            <h3>
+                Fast
+            </h3>
 
             <p>
-                A lightweight interface designed for quick
-                requests and smooth navigation.
+                Lightweight interface designed for
+                quick requests and smooth navigation.
             </p>
 
         </div>
@@ -755,13 +876,17 @@ footer strong{
 
         <div class="feature">
 
-            <div class="feature-icon">🔐</div>
+            <div class="feature-icon">
+                🔐
+            </div>
 
-            <h3>Protected Access</h3>
+            <h3>
+                Protected Access
+            </h3>
 
             <p>
-                Portal access uses the token-based system
-                configured on the server.
+                Token-based access helps keep the
+                portal restricted to valid links.
             </p>
 
         </div>
@@ -769,13 +894,17 @@ footer strong{
 
         <div class="feature">
 
-            <div class="feature-icon">📱</div>
+            <div class="feature-icon">
+                📱
+            </div>
 
-            <h3>Mobile Friendly</h3>
+            <h3>
+                Mobile Friendly
+            </h3>
 
             <p>
-                Responsive design that works comfortably
-                on phones, tablets and desktops.
+                Responsive design for phones,
+                tablets and desktops.
             </p>
 
         </div>
@@ -785,20 +914,65 @@ footer strong{
 </section>
 
 
+<!-- PDF DOWNLOAD -->
+
+<section class="pdf-section">
+
+    <div class="pdf-card">
+
+        <div class="pdf-icon">
+            📄
+        </div>
+
+
+        <div class="pdf-info">
+
+            <h3>
+                📚 Portal Guide
+            </h3>
+
+            <p>
+                Important information, instructions
+                and usage guide.
+            </p>
+
+        </div>
+
+
+        <a
+            href="/guide.pdf"
+            download
+            class="pdf-btn"
+        >
+            ⬇️ DOWNLOAD PDF
+        </a>
+
+    </div>
+
+</section>
+
+
 <!-- ABOUT -->
 
-<section class="about" id="about">
+<section
+    class="about"
+    id="about"
+>
 
     <div class="about-card">
 
-        <h2>👋 About This Portal</h2>
+        <h2>
+            👋 About This Portal
+        </h2>
 
         <p>
+
             Welcome to <strong>World of Prince</strong>.
-            This portal is designed as a simple interface
-            for accessing the connected lookup service.
-            Please use it responsibly and only with information
-            you are authorized to access.
+            This portal provides a simple interface for
+            accessing the connected lookup service.
+            Please use the service responsibly and only
+            with information you are authorized to access.
+
         </p>
 
     </div>
@@ -808,16 +982,22 @@ footer strong{
 
 <!-- CONTACT -->
 
-<section class="contact" id="contact">
+<section
+    class="contact"
+    id="contact"
+>
 
     <div class="contact-card">
 
-        <h2>💬 Let's Connect</h2>
+        <h2>
+            💬 Let's Connect
+        </h2>
 
         <p>
-            Have feedback, suggestions or found something
-            that needs improvement?
+            Have feedback, suggestions or improvements?
+            Feel free to connect.
         </p>
+
 
         <a
             class="instagram"
@@ -826,14 +1006,13 @@ footer strong{
             rel="noopener noreferrer"
         >
 
-            <!-- Instagram SVG -->
-
             <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
             >
+
                 <rect
                     x="3"
                     y="3"
@@ -871,7 +1050,11 @@ footer strong{
 
 <footer>
 
-    © 2026 <strong>World of Prince</strong>
+    © 2026
+    <strong>
+        World of Prince
+    </strong>
+
     • Built with ❤️ & Code
 
 </footer>
@@ -880,7 +1063,7 @@ footer strong{
 <script>
 
 /* =========================
-   TOKEN
+   GET TOKEN
 ========================= */
 
 function getAccessToken(){
@@ -919,24 +1102,29 @@ const result =
    MESSAGE
 ========================= */
 
-function showMessage(text,type){
+function showMessage(text,type="error"){
 
     message.className = "message";
 
     if(type === "success"){
+
         message.classList.add("success");
+
     }else{
+
         message.classList.add("error");
+
     }
 
     message.textContent = text;
+
     message.style.display = "block";
 
 }
 
 
 /* =========================
-   REMOVE UNWANTED FIELDS
+   CLEAN RESPONSE
 ========================= */
 
 function cleanPrivateFields(value){
@@ -957,6 +1145,7 @@ function cleanPrivateFields(value){
 
         const cleaned = {};
 
+
         for(
             const [key,val]
             of Object.entries(value)
@@ -965,17 +1154,22 @@ function cleanPrivateFields(value){
             const lowerKey =
                 key.toLowerCase();
 
+
             if(
                 lowerKey === "username" ||
                 lowerKey === "credit"
             ){
+
                 continue;
+
             }
+
 
             cleaned[key] =
                 cleanPrivateFields(val);
 
         }
+
 
         return cleaned;
 
@@ -1001,10 +1195,11 @@ async function lookup(){
 
 
     message.style.display = "none";
+
     resultBox.style.display = "none";
 
 
-    /* TOKEN CHECK */
+    /* TOKEN */
 
     if(!token){
 
@@ -1017,7 +1212,7 @@ async function lookup(){
     }
 
 
-    /* NUMBER CHECK */
+    /* NUMBER */
 
     if(!/^[0-9]{10}$/.test(number)){
 
@@ -1033,6 +1228,7 @@ async function lookup(){
 
 
     searchBtn.disabled = true;
+
     loading.style.display = "block";
 
 
@@ -1068,7 +1264,7 @@ async function lookup(){
         }
 
 
-        /* SERVER ERROR */
+        /* ERROR */
 
         if(!response.ok){
 
@@ -1085,7 +1281,7 @@ async function lookup(){
         }
 
 
-        /* CLEAN RESPONSE */
+        /* CLEAN */
 
         const cleaned =
             cleanPrivateFields(data);
@@ -1151,10 +1347,12 @@ async function copyResult(){
             result.textContent
         );
 
+
         showMessage(
             "📋 Result copied successfully!",
             "success"
         );
+
 
     }catch{
 
