@@ -1150,6 +1150,16 @@ async function lookup() {
 
     const number =
         numberInput.value.trim();
+    const accessToken =
+    new URLSearchParams(window.location.search).get("token");
+
+if (!accessToken) {
+    showMessage(
+        "Please open the portal using a valid access link.",
+        "error"
+    );
+    return;
+}
 
 
     if (
@@ -1188,13 +1198,12 @@ async function lookup() {
     try {
 
 
-        const response =
-            await fetch(
-                "/api/lookup?number=" +
-                encodeURIComponent(
-                    number
-                )
-            );
+        const response = await fetch(
+    "/api/lookup?number=" +
+    encodeURIComponent(number) +
+    "&token=" +
+    encodeURIComponent(accessToken)
+);
 
 
         let data;
