@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prince Admin Panel</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #17202a;
+        }
+
+        .container {
+            width: min(900px, 92%);
+            margin: 50px auto;
+        }
+
+        .header {
+            background: #12355b;
+            color: white;
+            padding: 25px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .header h1 {
+            margin: 0 0 6px;
+        }
+
+        .header p {
+            margin: 0;
+            opacity: .8;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,.08);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccd3da;
+            border-radius: 7px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            border: 0;
+            border-radius: 7px;
+            padding: 12px 18px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .generate {
+            background: #12355b;
+            color: white;
+            width: 100%;
+        }
+
+        .generate:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        .message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 7px;
+            display: none;
+        }
+
+        .success {
+            display: block;
+            background: #e8f7ee;
+            color: #176b3a;
+        }
+
+        .error {
+            display: block;
+            background: #fdecec;
+            color: #a32121;
+        }
+
+        .links {
+            margin-top: 30px;
+        }
+
+        .link-card {
+            border: 1px solid #e0e4e8;
+            padding: 16px;
+            border-radius: 9px;
+            margin-top: 12px;
+        }
+
+        .link-url {
+            word-break: break-all;
+            font-size: 14px;
+            margin: 10px 0;
+            color: #345;
+        }
+
+        .active {
+            color: #16833a;
+            font-weight: bold;
+        }
+
+        .revoked {
+            color: #b42318;
+            font-weight: bold;
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .copy {
+            background: #e8eef5;
+        }
+
+        .revoke {
+            background: #b42318;
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>PRINCE ADMIN</h1>
+        <p>Share Link Management Panel</p>
+    </div>
+
+    <div class="card">
+
+        <label for="password">Admin Password</label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter admin password"
+            autocomplete="off"
+        >
+
+        <button id="generateBtn" class="generate">
+            GENERATE NEW LINK
+        </button>
+
+        <div id="message" class="message"></div>
+
+        <div id="linksSection" class="links hidden">
+            <h2>Share Links</h2>
+            <div id="links"></div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+const passwordInput = document.getElementById("password");
+const generateBtn = document.getElementById("generateBtn");
+const message = document.getElementById("message");
+const linksSection = document.getElementById("linksSection");
+const linksContainer = document.getElementById("links");
+
+let adminPassword = "";
+
+function showMessage(text, type) {
+    message.textContent = text;
+    message.className = "message " + type;
+}
+
+function getPassword() {
+    const password = passwordInput.value.trim();
+
+    if (!password) {
+        showMessage("Admin password required.", "error");
+        passwordInput.focus();
+        return null;
+    }
+
+    adminPassword = password;
+    return password;
+}
+
+async function generateLink() {
+    const password = getPassword();
+
+    if (!password) return;
+
+    generateBtn.disabled = true;
+    generateBtn.textContent = "GENERATING...";
+
+    try {
+        const response = await fetch("/api/generate-link", {
+            method: "POST",
+            headers: {
+                "x-admin-password": password
+            }
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                data.message || "Unable to generate link"
+            );
+        }
+
+        const link =
+            window.location.origin +
+            "/?token=" +
+            encodeURIComponent(data.token);
+
+        await navigator.clipboard.writeText(link);
+
+        showMessage(
+            "New link generated and copied to clipboard.",
+            "success"
+        );
+
+        loadLinks();
+
+    } catch (error) {
+        showMessage(
+            error.message || "Something went wrong.",
+            "error"
+        );
+    }
+
+    generateBtn.disabled = false;
+    generateBtn.textContent = "GENERATE NEW LINK";
+}
+
+async function loadLinks() {
+    if (!adminPassword) return;
+
+    try {
+        const response = await fetch("/api/list-links", {
+            headers: {
+                "x-admin-password": adminPassword
+            }
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                data.message || "Unable to load links"
+            );
+        }
+
+        linksContainer.innerHTML = "";
+
+        data.links.forEach(item => {
+
+            const link =
+                window.location.origin +
+                "/?token=" +
+                encodeURIComponent(item.token);
+
+            const card = document.createElement("div");
+            card.className = "link-card";
+
+            const statusClass =
+                item.status === "active"
+                    ? "active"
+                    : "revoked";
+
+            card.innerHTML = `
+                <div>
+                    Status:
+                    <span class="${statusClass}">
+                        ${item.status.toUpperCase()}
+                    </span>
+                </div>
+
+                <div class="link-url">
+                    ${link}
+                </div>
+
+                <div class="actions">
+                    <button class="copy">
+                        COPY LINK
+                    </button>
+
+                    ${
+                        item.status === "active"
+                        ? `<button class="revoke">
+                            REVOKE
+                           </button>`
+                        : ""
+                    }
+                </div>
+            `;
+
+            card.querySelector(".copy").onclick = async () => {
+                await navigator.clipboard.writeText(link);
+                showMessage(
+                    "Link copied.",
+                    "success"
+                );
+            };
+
+            const revokeButton =
+                card.querySelector(".revoke");
+
+            if (revokeButton) {
+                revokeButton.onclick = () =>
+                    revokeLink(item.token);
+            }
+
+            linksContainer.appendChild(card);
+        });
+
+        linksSection.classList.remove("hidden");
+
+    } catch (error) {
+        showMessage(
+            error.message || "Unable to load links.",
+            "error"
+        );
+    }
+}
+
+async function revokeLink(token) {
+
+    if (!confirm("Revoke this link?")) {
+        return;
+    }
+
+    try {
+        const response = await fetch("/api/revoke-link", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "x-admin-password": adminPassword
+            },
+            body: JSON.stringify({
+                token: token
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                data.message || "Unable to revoke link"
+            );
+        }
+
+        showMessage(
+            "Link revoked successfully.",
+            "success"
+        );
+
+        loadLinks();
+
+    } catch (error) {
+        showMessage(
+            error.message || "Something went wrong.",
+            "error"
+        );
+    }
+}
+
+generateBtn.addEventListener(
+    "click",
+    generateLink
+);
+
+passwordInput.addEventListener(
+    "keydown",
+    event => {
+        if (event.key === "Enter") {
+            generateLink();
+        }
+    }
+);
+</script>
+
+</body>
+</html>
