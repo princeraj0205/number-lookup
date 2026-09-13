@@ -1,0 +1,596 @@
+/* =========================================================
+   NUMBER LOOKUP — MODERN PREMIUM UI
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+    --bg: #05070d;
+    --card: rgba(14, 18, 28, 0.72);
+    --border: rgba(255, 255, 255, 0.10);
+
+    --primary: #6d5dfc;
+    --primary-light: #9b91ff;
+    --cyan: #22d3ee;
+
+    --text: #f8fafc;
+    --muted: #94a3b8;
+
+    --danger: #fb7185;
+    --shadow: 0 30px 100px rgba(0, 0, 0, 0.55);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    padding: 30px 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(109, 93, 252, 0.22),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(34, 211, 238, 0.15),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #02030a,
+            #070b16 50%,
+            #02030a
+        );
+
+    overflow-x: hidden;
+}
+
+/* Animated background glow */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    width: 500px;
+    height: 500px;
+
+    top: -250px;
+    left: -180px;
+
+    border-radius: 50%;
+
+    background: rgba(109, 93, 252, 0.12);
+
+    filter: blur(100px);
+
+    animation: floatGlow 8s ease-in-out infinite alternate;
+
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+    width: 450px;
+    height: 450px;
+
+    right: -220px;
+    bottom: -200px;
+
+    border-radius: 50%;
+
+    background: rgba(34, 211, 238, 0.09);
+
+    filter: blur(100px);
+
+    animation: floatGlow 10s ease-in-out infinite alternate-reverse;
+
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* =========================================================
+   MAIN CARD
+   ========================================================= */
+
+.container {
+    width: 100%;
+    max-width: 760px;
+
+    position: relative;
+
+    padding: 42px;
+
+    border: 1px solid var(--border);
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 25, 38, 0.82),
+            rgba(7, 10, 18, 0.76)
+        );
+
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+
+    box-shadow: var(--shadow);
+
+    animation: cardIn 0.8s ease;
+}
+
+/* Top gradient line */
+
+.container::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 12%;
+
+    width: 76%;
+    height: 2px;
+
+    border-radius: 50px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--primary),
+        var(--cyan),
+        var(--primary),
+        transparent
+    );
+
+    box-shadow:
+        0 0 20px rgba(109, 93, 252, 0.7);
+}
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+h2 {
+    text-align: center;
+
+    margin-bottom: 30px;
+
+    font-size: clamp(26px, 5vw, 36px);
+    font-weight: 800;
+
+    letter-spacing: -1.2px;
+
+    color: #ffffff;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #b9b3ff,
+        #67e8f9
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+h2::after {
+    content: "";
+
+    display: block;
+
+    width: 55px;
+    height: 3px;
+
+    margin: 12px auto 0;
+
+    border-radius: 50px;
+
+    background: linear-gradient(
+        90deg,
+        var(--primary),
+        var(--cyan)
+    );
+
+    box-shadow:
+        0 0 18px rgba(109, 93, 252, 0.7);
+}
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+input {
+    width: 100%;
+    height: 60px;
+
+    padding: 0 20px;
+
+    outline: none;
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 14px;
+
+    background:
+        rgba(2, 5, 12, 0.75);
+
+    color: #ffffff;
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 16px;
+
+    transition:
+        0.25s ease;
+}
+
+input::placeholder {
+    color: #64748b;
+}
+
+input:hover {
+    border-color: rgba(109, 93, 252, 0.45);
+}
+
+input:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(109, 93, 252, 0.10),
+        0 0 35px rgba(109, 93, 252, 0.12);
+
+    transform: translateY(-1px);
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+button {
+    min-height: 48px;
+
+    padding: 0 20px;
+    margin: 12px 6px 0 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 12px;
+
+    outline: none;
+
+    cursor: pointer;
+
+    color: #e2e8f0;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(109, 93, 252, 0.55);
+
+    background:
+        rgba(109, 93, 252, 0.12);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.30),
+        0 0 25px rgba(109, 93, 252, 0.12);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* Lookup */
+
+button:first-of-type {
+    color: #ffffff;
+
+    border-color:
+        rgba(109, 93, 252, 0.65);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(109, 93, 252, 0.30),
+            rgba(34, 211, 238, 0.12)
+        );
+}
+
+/* Copy */
+
+button:nth-of-type(2) {
+    color: #67e8f9;
+}
+
+/* Clear */
+
+button:nth-of-type(3) {
+    color: #fb7185;
+}
+
+/* Example */
+
+button:nth-of-type(4) {
+    color: #c4b5fd;
+}
+
+/* =========================================================
+   OUTPUT
+   ========================================================= */
+
+pre {
+    width: 100%;
+
+    min-height: 190px;
+    max-height: 500px;
+
+    margin-top: 25px;
+    padding: 22px;
+
+    overflow: auto;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(2, 5, 12, 0.92),
+            rgba(8, 12, 22, 0.85)
+        );
+
+    color: #c4b5fd;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+    word-break: break-word;
+
+    box-shadow:
+        inset 0 0 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Scrollbar */
+
+pre::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+pre::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+pre::-webkit-scrollbar-thumb {
+    background: rgba(109, 93, 252, 0.45);
+    border-radius: 20px;
+}
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+#status {
+    min-height: 22px;
+
+    margin-top: 14px;
+
+    text-align: center;
+
+    color: #67e8f9;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
+}
+
+/* =========================================================
+   CREDIT
+   ========================================================= */
+
+.credit {
+    margin-top: 30px;
+    padding-top: 22px;
+
+    text-align: center;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.07);
+}
+
+.credit .name {
+    font-size: 13px;
+    font-weight: 700;
+
+    color: #cbd5e1;
+
+    letter-spacing: 0.3px;
+
+    transition: 0.25s ease;
+}
+
+.credit .email {
+    margin-top: 8px;
+
+    font-family:
+        "JetBrains Mono",
+        monospace;
+
+    font-size: 11px;
+
+    color: #64748b;
+
+    transition: 0.25s ease;
+}
+
+.credit:hover .name {
+    color: #a78bfa;
+
+    text-shadow:
+        0 0 18px rgba(167, 139, 250, 0.35);
+}
+
+.credit:hover .email {
+    color: #94a3b8;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes cardIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(30px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+@keyframes floatGlow {
+
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(45px, 30px, 0);
+    }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 18px 12px;
+    }
+
+    .container {
+        padding: 28px 18px;
+        border-radius: 20px;
+    }
+
+    h2 {
+        font-size: 26px;
+        margin-bottom: 24px;
+    }
+
+    input {
+        height: 56px;
+        font-size: 15px;
+    }
+
+    button {
+        width: calc(50% - 8px);
+
+        margin-right: 4px;
+        margin-left: 4px;
+
+        padding: 0 10px;
+
+        font-size: 13px;
+    }
+
+    pre {
+        min-height: 210px;
+        padding: 17px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .container {
+        padding: 24px 14px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+
+    button {
+        width: 100%;
+        margin: 6px 0 0;
+    }
+
+    pre {
+        font-size: 11px;
+    }
+
+    .credit .name {
+        font-size: 11px;
+    }
+
+    .credit .email {
+        font-size: 9px;
+    }
+}
+
+/* Accessibility */
+
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
