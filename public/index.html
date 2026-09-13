@@ -414,11 +414,16 @@ async function lookup() {
 
     catch (error) {
 
-        output.textContent =
-            JSON.stringify({
-                success: false,
-                error: "Unable to connect to server"
-            }, null, 2);
+        const cleanData = { ...data };
+
+delete cleanData.username;
+delete cleanData.credit;
+
+output.textContent = JSON.stringify(
+    cleanData,
+    null,
+    2
+);
 
         status.textContent =
             "Connection error.";
