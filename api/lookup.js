@@ -9,24 +9,32 @@ export default async function handler(req, res) {
       });
     }
 
-    const API_URL = process.env.API_URL;
     const API_KEY = process.env.API_KEY;
+    const BASE_URL = process.env.API_URL;
 
-    if (!API_URL || !API_KEY) {
+    if (!API_KEY || !BASE_URL) {
       return res.status(500).json({
         status: "error",
         message: "Server configuration missing"
       });
     }
 
-    const response = await fetch(
-      `${API_URL}?number=${encodeURIComponent(number)}`,
-      {
-        headers: {
-          "Authorization": `Bearer ${API_KEY}`
-        }
-      }
-    );
+    const cleanNumber = String(number).replace(/[^0-9]/g, "");
+
+    if (cleanNumber.length < 10) {
+      return res.status(400).json({
+        status: "error",
+        message: "Invalid number"
+      });
+    }
+
+    const url =
+      BASE_URL +
+      API_KEY +
+      "?Astha=" +
+      encodeURIComponent(cleanNumber);
+
+    const response = await fetch(url);
 
     const data = await response.json();
 
