@@ -4,7 +4,17 @@ import crypto from "crypto";
 export default async function handler(req, res) {
     if (req.method !== "POST") {
         return res.status(405).json({
-            error: "Method not allowed"
+            success: false,
+            message: "Method not allowed"
+        });
+    }
+
+    const adminPassword = req.headers["x-admin-password"];
+
+    if (!adminPassword || adminPassword !== process.env.ADMIN_PASSWORD) {
+        return res.status(401).json({
+            success: false,
+            message: "Unauthorized"
         });
     }
 
@@ -28,7 +38,7 @@ export default async function handler(req, res) {
 
         return res.status(500).json({
             success: false,
-            error: "Unable to generate link"
+            message: "Unable to generate link"
         });
     }
 }
