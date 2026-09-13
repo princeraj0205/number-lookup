@@ -2,102 +2,102 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Number Lookup Tool by Prince Mahto"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Prince Mahto | Number Lookup</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- =====================================================
-         INTRO SCREEN
-    ====================================================== -->
+    <!-- ================= INTRO ================= -->
 
-    <div id="intro">
+    <section id="intro">
 
-        <!-- Animated 3D background -->
-        <div class="intro-orb orb-one"></div>
-        <div class="intro-orb orb-two"></div>
-        <div class="intro-orb orb-three"></div>
+        <div class="scene">
+            <div class="glow glow1"></div>
+            <div class="glow glow2"></div>
+            <div class="glow glow3"></div>
 
-        <div class="stars"></div>
+            <div class="grid"></div>
+            <div class="stars"></div>
+        </div>
 
         <div class="intro-content">
 
-            <div class="intro-small">
-                ✦ WELCOME ✦
+            <div class="welcome">
+                WELCOME TO
             </div>
 
             <h1>
-                TO THE
-                <span>WORLD OF</span>
-                PRINCE
+                WORLD OF
+                <span>PRINCE</span>
             </h1>
 
             <div class="intro-line"></div>
 
-            <div class="creator">
-                <span>CREATED BY</span>
-                <strong>PRINCE MAHTO</strong>
+            <div class="intro-by">
+                CREATED BY
             </div>
 
-            <div class="email">
+            <div class="prince-name">
+                PRINCE MAHTO
+            </div>
+
+            <div class="intro-email">
                 princeraj74682@gmail.com
             </div>
 
-            <div class="loader-area">
+            <div class="loading">
 
-                <div class="loader-ring"></div>
+                <div class="loader"></div>
 
-                <div class="loading-text">
-                    INITIALIZING EXPERIENCE
-                    <span class="dots">...</span>
-                </div>
+                <span>
+                    ENTERING EXPERIENCE
+                </span>
 
             </div>
 
         </div>
 
-    </div>
+    </section>
 
 
-    <!-- =====================================================
-         MAIN APPLICATION
-    ====================================================== -->
+    <!-- ================= MAIN WEBSITE ================= -->
 
-    <main class="app">
+    <main id="website">
 
-        <div class="background-grid"></div>
+        <div class="ambient ambient1"></div>
+        <div class="ambient ambient2"></div>
 
-        <div class="container">
+        <div class="main-grid"></div>
 
-            <!-- Header -->
+        <div class="card">
 
-            <div class="brand">
+            <!-- HEADER -->
 
-                <div class="brand-icon">
-                    P
-                </div>
+            <header class="header">
 
-                <div class="brand-text">
+                <div class="brand">
 
-                    <div class="brand-title">
-                        NUMBER LOOKUP
+                    <div class="logo">
+                        P
                     </div>
 
-                    <div class="brand-subtitle">
-                        Advanced Lookup Interface
+                    <div>
+                        <div class="brand-title">
+                            PRINCE
+                        </div>
+
+                        <div class="brand-subtitle">
+                            DIGITAL EXPERIENCE
+                        </div>
                     </div>
 
                 </div>
@@ -107,17 +107,14 @@
                     ONLINE
                 </div>
 
-            </div>
+            </header>
 
 
-            <div class="divider"></div>
-
-
-            <!-- Heading -->
+            <!-- HERO -->
 
             <section class="hero">
 
-                <div class="eyebrow">
+                <div class="tag">
                     ✦ SECURE LOOKUP SYSTEM
                 </div>
 
@@ -127,26 +124,26 @@
                 </h2>
 
                 <p>
-                    Enter a mobile number to request
-                    information from the connected service.
+                    Enter a mobile number to continue
+                    with the lookup service.
                 </p>
 
             </section>
 
 
-            <!-- Search -->
+            <!-- INPUT -->
 
-            <div class="search-box">
+            <section class="lookup">
 
-                <div class="input-label">
+                <label>
                     MOBILE NUMBER
-                </div>
+                </label>
 
-                <div class="input-wrap">
+                <div class="input-box">
 
-                    <div class="phone-icon">
-                        ☎
-                    </div>
+                    <span class="phone">
+                        +91
+                    </span>
 
                     <input
                         id="number"
@@ -156,99 +153,90 @@
                         placeholder="Enter mobile number"
                     >
 
-                    <div class="input-status">
+                    <span class="input-dot">
                         ●
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Buttons -->
-
-            <div class="actions">
-
-                <button
-                    class="btn primary"
-                    onclick="lookup()"
-                >
-                    <span>⌕</span>
-                    Lookup
-                </button>
-
-                <button
-                    class="btn"
-                    onclick="copyJSON()"
-                >
-                    <span>⧉</span>
-                    Copy
-                </button>
-
-                <button
-                    class="btn danger"
-                    onclick="clearAll()"
-                >
-                    <span>×</span>
-                    Clear
-                </button>
-
-                <button
-                    class="btn"
-                    onclick="example()"
-                >
-                    <span>✦</span>
-                    Example
-                </button>
-
-                <a
-                    class="btn contact"
-                    href="https://instagram.com/princeraj0205"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span>◎</span>
-                    Contact Me
-                </a>
-
-            </div>
-
-
-            <!-- Status -->
-
-            <div class="status-card">
-
-                <div class="status-top">
-
-                    <div class="status-dot"></div>
-
-                    <span id="status">
-                        Ready to lookup
                     </span>
 
                 </div>
 
-                <div class="status-bar">
-                    <div></div>
+
+                <!-- BUTTONS -->
+
+                <div class="buttons">
+
+                    <button
+                        class="btn primary"
+                        onclick="lookup()"
+                    >
+                        <span>⌕</span>
+                        LOOKUP
+                    </button>
+
+                    <button
+                        class="btn copy"
+                        onclick="copyJSON()"
+                    >
+                        <span>⧉</span>
+                        COPY
+                    </button>
+
+                    <button
+                        class="btn clear"
+                        onclick="clearAll()"
+                    >
+                        <span>×</span>
+                        CLEAR
+                    </button>
+
+                    <button
+                        class="btn example"
+                        onclick="example()"
+                    >
+                        <span>✦</span>
+                        EXAMPLE
+                    </button>
+
+                    <a
+                        class="btn contact"
+                        href="https://instagram.com/princeraj0205"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span>◎</span>
+                        CONTACT ME
+                    </a>
+
                 </div>
+
+            </section>
+
+
+            <!-- STATUS -->
+
+            <div class="status">
+
+                <span class="status-light"></span>
+
+                <span id="status">
+                    Ready to lookup
+                </span>
 
             </div>
 
 
-            <!-- Result -->
+            <!-- RESULT -->
 
-            <div class="result-wrapper">
+            <section class="result">
 
-                <div class="result-header">
+                <div class="result-top">
 
-                    <div>
-                        <span class="terminal-dot"></span>
+                    <span>
                         RESPONSE
-                    </div>
+                    </span>
 
-                    <div class="result-live">
-                        LIVE
-                    </div>
+                    <span class="live">
+                        ● LIVE
+                    </span>
 
                 </div>
 
@@ -257,35 +245,29 @@
   "message": "Enter a number and click Lookup"
 }</pre>
 
-            </div>
+            </section>
 
 
-            <!-- Footer -->
+            <!-- FOOTER -->
 
             <footer>
 
-                <div class="footer-line"></div>
-
                 <div class="footer-name">
-                    <span>✦</span>
                     Designed & Developed by
                     <strong>Prince Mahto</strong>
-                    <span>✦</span>
                 </div>
 
                 <div class="footer-email">
                     princeraj74682@gmail.com
                 </div>
 
-                <div class="footer-social">
-                    <a
-                        href="https://instagram.com/princeraj0205"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        @princeraj0205
-                    </a>
-                </div>
+                <a
+                    href="https://instagram.com/princeraj0205"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Instagram · @princeraj0205
+                </a>
 
             </footer>
 
@@ -294,47 +276,31 @@
     </main>
 
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+    <!-- ================= JAVASCRIPT ================= -->
 
     <script>
 
-        /*
-         * INTRO
-         * Show intro for approximately 3.5 seconds.
-         */
+        /* INTRO */
 
-        window.addEventListener("load", () => {
+        window.addEventListener("load", function () {
 
-            setTimeout(() => {
+            setTimeout(function () {
 
-                document.body.classList.add("intro-complete");
+                document.body.classList.add("loaded");
 
-                setTimeout(() => {
-
-                    const intro =
-                        document.getElementById("intro");
-
-                    if (intro) {
-                        intro.style.display = "none";
-                    }
-
-                }, 1000);
-
-            }, 3500);
+            }, 5000);
 
         });
 
 
-        /*
-         * LOOKUP
-         */
+        /* LOOKUP */
 
         async function lookup() {
 
-            const input =
-                document.getElementById("number");
+            const number =
+                document.getElementById("number")
+                .value
+                .trim();
 
             const output =
                 document.getElementById("output");
@@ -342,8 +308,6 @@
             const status =
                 document.getElementById("status");
 
-            const number =
-                input.value.trim();
 
             if (!number) {
 
@@ -351,16 +315,13 @@
                     "Please enter a mobile number.";
 
                 output.textContent =
-                    JSON.stringify(
-                        {
-                            success: false,
-                            error: "Number is required"
-                        },
-                        null,
-                        2
-                    );
+                    JSON.stringify({
+                        success: false,
+                        error: "Number is required"
+                    }, null, 2);
 
                 return;
+
             }
 
 
@@ -406,14 +367,10 @@
             } catch (error) {
 
                 output.textContent =
-                    JSON.stringify(
-                        {
-                            success: false,
-                            error: "Unable to connect to server"
-                        },
-                        null,
-                        2
-                    );
+                    JSON.stringify({
+                        success: false,
+                        error: "Unable to connect to server"
+                    }, null, 2);
 
                 status.textContent =
                     "Connection error.";
@@ -423,38 +380,28 @@
         }
 
 
-        /*
-         * COPY
-         */
+        /* COPY */
 
         function copyJSON() {
 
-            const output =
-                document.getElementById("output");
+            const text =
+                document.getElementById("output")
+                .textContent;
 
             navigator.clipboard
-                .writeText(output.textContent)
-                .then(() => {
+                .writeText(text)
+                .then(function () {
 
                     document.getElementById("status")
                         .textContent =
-                        "Response copied to clipboard.";
-
-                })
-                .catch(() => {
-
-                    document.getElementById("status")
-                        .textContent =
-                        "Copy failed.";
+                        "Response copied.";
 
                 });
 
         }
 
 
-        /*
-         * CLEAR
-         */
+        /* CLEAR */
 
         function clearAll() {
 
@@ -470,14 +417,12 @@
 
             document.getElementById("status")
                 .textContent =
-                "Ready to lookup.";
+                "Ready to lookup";
 
         }
 
 
-        /*
-         * EXAMPLE
-         */
+        /* EXAMPLE */
 
         function example() {
 
@@ -491,22 +436,16 @@
         }
 
 
-        /*
-         * ENTER KEY
-         */
+        /* ENTER KEY */
 
-        document
-            .getElementById("number")
-            .addEventListener(
-                "keydown",
-                function(event) {
+        document.getElementById("number")
+            .addEventListener("keydown", function (event) {
 
-                    if (event.key === "Enter") {
-                        lookup();
-                    }
-
+                if (event.key === "Enter") {
+                    lookup();
                 }
-            );
+
+            });
 
     </script>
 
