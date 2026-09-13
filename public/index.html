@@ -10,7 +10,11 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 </head>
 
 <body>
@@ -34,9 +38,12 @@
 </header>
 
 
-<!-- ================= HERO ================= -->
+<!-- ================= MAIN ================= -->
 
 <main>
+
+
+<!-- ================= HERO ================= -->
 
 <section id="home" class="hero">
 
@@ -53,8 +60,8 @@
 
         <p class="hero-text">
             Welcome to the World of Prince.
-            Enter a number and get the available information
-            through our secure lookup portal.
+            Enter a number and view the information
+            returned by the connected lookup service.
         </p>
 
     </div>
@@ -90,40 +97,73 @@
                     placeholder="Enter mobile number"
                     maxlength="10"
                     autocomplete="off"
+                    inputmode="numeric"
                     required
                 >
 
             </div>
 
 
-            <button type="submit" id="lookupBtn">
-                <span id="btnText">🔍 SEARCH NUMBER</span>
-                <span id="loadingText" class="hidden">
+            <button
+                type="submit"
+                id="lookupBtn"
+            >
+
+                <span id="btnText">
+                    🔍 SEARCH NUMBER
+                </span>
+
+                <span
+                    id="loadingText"
+                    class="hidden"
+                >
                     ⏳ SEARCHING...
                 </span>
+
             </button>
 
         </form>
 
 
-        <div id="message" class="message hidden"></div>
+        <!-- MESSAGE -->
+
+        <div
+            id="message"
+            class="message hidden"
+        ></div>
 
 
-        <!-- RESULT -->
+        <!-- ================= RESULT ================= -->
 
-        <div id="resultBox" class="result-box hidden">
+        <div
+            id="resultBox"
+            class="result-box hidden"
+        >
 
             <div class="result-title">
+
                 <span>📊</span>
-                <span>Lookup Result</span>
+
+                <span>
+                    Lookup Result
+                </span>
+
             </div>
 
+
             <pre id="result"></pre>
+
+
+            <!-- RESULT BUTTONS -->
 
             <div class="result-actions">
 
                 <button id="copyBtn">
-                    📋 COPY RESULT
+                    📋 COPY
+                </button>
+
+                <button id="pdfBtn">
+                    📄 DOWNLOAD PDF
                 </button>
 
                 <button id="clearBtn">
@@ -142,7 +182,10 @@
 
 <!-- ================= FEATURES ================= -->
 
-<section id="features" class="section">
+<section
+    id="features"
+    class="section"
+>
 
     <div class="section-heading">
 
@@ -155,7 +198,7 @@
         </h2>
 
         <p>
-            Designed to keep the lookup experience clean and easy.
+            A clean and easy interface for the lookup experience.
         </p>
 
     </div>
@@ -163,17 +206,20 @@
 
     <div class="features-grid">
 
+
         <div class="feature-card">
 
             <div class="feature-icon">
                 ⚡
             </div>
 
-            <h3>Fast Response</h3>
+            <h3>
+                Fast Response
+            </h3>
 
             <p>
-                Get results through the connected lookup service
-                without unnecessary steps.
+                Get responses from the connected
+                lookup service without unnecessary steps.
             </p>
 
         </div>
@@ -185,11 +231,13 @@
                 🔐
             </div>
 
-            <h3>Secure Access</h3>
+            <h3>
+                Secure Access
+            </h3>
 
             <p>
-                The portal can be accessed through an authorised
-                access link.
+                Access can be controlled through
+                authorised access links.
             </p>
 
         </div>
@@ -201,11 +249,13 @@
                 📱
             </div>
 
-            <h3>Mobile Friendly</h3>
+            <h3>
+                Mobile Friendly
+            </h3>
 
             <p>
-                The interface is designed to work smoothly
-                on phones, tablets and computers.
+                Designed to work smoothly on
+                mobile phones, tablets and computers.
             </p>
 
         </div>
@@ -217,57 +267,17 @@
                 🎯
             </div>
 
-            <h3>Clean Interface</h3>
+            <h3>
+                Clean Interface
+            </h3>
 
             <p>
-                A simple interface so you can focus on the
-                information you need.
+                A simple interface that keeps the
+                lookup process straightforward.
             </p>
 
         </div>
 
-    </div>
-
-</section>
-
-
-
-<!-- ================= PDF GUIDE ================= -->
-
-<section class="pdf-section">
-
-    <div class="pdf-card">
-
-        <div class="pdf-icon">
-            📄
-        </div>
-
-
-        <div class="pdf-info">
-
-            <span class="small-label">
-                IMPORTANT
-            </span>
-
-            <h2>
-                📚 Portal Guide
-            </h2>
-
-            <p>
-                Read the portal guide for important information,
-                instructions and usage details.
-            </p>
-
-        </div>
-
-
-        <a
-            href="/guide.pdf"
-            target="_blank"
-            class="pdf-btn"
-        >
-            ⬇️ VIEW / DOWNLOAD PDF
-        </a>
 
     </div>
 
@@ -277,7 +287,10 @@
 
 <!-- ================= ABOUT ================= -->
 
-<section id="about" class="section about-section">
+<section
+    id="about"
+    class="section about-section"
+>
 
     <div class="about-card">
 
@@ -296,15 +309,15 @@
             </h2>
 
             <p>
-                Welcome to World of Prince — a personal project
-                focused on creating useful, simple and modern
-                web tools.
+                Welcome to World of Prince — a personal
+                project focused on creating useful,
+                simple and modern web tools.
             </p>
 
             <p>
-                This portal is designed with a clean interface,
-                secure access controls and a straightforward
-                user experience.
+                This portal is designed with a clean
+                interface and controlled access system
+                for an easy user experience.
             </p>
 
         </div>
@@ -317,7 +330,10 @@
 
 <!-- ================= CONTACT ================= -->
 
-<section id="contact" class="section contact-section">
+<section
+    id="contact"
+    class="section contact-section"
+>
 
     <div class="section-heading">
 
@@ -350,6 +366,7 @@
         <a
             href="https://www.instagram.com/princeraj0205/"
             target="_blank"
+            rel="noopener noreferrer"
             class="contact-btn"
         >
             📸 Instagram
@@ -358,6 +375,7 @@
     </div>
 
 </section>
+
 
 </main>
 
@@ -387,34 +405,51 @@
 
 <script>
 
-const form = document.getElementById("lookupForm");
+/* ================= ELEMENTS ================= */
 
-const numberInput = document.getElementById("number");
+const form =
+    document.getElementById("lookupForm");
 
-const lookupBtn = document.getElementById("lookupBtn");
+const numberInput =
+    document.getElementById("number");
 
-const btnText = document.getElementById("btnText");
+const lookupBtn =
+    document.getElementById("lookupBtn");
 
-const loadingText = document.getElementById("loadingText");
+const btnText =
+    document.getElementById("btnText");
 
-const message = document.getElementById("message");
+const loadingText =
+    document.getElementById("loadingText");
 
-const resultBox = document.getElementById("resultBox");
+const message =
+    document.getElementById("message");
 
-const result = document.getElementById("result");
+const resultBox =
+    document.getElementById("resultBox");
 
-const copyBtn = document.getElementById("copyBtn");
+const result =
+    document.getElementById("result");
 
-const clearBtn = document.getElementById("clearBtn");
+const copyBtn =
+    document.getElementById("copyBtn");
 
+const pdfBtn =
+    document.getElementById("pdfBtn");
+
+const clearBtn =
+    document.getElementById("clearBtn");
 
 
 /* ================= TOKEN ================= */
 
-const params = new URLSearchParams(window.location.search);
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
 
-const token = params.get("token");
-
+const token =
+    params.get("token");
 
 
 /* ================= MESSAGE ================= */
@@ -423,10 +458,10 @@ function showMessage(text, type) {
 
     message.textContent = text;
 
-    message.className = "message " + type;
+    message.className =
+        "message " + type;
 
 }
-
 
 
 /* ================= LOADING ================= */
@@ -454,36 +489,51 @@ function setLoading(status) {
 }
 
 
-
 /* ================= REMOVE PRIVATE FIELDS ================= */
 
 function removePrivateFields(value) {
 
     if (Array.isArray(value)) {
 
-        return value.map(removePrivateFields);
+        return value.map(
+            removePrivateFields
+        );
 
     }
 
 
-    if (value && typeof value === "object") {
+    if (
+        value &&
+        typeof value === "object"
+    ) {
 
         const cleaned = {};
 
-        for (const [key, val] of Object.entries(value)) {
 
-            const lowerKey = key.toLowerCase();
+        for (
+            const [key, val]
+            of Object.entries(value)
+        ) {
+
+            const lowerKey =
+                key.toLowerCase();
+
 
             if (
                 lowerKey === "username" ||
                 lowerKey === "credit"
             ) {
+
                 continue;
+
             }
 
-            cleaned[key] = removePrivateFields(val);
+
+            cleaned[key] =
+                removePrivateFields(val);
 
         }
+
 
         return cleaned;
 
@@ -491,192 +541,608 @@ function removePrivateFields(value) {
 
 
     return value;
+
 }
 
 
+/* ================= LOOKUP ================= */
 
-/* ================= FORM ================= */
+form.addEventListener(
+    "submit",
+    async function(event) {
 
-form.addEventListener("submit", async function(event) {
-
-    event.preventDefault();
-
-
-    const number =
-        numberInput.value.replace(/[^0-9]/g, "");
+        event.preventDefault();
 
 
-    /* TOKEN CHECK */
+        const number =
+            numberInput.value
+                .replace(/[^0-9]/g, "");
 
-    if (!token) {
 
-        showMessage(
-            "🔐 Valid access link required.",
-            "error"
+        /* TOKEN CHECK */
+
+        if (!token) {
+
+            showMessage(
+                "🔐 Valid access link required.",
+                "error"
+            );
+
+            resultBox.classList.add(
+                "hidden"
+            );
+
+            return;
+
+        }
+
+
+        /* NUMBER CHECK */
+
+        if (number.length !== 10) {
+
+            showMessage(
+                "⚠️ Please enter a valid 10-digit number.",
+                "error"
+            );
+
+            resultBox.classList.add(
+                "hidden"
+            );
+
+            return;
+
+        }
+
+
+        setLoading(true);
+
+
+        message.className =
+            "message hidden";
+
+
+        resultBox.classList.add(
+            "hidden"
         );
-
-        resultBox.classList.add("hidden");
-
-        return;
-    }
-
-
-    /* NUMBER CHECK */
-
-    if (number.length !== 10) {
-
-        showMessage(
-            "⚠️ Please enter a valid 10-digit number.",
-            "error"
-        );
-
-        resultBox.classList.add("hidden");
-
-        return;
-    }
-
-
-    setLoading(true);
-
-    message.className = "message hidden";
-
-    resultBox.classList.add("hidden");
-
-
-    try {
-
-        const response = await fetch(
-            `/api/lookup?number=${encodeURIComponent(number)}&token=${encodeURIComponent(token)}`
-        );
-
-
-        let data;
 
 
         try {
 
-            data = await response.json();
+            const response =
+                await fetch(
+                    `/api/lookup?number=${encodeURIComponent(number)}&token=${encodeURIComponent(token)}`
+                );
+
+
+            let data;
+
+
+            try {
+
+                data =
+                    await response.json();
+
+            } catch {
+
+                throw new Error(
+                    "Invalid response from server."
+                );
+
+            }
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.message ||
+                    "Lookup request failed."
+                );
+
+            }
+
+
+            /* REMOVE USERNAME / CREDIT */
+
+            const cleanedData =
+                removePrivateFields(data);
+
+
+            /* SHOW RESULT */
+
+            result.textContent =
+                JSON.stringify(
+                    cleanedData,
+                    null,
+                    2
+                );
+
+
+            resultBox.classList.remove(
+                "hidden"
+            );
+
+
+            showMessage(
+                "✅ Lookup completed successfully.",
+                "success"
+            );
+
+
+        } catch (error) {
+
+            showMessage(
+                "❌ " + error.message,
+                "error"
+            );
+
+            resultBox.classList.add(
+                "hidden"
+            );
+
+        } finally {
+
+            setLoading(false);
+
+        }
+
+    }
+);
+
+
+/* ================= COPY RESULT ================= */
+
+copyBtn.addEventListener(
+    "click",
+    async function() {
+
+        if (
+            !result.textContent.trim()
+        ) {
+
+            showMessage(
+                "⚠️ No result available.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        try {
+
+            await navigator.clipboard.writeText(
+                result.textContent
+            );
+
+
+            copyBtn.textContent =
+                "✅ COPIED!";
+
+
+            setTimeout(
+                function() {
+
+                    copyBtn.textContent =
+                        "📋 COPY";
+
+                },
+                1500
+            );
+
 
         } catch {
 
-            throw new Error(
-                "Invalid response from server."
+            showMessage(
+                "❌ Unable to copy result.",
+                "error"
             );
 
         }
 
+    }
+);
 
-        if (!response.ok) {
 
-            throw new Error(
-                data.message ||
-                "Lookup request failed."
+/* ================= PDF ================= */
+
+pdfBtn.addEventListener(
+    "click",
+    function() {
+
+        const resultText =
+            result.textContent.trim();
+
+
+        if (!resultText) {
+
+            showMessage(
+                "⚠️ Pehle lookup result generate karo.",
+                "error"
             );
+
+            return;
 
         }
 
 
-        const cleanedData =
-            removePrivateFields(data);
+        const number =
+            numberInput.value ||
+            "Not specified";
 
 
-        result.textContent =
-            JSON.stringify(
-                cleanedData,
-                null,
-                2
+        const printWindow =
+            window.open(
+                "",
+                "_blank",
+                "width=900,height=700"
             );
 
 
-        resultBox.classList.remove("hidden");
+        if (!printWindow) {
+
+            showMessage(
+                "⚠️ Popup blocked. Browser me popup allow karo.",
+                "error"
+            );
+
+            return;
+
+        }
 
 
-        showMessage(
-            "✅ Lookup completed successfully.",
-            "success"
-        );
+        /*
+         * Escape HTML characters so that
+         * lookup output is displayed as text.
+         */
+
+        const escapedResult =
+            resultText
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
 
 
-    } catch (error) {
+        printWindow.document.write(`
 
-        showMessage(
-            "❌ " + error.message,
-            "error"
-        );
+<!DOCTYPE html>
 
-        resultBox.classList.add("hidden");
+<html lang="en">
 
-    } finally {
+<head>
 
-        setLoading(false);
+<meta charset="UTF-8">
+
+<title>
+World of Prince - Lookup Result
+</title>
+
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    padding: 40px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #ffffff;
+
+    color: #111111;
+
+}
+
+
+.container {
+
+    max-width: 900px;
+
+    margin: auto;
+
+}
+
+
+.header {
+
+    text-align: center;
+
+    padding-bottom: 20px;
+
+    margin-bottom: 25px;
+
+    border-bottom:
+        2px solid #111111;
+
+}
+
+
+.logo {
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    margin-bottom: 8px;
+
+}
+
+
+.title {
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+}
+
+
+.date {
+
+    margin-top: 8px;
+
+    color: #666666;
+
+    font-size: 12px;
+
+}
+
+
+.number-box {
+
+    padding: 15px;
+
+    margin-bottom: 20px;
+
+    border:
+        1px solid #dddddd;
+
+    border-radius: 8px;
+
+    background: #fafafa;
+
+}
+
+
+.result-title {
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+
+}
+
+
+.result {
+
+    padding: 20px;
+
+    background: #f5f5f5;
+
+    border:
+        1px solid #dddddd;
+
+    border-radius: 8px;
+
+    white-space: pre-wrap;
+
+    word-break: break-word;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 12px;
+
+    line-height: 1.65;
+
+}
+
+
+.footer {
+
+    margin-top: 30px;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid #dddddd;
+
+    text-align: center;
+
+    color: #666666;
+
+    font-size: 11px;
+
+}
+
+
+.print-button {
+
+    display: block;
+
+    margin: 25px auto 0;
+
+    padding: 12px 25px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #111111;
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+
+@media print {
+
+    body {
+
+        padding: 20px;
 
     }
 
-});
 
+    .print-button {
 
-
-/* ================= COPY ================= */
-
-copyBtn.addEventListener("click", async function() {
-
-    try {
-
-        await navigator.clipboard.writeText(
-            result.textContent
-        );
-
-
-        copyBtn.textContent =
-            "✅ COPIED!";
-
-
-        setTimeout(() => {
-
-            copyBtn.textContent =
-                "📋 COPY RESULT";
-
-        }, 1500);
-
-
-    } catch {
-
-        showMessage(
-            "❌ Unable to copy result.",
-            "error"
-        );
+        display: none;
 
     }
 
-});
+}
 
+</style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <div class="header">
+
+        <div class="logo">
+            ⚡ WORLD OF PRINCE
+        </div>
+
+        <div class="title">
+            Number Lookup Result
+        </div>
+
+        <div class="date">
+            Generated on:
+            ${new Date().toLocaleString()}
+        </div>
+
+    </div>
+
+
+    <div class="number-box">
+
+        <strong>
+            Number:
+        </strong>
+
+        +91 ${number}
+
+    </div>
+
+
+    <div class="result-title">
+        📊 Lookup Information
+    </div>
+
+
+    <div class="result">
+        ${escapedResult}
+    </div>
+
+
+    <div class="footer">
+
+        Generated by World of Prince<br>
+
+        This document contains the information
+        displayed by the lookup portal.
+
+    </div>
+
+
+    <button
+        class="print-button"
+        onclick="window.print()"
+    >
+        🖨️ SAVE AS PDF
+    </button>
+
+
+</div>
+
+</body>
+
+</html>
+
+        `);
+
+
+        printWindow.document.close();
+
+
+        /*
+         * Give browser a moment to render
+         * before opening print dialog.
+         */
+
+        setTimeout(
+            function() {
+
+                printWindow.focus();
+
+                printWindow.print();
+
+            },
+            500
+        );
+
+    }
+);
 
 
 /* ================= CLEAR ================= */
 
-clearBtn.addEventListener("click", function() {
+clearBtn.addEventListener(
+    "click",
+    function() {
 
-    numberInput.value = "";
+        numberInput.value = "";
 
-    result.textContent = "";
+        result.textContent = "";
 
-    resultBox.classList.add("hidden");
+        resultBox.classList.add(
+            "hidden"
+        );
 
-    message.className =
-        "message hidden";
+        message.className =
+            "message hidden";
 
-});
+    }
+);
 
 
+/* ================= ONLY NUMBERS ================= */
 
-/* ================= INPUT ONLY NUMBERS ================= */
+numberInput.addEventListener(
+    "input",
+    function() {
 
-numberInput.addEventListener("input", function() {
+        this.value =
+            this.value.replace(
+                /[^0-9]/g,
+                ""
+            );
 
-    this.value =
-        this.value.replace(/[^0-9]/g, "");
-
-});
+    }
+);
 
 </script>
 
