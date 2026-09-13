@@ -11,21 +11,28 @@ export default async function handler(req, res) {
             });
         }
 
-        const sql = neon(process.env.DATABASE_URL);
+        // Personal permanent token
+        const isPersonalToken =
+            token === process.env.PERSONAL_ACCESS_TOKEN;
 
-        const link = await sql`
-            SELECT token
-            FROM share_links
-            WHERE token = ${token}
-              AND status = 'active'
-            LIMIT 1
-        `;
+        // Temporary share link
+        if (!isPersonalToken) {
+            const sql = neon(process.env.DATABASE_URL);
 
-        if (link.length === 0) {
-            return res.status(403).json({
-                status: "error",
-                message: "This access link is invalid or revoked"
-            });
+            const link = await sql`
+                SELECT token
+                FROM share_links
+                WHERE token = ${token}
+                  AND status = 'active'
+                LIMIT 1
+            `;
+
+            if (link.length === 0) {
+                return res.status(403).json({
+                    status: "error",
+                    message: "This access link is invalid or revoked"
+                });
+            }
         }
 
         if (!number) {
@@ -74,6 +81,7 @@ export default async function handler(req, res) {
             });
         }
 
+        // Remove private fields from API response
         function removePrivateFields(value) {
             if (Array.isArray(value)) {
                 return value.map(removePrivateFields);
