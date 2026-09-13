@@ -1,228 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Number Lookup</title>
-  <style>
-    body {
-      background: #0a0f0a;
-      color: #00ff41;
-      font-family: monospace;
-      padding: 20px;
-    }
-    .container {
-      max-width: 700px;
-      margin: auto;
-      padding: 20px;
-      border: 2px solid #00ff41;
-      border-radius: 10px;
-    }
-    h2 {
-      text-align: center;
-    }
-    input {
-      width: 100%;
-      padding: 12px;
-      box-sizing: border-box;
-      background: #051005;
-      color: #00ff66;
-      border: 2px solid #00ff41;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-    button {
-      padding: 12px;
-      margin: 10px 5px 0 0;
-      background: #0a200a;
-      color: #00ff66;
-      border: 2px solid #00ff41;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    pre {
-      margin-top: 20px;
-      padding: 15px;
-      background: #051005;
-      border: 2px solid #00ff41;
-      border-radius: 8px;
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
-    #status {
-      text-align: center;
-      margin-top: 10px;
-    }
-  </style>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="container">
-  <h2>Number Lookup Tool</h2>
-  <input
-    type="text"
-    id="mobile"
-    placeholder="Enter mobile number"
-  >
-  <br>
-  <button onclick="lookup()">🔎 Lookup</button>
-  <button onclick="copyJSON()">📋 Copy</button>
-  <button onclick="clearAll()">🗑️ Clear</button>
-  <button onclick="example()">📝 Example</button>
-  <pre id="output">[*] Ready.</pre>
-  <div id="status"></div>
-<div class="credit">
-    <div class="name">✦ Designed & Developed by @princeraj0205 ✦</div>
-    <div class="email">princeraj74682@gmail.com</div>
-</div>
-</div>
-<script>
-// =====================================
-// API SETTINGS
-// =====================================
+    <meta charset="UTF-8">
 
-// =====================================
-// VARIABLES
-// =====================================
-let lastJSON = null;
-// =====================================
-// NUMBER LOOKUP
-// =====================================
-async function lookup() {
-  const input = document.getElementById("mobile");
-  const output = document.getElementById("output");
-  const status = document.getElementById("status");
-  const number = input.value.trim();
-  // Check empty input
-  if (!number) {
-    output.textContent = JSON.stringify({
-      error: "Enter a number"
-    }, null, 2);
-    status.textContent = "";
-    return;
-  }
-  // Keep only numbers
-  const cleanNumber = number.replace(/[^0-9]/g, "");
-  // Check number length
-  if (cleanNumber.length < 10) {
-    output.textContent = JSON.stringify({
-      error: "Invalid number (minimum 10 digits)"
-    }, null, 2);
-    status.textContent = "";
-    return;
-  }
-  output.textContent = JSON.stringify({
-    status: "fetching..."
-  }, null, 2);
-  status.textContent = "⏳ Fetching data...";
-  try {
-    // =====================================
-    // API URL
-    // =====================================
-    const response = await fetch(
-  `/api/lookup?number=${encodeURIComponent(cleanNumber)}`
-);
-    // Check HTTP error
-    if (!response.ok) {
-      throw new Error(
-        "HTTP Error: " + response.status
-      );
-    }
-    // Convert response to JSON
-    const data = await response.json();
-    // =====================================
-    // FORMAT RESPONSE
-    // =====================================
-    let result;
-    if (
-      data &&
-      data.status !== "error" &&
-      data.data
-    ) {
-      result = {
-        success: true,
-        number: cleanNumber,
-        results: data.data
-      };
-    }
-    else if (
-      data &&
-      data.status === "error"
-    ) {
-      result = {
-        success: false,
-        error: data.message || "No data found",
-        number: cleanNumber
-      };
-    }
-    else {
-      result = {
-        success: false,
-        error: "No data found",
-        number: cleanNumber
-      };
-    }
-    // Save result
-    lastJSON = result;
-    // Show result
-    output.textContent =
-      JSON.stringify(result, null, 2);
-    status.textContent =
-      "✅ Lookup complete";
-  }
-  catch (error) {
-    const errorData = {
-      success: false,
-      error: error.message
-    };
-    lastJSON = errorData;
-    output.textContent =
-      JSON.stringify(errorData, null, 2);
-    status.textContent =
-      "❌ Error";
-  }
-}
-// =====================================
-// COPY JSON
-// =====================================
-function copyJSON() {
-  if (lastJSON === null) {
-    alert(
-      "No JSON to copy. Do a lookup first."
-    );
-    return;
-  }
-  const json =
-    JSON.stringify(lastJSON, null, 2);
-  navigator.clipboard
-    .writeText(json)
-    .then(() => {
-      document.getElementById("status")
-        .textContent =
-        "📋 JSON copied!";
-    })
-    .catch(() => {
-      alert("Failed to copy.");
-    });
-}
-// =====================================
-// CLEAR
-// =====================================
-function clearAll() {
-  document.getElementById("mobile").value = "";
-  document.getElementById("output")
-    .textContent = "[*] Ready.";
-  document.getElementById("status")
-    .textContent = "";
-  lastJSON = null;
-}
-// =====================================
-// EXAMPLE
-// =====================================
-function example() {
-  document.getElementById("mobile")
-    .value = "9876543210";
-}
-</script>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Number Lookup Tool by Prince Mahto"
+    >
+
+    <title>Prince Mahto | Number Lookup</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         INTRO SCREEN
+    ====================================================== -->
+
+    <div id="intro">
+
+        <!-- Animated 3D background -->
+        <div class="intro-orb orb-one"></div>
+        <div class="intro-orb orb-two"></div>
+        <div class="intro-orb orb-three"></div>
+
+        <div class="stars"></div>
+
+        <div class="intro-content">
+
+            <div class="intro-small">
+                ✦ WELCOME ✦
+            </div>
+
+            <h1>
+                TO THE
+                <span>WORLD OF</span>
+                PRINCE
+            </h1>
+
+            <div class="intro-line"></div>
+
+            <div class="creator">
+                <span>CREATED BY</span>
+                <strong>PRINCE MAHTO</strong>
+            </div>
+
+            <div class="email">
+                princeraj74682@gmail.com
+            </div>
+
+            <div class="loader-area">
+
+                <div class="loader-ring"></div>
+
+                <div class="loading-text">
+                    INITIALIZING EXPERIENCE
+                    <span class="dots">...</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MAIN APPLICATION
+    ====================================================== -->
+
+    <main class="app">
+
+        <div class="background-grid"></div>
+
+        <div class="container">
+
+            <!-- Header -->
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    P
+                </div>
+
+                <div class="brand-text">
+
+                    <div class="brand-title">
+                        NUMBER LOOKUP
+                    </div>
+
+                    <div class="brand-subtitle">
+                        Advanced Lookup Interface
+                    </div>
+
+                </div>
+
+                <div class="online">
+                    <span></span>
+                    ONLINE
+                </div>
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <!-- Heading -->
+
+            <section class="hero">
+
+                <div class="eyebrow">
+                    ✦ SECURE LOOKUP SYSTEM
+                </div>
+
+                <h2>
+                    Number
+                    <span>Lookup</span>
+                </h2>
+
+                <p>
+                    Enter a mobile number to request
+                    information from the connected service.
+                </p>
+
+            </section>
+
+
+            <!-- Search -->
+
+            <div class="search-box">
+
+                <div class="input-label">
+                    MOBILE NUMBER
+                </div>
+
+                <div class="input-wrap">
+
+                    <div class="phone-icon">
+                        ☎
+                    </div>
+
+                    <input
+                        id="number"
+                        type="text"
+                        inputmode="numeric"
+                        autocomplete="off"
+                        placeholder="Enter mobile number"
+                    >
+
+                    <div class="input-status">
+                        ●
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="actions">
+
+                <button
+                    class="btn primary"
+                    onclick="lookup()"
+                >
+                    <span>⌕</span>
+                    Lookup
+                </button>
+
+                <button
+                    class="btn"
+                    onclick="copyJSON()"
+                >
+                    <span>⧉</span>
+                    Copy
+                </button>
+
+                <button
+                    class="btn danger"
+                    onclick="clearAll()"
+                >
+                    <span>×</span>
+                    Clear
+                </button>
+
+                <button
+                    class="btn"
+                    onclick="example()"
+                >
+                    <span>✦</span>
+                    Example
+                </button>
+
+                <a
+                    class="btn contact"
+                    href="https://instagram.com/princeraj0205"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <span>◎</span>
+                    Contact Me
+                </a>
+
+            </div>
+
+
+            <!-- Status -->
+
+            <div class="status-card">
+
+                <div class="status-top">
+
+                    <div class="status-dot"></div>
+
+                    <span id="status">
+                        Ready to lookup
+                    </span>
+
+                </div>
+
+                <div class="status-bar">
+                    <div></div>
+                </div>
+
+            </div>
+
+
+            <!-- Result -->
+
+            <div class="result-wrapper">
+
+                <div class="result-header">
+
+                    <div>
+                        <span class="terminal-dot"></span>
+                        RESPONSE
+                    </div>
+
+                    <div class="result-live">
+                        LIVE
+                    </div>
+
+                </div>
+
+                <pre id="output">{
+  "status": "ready",
+  "message": "Enter a number and click Lookup"
+}</pre>
+
+            </div>
+
+
+            <!-- Footer -->
+
+            <footer>
+
+                <div class="footer-line"></div>
+
+                <div class="footer-name">
+                    <span>✦</span>
+                    Designed & Developed by
+                    <strong>Prince Mahto</strong>
+                    <span>✦</span>
+                </div>
+
+                <div class="footer-email">
+                    princeraj74682@gmail.com
+                </div>
+
+                <div class="footer-social">
+                    <a
+                        href="https://instagram.com/princeraj0205"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        @princeraj0205
+                    </a>
+                </div>
+
+            </footer>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /*
+         * INTRO
+         * Show intro for approximately 3.5 seconds.
+         */
+
+        window.addEventListener("load", () => {
+
+            setTimeout(() => {
+
+                document.body.classList.add("intro-complete");
+
+                setTimeout(() => {
+
+                    const intro =
+                        document.getElementById("intro");
+
+                    if (intro) {
+                        intro.style.display = "none";
+                    }
+
+                }, 1000);
+
+            }, 3500);
+
+        });
+
+
+        /*
+         * LOOKUP
+         */
+
+        async function lookup() {
+
+            const input =
+                document.getElementById("number");
+
+            const output =
+                document.getElementById("output");
+
+            const status =
+                document.getElementById("status");
+
+            const number =
+                input.value.trim();
+
+            if (!number) {
+
+                status.textContent =
+                    "Please enter a mobile number.";
+
+                output.textContent =
+                    JSON.stringify(
+                        {
+                            success: false,
+                            error: "Number is required"
+                        },
+                        null,
+                        2
+                    );
+
+                return;
+            }
+
+
+            status.textContent =
+                "Connecting to lookup service...";
+
+            output.textContent =
+                "Processing request...";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        `/api/lookup?number=${encodeURIComponent(number)}`
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                output.textContent =
+                    JSON.stringify(
+                        data,
+                        null,
+                        2
+                    );
+
+
+                if (response.ok) {
+
+                    status.textContent =
+                        "Lookup completed successfully.";
+
+                } else {
+
+                    status.textContent =
+                        "Lookup returned an error.";
+
+                }
+
+            } catch (error) {
+
+                output.textContent =
+                    JSON.stringify(
+                        {
+                            success: false,
+                            error: "Unable to connect to server"
+                        },
+                        null,
+                        2
+                    );
+
+                status.textContent =
+                    "Connection error.";
+
+            }
+
+        }
+
+
+        /*
+         * COPY
+         */
+
+        function copyJSON() {
+
+            const output =
+                document.getElementById("output");
+
+            navigator.clipboard
+                .writeText(output.textContent)
+                .then(() => {
+
+                    document.getElementById("status")
+                        .textContent =
+                        "Response copied to clipboard.";
+
+                })
+                .catch(() => {
+
+                    document.getElementById("status")
+                        .textContent =
+                        "Copy failed.";
+
+                });
+
+        }
+
+
+        /*
+         * CLEAR
+         */
+
+        function clearAll() {
+
+            document.getElementById("number")
+                .value = "";
+
+            document.getElementById("output")
+                .textContent =
+`{
+  "status": "ready",
+  "message": "Enter a number and click Lookup"
+}`;
+
+            document.getElementById("status")
+                .textContent =
+                "Ready to lookup.";
+
+        }
+
+
+        /*
+         * EXAMPLE
+         */
+
+        function example() {
+
+            document.getElementById("number")
+                .value = "9876543210";
+
+            document.getElementById("status")
+                .textContent =
+                "Example number loaded.";
+
+        }
+
+
+        /*
+         * ENTER KEY
+         */
+
+        document
+            .getElementById("number")
+            .addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (event.key === "Enter") {
+                        lookup();
+                    }
+
+                }
+            );
+
+    </script>
+
 </body>
 </html>
